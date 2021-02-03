@@ -1,0 +1,823 @@
+DOMINIK CVETKOVSKI
+095 308 9202
+Napisati poruku na whatsapp:
+Ime i prezime
+
+Za HZZ - TINA NOVAK tnovak@rk-smz.hr
+O edukaciji razno - TIJANA ŠAPINA tsapina@simora.hr
+
+
+Matematički zapis:
+5 + 8 = 13
+
+Programski zapis:
+13= 5 + 8
+
+1.) 
+x + 8 = 13
+x = 13 - 8
+
+x = 5
+13 = 8 + x
+
+- VRIJABLA - mjesto u memoriji rezervirano za pohranu podataka
+
+- INT (int) - za cijele brojeve (3, 20, -2, 975211321, 0)
+
+int X = 3
+int Y = 2
+int Z = 0
+
+Koliki je Z ako se u njega sprema zbroj X i Y?
+
+Z = X + Y
+
+Napišite 3 varijable vaših naziva koje su sve sa cijelim brojevima. Sve 3 varijable se zbaraju i zapisuje se rezultat u varijablu "razultat"
+
+int vino = 3
+int voda = 1
+int gemišt = 4
+int rezultat = 0
+
+rezultat = vino + voda + gemišt
+
+Float - za decimalne brojeve (5.3, 6.0, 4.5, 0.2, -3.2, 0.0)
+
+float mama = 5.6f
+float tata = 25.0f (25f)
+float beba = 0f
+
+beba = mama + tata
+
+4.) Napišite 3 varijable float vrijednosti gdje se od prve oduzima zbroj druge i treće. Rezultat matematičke jednadžbe se zapisuje u prvu varijablu.
+
+float rijeka = 5f
+float kaštela = 6.2f
+float brač = 1.2f
+
+rijeka = rijeka - (kaštela + brač)
+
+5.) Koliki je zbroj X i Y ako znamo da je:
+float X = 4.55f
+int Y = 69
+float XY = 0
+
+XY = X + Y
+
+6.) Zapištie programski sljedeći zapis:
+
+weed + mars - uho = droga
+uho * 2.5 + pussy = slon
+slon * droga = rezultat
+
+int weed = 3
+int mars = 8
+int uho = 4
+int droga = 0
+
+int pussy = 1
+float slon = 0f
+float rezultat = 0f
+
+droga = weed + mars - uho (7)
+slon = uho * 2.5f + pussy (11)
+rezultat = slon * droga (77)
+
+7.) Zbroji x i y ako je x 5 , a y je 8.
+
+int x = 5
+int y = 8
+
+x = x + y
+
+8.) kolika je razlika između x i y ako je x 19, a y je 7.5? Rezultat zapišite u X
+
+int x = 19
+float y = 7.5f
+float X = 0
+
+X = x - y
+
+
+9.)Programski zapišite ovaj matematički zapis: 9 + 11 = 20 (Obavezno definirajte i imenujte varijable)
+
+int x = 9
+int y = 11
+int z = 0
+
+z = x + y
+
+10.) Početna vrijednost healtha je 100, primamo damage u vrijednosti 17.6, kolika je konačna vrijednost healtha?
+
+float health = 100f
+float damage = 17.6f
+
+health = health - damage
+*NAPOMENA*
+health -= damage
+
+11.) Pretvorite u programski zapis sa vašim vrijednostima:
+susjed + mama - tata * krevet = problem
+
+int susjed = 25
+int mama = 35
+int tata = 40
+int krevet = 2
+int problem = 0
+
+problem = susjed + mama - tata * krevet
+
+12.) Pretvorite u programski zapis sa vašim vrijenostima:
+bomba * 2 + teroristi - majmun / 3.2 = wtf
+
+int bomba = 1
+int teroristi = 100
+int majmun = 5
+float wtf = 0
+
+wtf = bomba * 2 + teroristi - majmun / 3.2f 
+
+
+13.) Na početku vaš lik ima 52 mane, iskoristili ste ability koji košta 4.5 mana i potom ste ga iskoristili još 3 puta. Poslje toga popijtete potion koji vam da 10 mana.
+Koliko imate mane? Napišite programski.
+
+float mama = 52f
+float ability = 4.5f
+int potion = 10
+
+mana = mana - ability
+mana = mana - (ability * 3)
+mana = mana + potion ILI mana += potion
+
+* Točka zarez " ; " se piše na kraju linije naredbe
+
+npr.
+
+float mana = 56.4f;
+int konj = 3;
+float rez = 0;
+
+rez = mama * konj;
+
+Što je to "Null" a što "0" - sjetite se prikaza WC papira
+
+int rollaPapira = 6;
+maknemo papire sa role i onda bude
+int rollaPapira = 0;
+maknemo i rolu
+int rollaPapira; (Njegova vrijednost je null odnosno brojčano 0)
+
+rollaPapira = rollaPapira * 100;
+
+
+14.) Ušli ste u borbu. U šanžeru imate 15 metaka od maksimalnih 20. Ispucali ste ih 4, te potom reloadali šanžer. Napište to programski.
+
+int šanžerCurrent = 15;
+int šanžerMax = 20;
+
+šanžerCurrent = šanžerCurrent - 4;
+šanžerCurrent = šanžerMax;
+
+15.) U varijablu "students" spremite količinu učenika u učioni, prvo ih dođe 20, nakon toga ih ode 5, zatim dođe njih 4, te potom ih ode 12 i za kraj se broj učenika udvostručio. 
+Napišite to programski, ali obavezno korak po korak događaja.
+
+int s = 0; ili int s;
+
+s += 20;
+s -= 5;
+s += 4;
+s -= 12;
+s *= 2;
+
+
+16.) Na početku prvi igrač ima 12 ponija, drugi igrač ima 10 ponija. Koliko ponija ima koji igrač ako prvi otme drugome 4 ponija?
+Napišite programski.
+
+int playerOne = 12;
+int playerTwo = 10;
+
+playerOne += 4;
+playerTwo -= 4;
+
+
+17.) Zbrojite x koji je 17.2 i y koji je 12.32. Rezultat napišite u varijabli "Maska"
+
+float x = 17.2f; 
+float y = 12.32f;
+float Maska = x + y;
+
+18.) Povećajte vrijednost x za vrijednost x ako je x 5
+
+int x = 5;
+
+x += x;
+
+19.) Neka je x vrijednosti 6, a y je 7. Njihov rezultat zbrajanja uvećajte (množenje) za vrijednost y i spremite u z
+
+int x = 6;
+int y = 7;
+int z = 0;
+
+z = (x + y) * y;
+
+20.) Igrač ima 100 HP-a, pao je sa visine 8 metara i zgubio 20% HP-a. Zatim mu se HP regenerirao za 8 (brojčano) i potom je pokušao ponovno skočiti, ali je sada pao sa visine 7 metara i izgubio 15.7% HP-a.
+Napišite ovo programski. (Postoci se odnose na trenutni, a ne na maksimalni iznos)
+
+float igracHP = 100f;
+
+igracHP -= 0.2f * igracHP;
+igracHP += 8;
+igracHP -= 0.157 * igracHP;
+
+
+21.) Na početku je z 12, i prvo ga povećamo za 3, a zatim ga umanjimo za 2%.
+Napišite ovo programski.
+
+int z = 12;
+
+z += 3;
+z *= 0.98f;
+
+22.) Imate 10 pokrajina. Svaka pokrajina po potezu daje 1 zlatnik. Nakon 3 poteza si izgubio 50% pokrajina. Prošlo je još 2 poteza. Koliko imaš zlatnika na kraju? 
+Napišite programski.
+
+float pokrajina = 10f;
+int zlatnik = 0;
+
+zlatnik = pokrajina * 3 * 1; (nakon 3 poteza imamo 30 zlatnika)
+pokrajina *= 0.5f; (sada imamo 5 pokrajina)
+zlatnik += pokrajina * 2 * 1; (nakon još 2 poteza imamo 40)
+
+23.) Na početku je bilo 100 navijača, od njih ih je 12 donjelo baklje (njih nisu pustili). Redari nisu pustili na utakmicu svakog drugog navijača. Koliko je navijača na kraju.
+
+int navijači = 100;
+int hooligani = 12;
+
+navijači -= hooliani;
+navijači *= 0.5f;
+
+24.) Igrač ima 250 kristala, dao je 80 kristala čarobnjaku. Potom je prošao level i zaradio 70 kristala. Koliko igrač ima kristala, a koliko kristala ima čarobnjak?
+
+int kIgrača = 250;
+int kČarobnjak = 0;
+
+kIgrač -= 80;
+kČarobnjak += 80;
+kIgrač += 70;
+
+kIgrač = 240;
+kČarobnjak = 80;
+
+25.) Baka je dedi dala 12 kuna (za pivu), a deda je već imao 12 kuna, došla je vrana i uzela baki 8 jabuka, a baka je imala ukupno 10 jabuka. Koliko ce deda popiti piva ako je jedna piva 6 kn, a koliko jabuka ima baka?
+
+int kuneDeda = 12;
+int jabuke = 10;
+int cijenaPive = 6;
+int popijenoPive = 0;
+
+kuneDeda += 12;
+jabuke -= 8;
+popijenoPive = kuneDeda / cijenaPive;
+
+deda je popio 4 pive, a baka ima 2 jabuke.
+
+26.) Max inventory je 100, trenutno je pun 67, igrač izabi 13 nepotrebnih itema. Potom ubije trolla i uzme 45 itema. Nakon što je pregledao loot, baci 33 itema. Koliko je pun inventory na kraju, ako svaki item zauzima jedno mjesto.
+Napišite programski.
+
+int maxInventory = 100;
+int currentInventory = 67;
+
+currentInventory -= 13; (54)
+currentInventory += 45; (99)
+currentInventory -= 33; (66)
+
+U inventoryu ima 66 itema
+
+
+27.) Max HP je 100, body shoot je 20 damage. Vaš lik ima 80 HP na početku borbe i odmah te neprijatelj pogodi "body shoot". Potom padneš i izgubiš 2% HP-a i usput te neki NPC nabije i napraviti damage u iznosu od 8% maxHP-a. Regenerira ti se HP na max, ali te opet neprijatelj pogodi "body shoot" i head shoot koji je duplo veći od body shoota. Jesi li živ na kraju?
+Napiši programski.
+
+float HP = 80f;
+int maxHP = 100;
+int bodyS = 20;
+int headS = bodyS * 2;
+
+HP -= bodyS; (60)
+HP *= 0.98f;
+HP -= 0.08f * maxHP;
+HP = maxHP;
+HP -= bodyS;
+HP -= headS;
+
+28.) Igrač pero ima 4 zlatne lopte, a igrač marko ima 6 zlatnih lopti, igrač pero je marku oteo jednu zlatnu loptu, te mu se poslje marko nasao sa sestrom doma i usput vratio svoju loptu i ukrao dvije perine.
+Koliko lopti ima na kraju Marko, koliko Pero i čija sestra je izgubila nevinost?
+Napiši programski.
+
+int pero = 4;
+int marko = 6;
+
+pero += 1; *NAPOMENA* ili pero++; skraćeni zapis kada povećavate ili smanjujete vrijednost nekoj varijabli za 1
+marko --;
+pero -= 3;
+marko += 3;
+
+Na kraju Marko ima 8, Pero ima 2 lopte, a nevinost je izgubila Perina sestra.
+
+29.) Igrač ima 20 mana. Iskoristio je vatrenu magiju koja vrijedi 5.5 mana, a nakon toga uzastopno dvije ledene magije koje vrijede 3 mane. Koliko mu je mana ostalo?
+Napiši programski.
+
+float mana = 20f;
+float Vmagija = 5.5f;
+int lMagija = 3;
+
+mana -= Vmagija;
+mana -= lMagija * 2;
+
+30.) Na prvenstvu se natječu Danska, Hrvatska, Španjolska i Švedska. Svaka pobjeda nosi 2 boda. Danaska je pobjedila Hr, Špan i Šved. Te nakon utakmice sa Šved. zbog pijanstva dobila 2 kaznena boda. Koliko bodova ima danska.
+
+int d = 0;
+
+d += 2 * 3;
+d -= 2;
+
+Danska ima 4 boda.
+
+31.) Saša je imao 10 lopti. Dvije je dao psu. Pas je jednu pojeo, koliko je lotpi ostalo psu?
+
+int sasa = 10;
+int pas = 0;
+
+sasa -= 2;
+pas += 2;
+pas--;
+
+Psu je ostala jedna lopta.
+
+32.) Mini ima tank od 60L. Do Novske potroši 20L, cestarina je u jednom smjeru 40 kn. Koliko će novaca izkamatariti tjedno ako putujemo u oba smjera autoputom i cijena goriva je 9 kn/L.
+
+int t = 7; //tjedna dana
+int c = 40; (cestarina) 
+int p = 20; (potrošnja u jednom smjeru)
+int cg = 9; (cijena goriva po litri)
+int n = 0; (konačna cijena)
+
+n = t * ((2 * p * cg) + (2 * c));
+
+Novaca je potrošeno 3080 kn tjedno.
+
+33.) Krešo ima 10 jabuka. Ivan mu kriomice pojede 2 jabuke. Koliko je jabuka pojeo Denis, a koliko je ostalo Kreši?
+
+int kreso = 10;
+int Ivan = 0;
+int denis = 0;
+
+kreso -= 2;
+ivan += 2;
+
+34.) Igrač ima 50 HP i 30 mana. Zatim na protivnika baci spell koji troši 3.5 mane. A istovremeno ga pogađa protivnikov spell koji radi 20 dmg. Istovremeno nosis shield koji blokira 50% dmg od tog spella. Koliko HP i mane imaš?
+
+int igracHP = 50;
+float igracMana = 30;
+float spellM = 3.5f;
+int spellDmg = 20;
+
+igracMana -= spellM;
+igracHP -= spellDmg * 0.5f;
+
+Igrac ima 40HP i 26.5 mane.
+
+**PISANJE KOMENTARA**
+- Obavezno
+- koristi se za druge ljude kada čitaju vaš kod
+- Korisno ako neko vrijeme niste čitali kod
+- Programeri koji ne koriste komentare kažu "Prvo smo Bog i ja znali kako radi ovaj kod, sada zna samo Bog"
+- Komentari se pišu sa "//" i pišete ih iznad ili u redu naredbe/linije/metode na koju se odnose
+- Komentiranje više redova od jednput
+
+npr. 
+
+int health = 100; // varijabla za Health
+int dmg = 25; //varijabla za dmg od enemy zombija
+//varijabla za dmg od enemy vampira
+int dmg2 = 30;
+
+npr. Komentiranje više redova - koristi se kada kod radi, ali se našao/traži se bolji način pa ga se zakomentira da se ne odvija u programu
+
+/*
+float Bana = 89f;
+
+Bana = Bana*2 - 45 + 3.9f;
+*/
+
+
+
+35. Iskomentirajte i riješite zadatak:
+- Max HP je 100, body shoot je 20 damage. Vaš lik ima 89 HP na početku borbe i odmah te neprijatelj pogodi "body shoot". Potom padneš i izgubiš 2% HP-a i usput te neki NPC nabije i napraviti damage u iznosu od 8% maxHP-a. Regenerira ti se HP na max, ali te opet neprijatelj pogodi "body shoot" i head shoot koji je duplo veći od body shoota. Potom je NPC se zbugao i nanio ti istu štetu kao i prije.
+
+float HP = 89f; //trenutni health
+int maxHP = 100; //maksimalni health
+int bodyS = 20; //Iznos damagea od body shoota
+int headS = bodyS * 2; //Iznos damagea od head shota koji je duplo veći od body shoota
+
+HP -= bodyS; //Igrač je primo body shoot i pao je na 69 HP
+HP *= 0.98f; //Igrač gubi 2% HP-a
+HP -= 0.08f * maxHP; //NPC nanosi štetu igraču u iznosu od 8% maksimalnog healtha što iznos 8 bodova
+HP = maxHP; //Igrač se regenenerira u potpunosti i zato mu je health trenutni jednak maksimalnom
+HP -= bodyS; //Igrač je primo body shoot i pao je na 80 HP
+HP -= headS; //Igrač je primo head shoot i pao je na 40 HP
+HP -= 0.08f * maxHP; //NPC nanosi štetu igraču u iznosu od 8% maksimalnog healtha što iznos 8 bodova i igrač ima 32 HP
+
+36.) Pri rezultatu 100/90 domacini su dali jos 3 kosa do kraja utakmice. A gosti su dali 5 koseva. Koliki je bio rezultat na kraju utakmice ako znam da jedan koš vrijedi 2 boda.
+
+int domacini = 100; //broj koseva domacina
+int gosti = 90; //broj koseva gostiju
+int bodovi = 2; //Broj bodova za jedan kos
+
+domacini += bodovi * 3; //domacinima dodajemo 6 bodova
+gosti = bodovi * 5 + gosti; //gostima dodajtemo 10 bodova
+
+Rezultat je bio 106/100
+
+37.) Cwekii ima 20 debila na unity edukacije od kojih mora napraviti game developera, 5 debila odustaje od edukacije, 3 debila se prebacuju sa blendera, ali od pridošlica samo dvojica završavaju. Koliko je game developera Cwekii napravio?
+
+int debili = 20; //početni broj ljudi koji kreću
+int odustao = 5; //5 ljudi koji odustanu
+int blendZavrsio = 2; //uspijesni broj prebacenih ljudi koji su uspijeli zavrsitit edukaciju
+int zavrsili; //varijabla za konacni broj onih koji zavrse
+
+debili -= odustao; //oduzimanje odustalih od ukupnog broja polaznika
+debili += blendZavrsio; //dodavanje ljudi koji su se prebacili i završili
+zavrsili = debili; //ukupni broj ljudi koji su završili edukaciju
+
+38.) Igrac ima 100 max hp i 50 movement pointsa, također ima 1 potion koji ga heala 10% max HP. Ima dvije vrste napada specijalni koji radi 50 dmg i troši 30 movement pointa i obicni napad koji radi 30 dmg i ne kosta nista. Monster ima 126 HP-a i tuce za 30 dmg. Tuku se naizmjenicno svako jedan napad po krugu, a potion ne troši krug i igrač napada prvi. Combat je gotov kada igrač ili monster umru. Tko umre prvi ako igrač koristi sve što mu je na raspolaganju?
+
+float maxHp = 100f;
+float currentHp = maxHP;
+int movementPoints = 50;
+int potion = 1;
+int specialAtc = 50;
+int specialAtcCost = 30;
+int basicAtc = 30;
+int monsterHp = 126;
+int monsterAtc = 30;
+
+//Potez Prvi
+monsterHp -= specialAtc; //126 - 50 = 76
+movementPoints -= specialAtcCost; //50 - 30 = 20
+currentHp -= monsterAtc; //100 - 30 = 70
+
+//Potez Drugi
+currentHP += potion * 0.1f * maxHp; //70 + 10 = 80
+potion--;
+monsterHp -= basicAtc; //76 - 30 = 46
+currentHp -= monsterAtc; //80 - 30 = 50
+
+//Potez Treći
+monsterHp -= basicAtc; //46 - 30 = 16
+currentHp -= monsterAtc; //50 - 30 = 20
+
+//Potez Četiri
+monsterHp -= basicAtc; //16 - 30 = -14
+
+Prvi umre Monster
+
+**UVIJETI**
+Što je uvijet?
+- Uvije je skup riječi koje govore što se treba ispuniti kako bi se izvšio niz/red naredbi
+- Primjeri uvijeta:
+	- AKO - if
+	- DOK - while
+	- Kada - When (ne postoji, primjera radi samo)
+- Kako se zadovoljava uvijet, odnosno provjerava - sa znakovima vrijednosti:
+
+== jednako je (provjera vrijednosti jesu li jednake
+= dodjela vrijednosti
+!= različito je
+|| ovo označava vrijednost ili na tipkovnici se napiše pristiok Alt Gr i W
+&& ovo označa vrijednost i
+> veće od
+< manje od
+<= manje ili jednako
+>= veće ili jednako
+
+primjeri if petlje:
+
+if( 1+1 == 2) -> točno
+if( 2+3 != 4) -> točno
+if( 18 > 19) -> netočno
+if(21 <= 21) -> točno
+
+kao da piše:
+istina -> 1+1=2
+laž -> 5+5=11
+if(istina || laž) -> istina
+if(istina || istina) -> istina
+if(laž ||istina) -> istina
+if(istina && istina) -> istina
+if(istina && laž) -> laž
+if(laž && laž) -> laž
+
+39.) x je veličine 8, a y je veličine 13, ako je njihov zbroj manji od 50 neka se x poveća za samoga sebe, a ako je zboj veći ili jednak 50 neka se y poveća za samoga sebe, a u svim ostalim slučajevima x se treba pomnožiti za y i spremiti u x.
+
+int x = 8;
+int y = 13;
+
+if(x + y < 50)
+{
+	x += x;
+}
+
+else if(x + y > 50 || x + y == 50) ILI if(x + y >= 50)
+{
+	y += y;
+}
+
+else
+{
+	x *= y;
+}
+
+40.) Vrijednost x je -3.6, a vrijednost y je 10. Ako je njihov umnožak veći od 100 neka se x uveća za taj umnožak, ako je manji od 100 neka se y uveća za taj umnožak, a ako je umnožak jednak 100 neka se x i y uvećaju za sami sebe.
+
+
+float x = -3.6f;
+float y = 10;
+
+if(x * y > 100)
+{
+	x += x * y;
+}
+
+else if(x * y < 100)
+{
+	y += y * x;
+}
+
+else if(x * y == 100)
+{
+	x += x;
+	y += y;
+}
+
+
+*NAPOMENA* 
+PRAVILNO IMANOVANJE VARIJABLI:
+
+Pravilno:
+_playerOne
+playerOne
+PlayerOne
+player_1
+player_One
+
+OK:
+player1
+playERonE
+PLAYERone
+
+Nepravilno:
+1player
+1_player
+
+41.) Igračev health je 30. Regeneracija ce mu krenuti ako mu je health pao ispod 20 i povećati će se za 12. 
+
+int x = 30;
+int y = 12;
+
+if(x < 20)
+{
+	x += y;
+}
+
+42.) Igračev health je 31. Regeneracija ce mu krenuti ako mu je health pao ispod 20 i povećati će se za 12. Igrac pprvo prima dmg od 9. Zatim je popio potion koji mu je vratio 10 hp i potom je primio critical strike koji mu je skinuo 26 hp. Pitanje je jel se igracu dogodio health regen i ako je kada? Napisati programski i oznacite komentarima kada se dogodila regeneracija.
+
+int playerHP = 31;
+int boostHP = 12;
+int dmg = 9;
+int potionHP = 10;
+int criticalStike = 26;
+
+if(playerHP < 20) //If uvijet je zadovoljen tek poslje trećeg koraka
+{
+	playerHP += boostHP;
+}
+
+playerHP -= dmg; //Prvi korak - HP = 22
+playerHP += potionHP; //Drugi korak - HP = 32
+playerHP -= criticalStrike; //Treći korak - HP = 6
+
+
+43.) Igrac jedan i dva su imali 100 hp. Igrac dva je udario igraca jedan te mu oduzeo 25 hp, igrac jedan kontra napadom oštečuje igrača dva za 14 hp, te regenerira sebe za 10 hp. Koliko koji igrac ima hp?
+
+int playerOne = 100;
+int playerTwo = 100;
+
+playerOne -= 25;
+PlayerTwo -= 14;
+playerOne += 10;
+
+44.) Pokemon evoluira kada dođe na 16 level. Za doći na 16 level potrebno mu je ukupno 4561 XP. Početni level mu je 1 i ima 0 xp. Odradio je 25 borbi gdje je dobio 25 xp po borbi i potom još 25 borbi gdje je u svakoj dobio 93 xp. Napravite provjeru imali dovoljno xp za evoluciju, ako nema gubi sav xp, a ako ima onda mu je level 16.
+
+int currentLevel = 1;
+int currentXP = 0;
+int fightTwoXP = 93;
+int fightOneXP = 25;
+int evolveXP = 4561;
+
+currentXP += fightOneXP * 25; //Imamo 625 XP
+currentXP += fightTwoXP * 25; //Dobivamo 2325 XP i ukupno imamo 2950 XP
+
+if(currentXP >= evolveXP)
+{
+	currentLevel = 16;
+}
+
+else if(currentXP < evolveXP)
+{
+	currentXP = 0;
+}
+
+
+45.) Kapetan Miki ima 10 HP, ako primi damage veći od 5, a da ga to neće ubiti onda se Miki naljuti i njegov HP bude 20.
+
+int mikiHP = 10; 
+int dmg;
+if((dmg > 5) && mikiHP > dmg)
+{
+	mikiHP = 20;
+}
+
+46.) A je jacine 5, a B je jacine 17 ako je njihova razlika veca od 10 neka se broj A poveca za B, a ako je manja ili jednaka neka se B poveca za A
+
+int A = 5;
+int B = 17;
+
+if(A - B > 10 || B - A > 10)
+{
+	A += B;
+}
+
+else if(A - B <= 10 || B - A <= 10)
+{
+	B += A;
+}
+
+47.) Imate varijablu X. Ako je X veći od 10, neka se X uveća za 20, a ako je X manji od 10 neka se umanji za 9. U ostalim slučajevima neka se X pomnoži sam sa sobom.
+
+int x;
+
+if(x > 10)
+{
+	x += 20;
+}
+
+else if(x < 10)
+{
+	x -= 9;
+}
+
+else
+{
+	x *= x;
+}
+
+48.) U šumi je 6 elfova, 5 gnomova i 10 orkova, ako je broj elfova i gnomova veći ili jednak orkovima, broj elfova se uveća za njihov broj (poduplaju se), a ako je njihov zbroj manji, orkovi pojedu 50% gnomova i 20% elfova. NAPOMENA, ne može se pojesti decimalno elfova niti gnomova.
+
+
+int elfs = 6;
+int gonms = 5;
+int orcs = 10;
+
+if(elfs + gnoms >= orcs)
+{
+	elfs *= 2;
+}
+
+else if(elfs + gnoms < orcs)
+{
+	gnoms = (int)(gnoms * 0.5f);
+	elfs = (int)(elfs * 0.8f);
+}
+
+
+49.) Pocetna vrijednost varijable je 830, X je 69, a Y je 538. ukoliko je umnožak x i y manji od 1000 i varijabla vrijednosti 830 zbrojena sa y je veca od 1000 , neka se varijabla sa pocetnom vrijednoscu 830 smanji za 100. Ukoliko je umnozak veci (samo to je uvije), neka se pocetna varijabla poveca za 100. U svim ostalim slucajevima neka se pocetna varijabla pomnozi za 100.
+
+int x = 69;
+int y = 538;
+int pocVar = 830;
+
+if(x * y < 1000 && pocVar + y > 1000)
+{
+	pocVar -= 100;
+}
+
+else if(x * y > 1000)
+{
+	pocVar += 100;
+}
+
+else
+{
+	pocVar *= 100;
+}
+
+50.) Super Mario je imao 3 života na početku. izgubio je 2. Dobio je jedan život tokom nivoa i dobio jedan nakon što je prešao nivo. Napiši programski.
+
+int marioLife = 3;
+
+marioLife -= 2;
+marioLife++;
+marioLife++;
+
+51.) X je 15, Y je 100, ako je x izmedu 13 i 19 (ukljceni su i 13 i 19) povecaj y za 20%. A ako nije onda y smanji za 13%. Ne smiju se spremati vrijednosti u decimalnom zapisu.
+
+int x = 15;
+int y = 100;
+
+if( x >= 13 && x <= 19)
+{
+	y += (int)(0.2f * y);
+}
+
+else
+{
+	y -= (int)(0.13f * y);
+}
+
+52.) Cilj igre je skupiti 4 objekta, prsten, pehar, zlatnik i dijamant. Sa svakim skupljenim itemom aktivira se jedan boos, a kada se skupi svih 4 itema, igra je pređena. Odmah skupljate prsten, te dalje tim redosljedom. Sa koliko bossova ste se borili dok niste prešli igru?
+
+int items = 0;
+int itemsToCollect = 4;
+int prsten = 0;
+int pehar = 0;
+int zlatnik = 0;
+int dijamnt = 0;
+int boss = 0;
+
+prsten++;
+if(prsten == 1)
+{
+	boss++;
+	items++;
+}
+pehar++;
+if(pehar == 1)
+{
+	boss++;
+	items++;
+}
+zlatnik++;
+if(zlatnik == 1)
+{
+	boss++;
+	items++;
+}
+dijamant++;
+if(dijamant == 1)
+{
+	boss++;
+	items++;
+}
+
+if(items == itemsToCollect)
+{
+	//Kraj igre
+}
+
+Ukupno smo se borili sa 4 bossa
+
+53.) Vrijednost "nice" je 69, a vrijednost "blaze" je 420, ako je zbroj tih vrijednosti pomnožen sa 2 veći od 1300 neka se nice podupla, a ako je manji ili jednak 1250 neka se blaze podupla.
+
+54.) Programski zapisi 11.79 + 9.01 = 19.80;
+
+55.) igrac HP-a 100 je primio dmg 23. Popijemo potion koji nam vrati 15 hp. Napisi programski.
+
+56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

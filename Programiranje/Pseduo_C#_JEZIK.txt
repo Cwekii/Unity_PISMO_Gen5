@@ -1058,14 +1058,124 @@ void Start()
 	Debug.Log("Odvila se start metoda");
 }
 
+Napomena za zadatke 61.- ako ne pise da je javna varijabla onda je privatna
 
+61.) U startu neka se zbroje 2 javna broja. I neka se ispiše u konzoli njihov zbroj.
 
+public int x = 2;
+public int y = 4;
 
+void Start()
+{
+	var rez = x + y;
+	Debug.Log(rez);
+}
 
+62.) Zbrojite u startu x koji je 17.2 i y koji je javan broj. Neka se rezultat sprema u varijablu "banana" i neka se ispiše u konzoli.
 
+float x = 17.2f;
+public int y;
+float banana;
 
+void Start()
+{
+	banana = x + y;
+	Debug.Log(banana);
+}
 
+63.) Povecajte x koji je 5 za 5 svaki frame.
 
+int x = 5;
+
+void Update()
+{
+	x += 5;
+}
+
+64.) Neka je x 6, a y je 7 i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat uveca za x
+
+int x = 6;
+int y = 7;
+int rezultat;
+
+void Start()
+{
+	rezultat = x + y;
+}
+
+void Update()
+{
+	rezultat += x;
+}
+
+65.) Neka je x 8, a y je javni broj i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat poveca za polovicu x varijable.
+
+int x = 8;
+public int y;
+int xy;
+
+void Start()
+{
+	xy = x + y;
+}
+
+void Update()
+{
+	xy += x * 0.5f;
+}
+
+66.) Ako je vrijednost x -3.6, a vrijednost y je javna. Ako je zbroj veci od 20 neka se ispiše "To legendo", a ako je manji ili jednak neka se ispiše "Falia si budalo"
+
+float x = -3.6f;
+public flaot y;
+
+void Start()
+{
+	if(x + y > 20)
+	{
+		Debug.Log("To legendo");
+	}
+	
+	else if(x + y <= 20)
+	{
+		Debug.Log("Falia si budalo");
+	}
+}
+
+67.) U startu zbrojite dvije javne varijable od kojih se jedna zove "y". Neka se svaki frame x povecava za 5% iznosa y varijable. Svaki frame ponovo zbrojite x i y te ispišite vrijednost zbroja.
+
+public int y;
+public float x;
+float rezultatxy;
+
+void Start()
+{
+	rezultatxy = x + y;	
+}
+
+void Update()
+{
+	x += 0.05 * y;
+	rezultatxy = x + y;
+	Debug.Log(rezultatxy);
+}
+
+68.) Neka se u metodi start ispiše "Ja sam Start", u metodi awake "Ja sam mali Awake), te u konacnici neka se svaki frame ispisuje "Moje ime je medvjedić Lino".
+
+69.) Noice
+
+70.) Povecajte javnu varijablu X za jedan svaki frame. Neka se također svaki frame ispiše "Ja imam " + x + " godina".
+
+Ponavljanje - DZ:
+
+1.) napišite primjer int varijable
+2.) napišite primjer float varijable
+3.) Objasnite razliku između || (OR/ILI) i && (AND/I) sa primejrom if-else u start metodi
+4.) Što znači !=
+5.) x je 10, a y je 12. U Startu napravite provjeru ako su x i y jednaki neka se ispiše "Jednako je", ako su različiti neka se ispiše "Različito je"
+6.) Ivica ima 5 jabuka, a Marica ima 2 jabuke, Ivica joj uzme 1 jabuku. Marica izjavi da je Ivica Smrad. Napišite programski
+7.) X je javni broj. Neka se prije nultog framea ispiše vrijednost x.
+8.) U startu zbroji javnu vrijednost x i javnu vrijednost y. Ako je njihov zbroj 10, neka se svaki frame ispiše "Može", a ako njihov zborj nije 10 neka se svaki frame ispiše "Reka sam nemože!"
 
 
 

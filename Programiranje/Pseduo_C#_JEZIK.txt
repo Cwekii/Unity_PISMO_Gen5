@@ -788,14 +788,275 @@ Ukupno smo se borili sa 4 bossa
 
 53.) Vrijednost "nice" je 69, a vrijednost "blaze" je 420, ako je zbroj tih vrijednosti pomnožen sa 2 veći od 1300 neka se nice podupla, a ako je manji ili jednak 1250 neka se blaze podupla.
 
+int nice = 69;
+int blaze = 420;
+
+if((nice + blaze) * 2 > 1300)
+{
+	nice *= 2;
+}
+
+else if((nice + blaze) * 2 <= 1250)
+{
+	blaze *= 2;
+}
+
 54.) Programski zapisi 11.79 + 9.01 = 19.80;
+
+float x = 11.79f;
+float y = 9.01f;
+float rez = 19.8f; //Koji treba biti 19.80
+
+if (x + y > rez)
+{
+	float constanta = rez - x - y;
+	x += constanta;
+}
+
+else if(x + y < rez)
+{
+	float constanta = rez - x - y;
+	x += constanta;
+}
 
 55.) igrac HP-a 100 je primio dmg 23. Popijemo potion koji nam vrati 15 hp. Napisi programski.
 
+int HP = 100;
+int dmg = 23;
+int potion = 15;
+
+HP -= dmg;
+HP += potion;
+
 56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos. Napisite koliko svakome pojedinacno jos fali novaca.
 
+float my = 15f;
+float friendOne = 25f;
+float friendTwo = 10.5f;
+int bugatti = 2500000;
+
+if (my > friendOne && my > friendTwo)
+        {
+            if (friendOne > friendTwo)
+            {
+                if(my >= friendTwo * 2)
+                {
+                    my -= bugatti * 0.5f;
+                    friendOne -= bugatti * 0.25f;
+                    friendTwo -= bugatti * 0.25f;
+                }
+                else 
+                {
+                    my -= bugatti / 3;
+                    friendTwo -= bugatti / 3;
+                    friendOne -= bugatti / 3;
+                }
+            }
+
+            else if(friendOne < friendTwo)
+            {
+                if (my >= friendOne * 2)
+                {
+                    my -= bugatti * 0.5f;
+                    friendOne -= bugatti * 0.25f;
+                    friendTwo -= bugatti * 0.25f;
+                }
+                else
+                {
+                    my -= bugatti / 3;
+                    friendTwo -= bugatti / 3;
+                    friendOne -= bugatti / 3;
+                }
+            }
+        }
+
+        if (friendOne > my && friendOne > friendTwo)
+        {
+            if (my > friendTwo)
+            {
+                if (friendOne >= friendTwo * 2)
+                {
+                    friendOne -= bugatti * 0.5f;
+                    my -= bugatti * 0.25f;
+                    friendTwo -= bugatti * 0.25f;
+                }
+                else
+                {
+                    my -= bugatti / 3;
+                    friendTwo -= bugatti / 3;
+                    friendOne -= bugatti / 3;
+                }
+            }
+
+            else if (my < friendTwo)
+            {
+                if (friendOne >= my * 2)
+                {
+                    friendOne -= bugatti * 0.5f;
+                    my -= bugatti * 0.25f;
+                    friendTwo -= bugatti * 0.25f;
+                }
+                else
+                {
+                    my -= bugatti / 3;
+                    friendTwo -= bugatti / 3;
+                    friendOne -= bugatti / 3;
+                }
+            }
+        }
+
+        else
+        {
+            //Frend dva ima najvise ili jednkao kao neki od prijatelja, ali ima vec kredit i hipoteku pa nikom nista
+        }
 
 
+57.) x je 50, y je 100, ako je njihov zboj veci od trostruke vrijednosti x onda neka se x podupla, a ako je manji neka se y udvostruci, a ako su jednaki neka se oba kvadriraju.
+
+int x = 50;
+int y = 100;
+
+if(x + y > x * 3)
+{
+	x *= 2;
+}
+
+else if(x + y < x * 3)
+{
+	y *= 2;
+}
+
+else if(x + y == x * 3)
+{
+	x *= x;
+	y *= y;
+}
+
+58.) igrac ima 100 HP. Ako mu HP padne ispod 75 regenrira mu se health za 10, a ako padne ispod 25 i igrac ostane ziv, regenerira mu se za 25 HP. Igrac prvo primi dmg od 55, a zatim opet primi dmg od 55. Koliko hp ima igrac?
+
+int HP = 100;
+
+if(HP < 75)
+{
+	HP += 10;
+}
+
+else if(HP < 25 && HP > 0)
+{
+	HP += 25;
+}
+
+HP -= 55; //100 - 55 = 45
+//Aktivira se Prva regeneracija i sada ima 45 + 10 = 55 HP
+HP -= 55; //55 - 55 = 0
+//Nema regeneracije jer je umro
+
+59.) Prvi vozac ima 10 kockica, a drugi ima 13. Kada se oni sudare onaj koji ima manje ukrade drugome jednu kockicu.
+
+int x = 10;
+int y = 13;
+
+if(x > y)
+{
+	y += 1;
+	x -= 1;
+//skraceno bi bilo y++; i x--;
+}
+
+else if(y > x)
+{
+	y--;
+	x++;
+}
+
+60.) Varijabla x je 15, varijabla y je dva puta veca od x. Ako je zbroj x i y manji od 50, x se poveca za y. Ako je zbroj x i y veci od 50 od x se oduzima y, a ako je zbroj jednak onda x dobiva y vrijednost.
+
+int x = 15;
+int y = 2 * x;
+
+if(x + y < 50)
+{
+	x += y;
+}
+
+else if(x + y > 50)
+{
+	x -= y;
+}
+else
+{
+	x = y;
+}
+
+*VAR vrsta varijable
+
+var:
+- vrsta varijable koja se prilagođava unosu
+- ne može se definirati u početku
+- koristi se samo unutar neke petlje/metode za privremenu vrijednost
+
+npr.
+Neka se rezultat množenja x i y poveća za 10 i spremite u varijablu rez, ali to odradite u 2 koraka
+float x = 10.5f;
+int y = 77;
+float rez;
+
+
+var privremeno = x * y;
+rez = privremeno + 10;
+
+*Metode*
+- metoda je skup naredbi koje se trebaju odraditi u određenim uvijetima i intervalu
+
+Ključne metode u Unityu:
+
+- Awake - odvija se prije 0 (nultog) framea
+	- događa se prije stvaranja bilokakvih objekata na sceni
+	- izvršava se samo jedanput
+
+- Start - izvršava se netom prije prvog framea
+	- izvršava se samo jedanput
+
+- Update - Svaki frame se jednom izvrši
+
+-kako se piše metoda:
+
+void nazivMetode()
+{
+	linija naredbe;
+}
+
+* vidljivost metoda/varijabli
+- public - ispred vrste varijable kojoj omugucavamo da mi kao developeri možemo unositi i mjenjati vrijednost varijable u Unity Inspectoru ili pozivati iz drugih skripti
+npr. public float primjer = 4.7f;
+
+- private - stavlje se ispred varijable i onemogucava vidjljivost i promjene vrijednosti varijable iz Unity Inspectora i pozivanje iz drugi skripti. Ako ispred varijable/metode ne piše ništa, automatski je private.
+npr. private int primeric = 5; ili int primeric = 5;
+
+*Debugiranje*
+- postupak pružanja informacija developeru ima li greške i koja je greška ili ispis rada programa u konzoli
+
+- Osnovo - Debug.Log("")
+- Debug -> debugiraj (provjeri)
+- Log -> ispiši u konzoli
+- ("") - unutar navodnika tekst za ispis, poslje može varijabla za ispis (spajanje se radi sa pomoću znaka +)
+
+npr. 1.
+public int x;
+public int y;
+
+void Start()
+{
+	var rez = x * y;
+	Debug.Log("Rezultat je" + rez);
+}
+
+npr. 2.
+
+void Start()
+{
+	Debug.Log("Odvila se start metoda");
+}
 
 
 

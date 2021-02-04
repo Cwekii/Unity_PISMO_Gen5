@@ -792,7 +792,7 @@ Ukupno smo se borili sa 4 bossa
 
 55.) igrac HP-a 100 je primio dmg 23. Popijemo potion koji nam vrati 15 hp. Napisi programski.
 
-56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos.
+56.) Vi imate 15€, a vaš frend 25€ i vaš treći frend ima 10.5€. Vi takvi siromasi se odlučite kupiti Bugatti Vayrona koji košta 2500000€. Ako osoba koja ima najviše novaca ima duplo više novaca od osobe koja ima najmanje novaca, onda on plaća pola cijene. A ostala dvojica djele drugu polovicu po pola. Ako to nije slučaj onda svi plačaju jednak iznos. Napisite koliko svakome pojedinacno jos fali novaca.
 
 
 

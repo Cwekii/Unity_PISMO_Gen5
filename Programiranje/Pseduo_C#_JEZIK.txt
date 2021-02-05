@@ -1169,21 +1169,197 @@ void Update()
 Ponavljanje - DZ:
 
 1.) napišite primjer int varijable
+int a = 69;
+
 2.) napišite primjer float varijable
+float y = 6.996f;
+
 3.) Objasnite razliku između || (OR/ILI) i && (AND/I) sa primejrom if-else u start metodi
+
+int x = 2;
+int z = 1;
+int y = 3;
+
+void Start()
+{
+	if(x + y < 6 && z + x < 6)
+	{
+		x++;	
+	}
+	else if(x + y == 5 || z + z + x < 4)
+	{
+		z += 2;
+	}
+}
+
 4.) Što znači !=
+
+Označava da je vrijednost različita
+
 5.) x je 10, a y je 12. U Startu napravite provjeru ako su x i y jednaki neka se ispiše "Jednako je", ako su različiti neka se ispiše "Različito je"
+
+int x = 10;
+int y = 12;
+
+void Start()
+{
+	if(x == y)
+	{
+		Debug.Log("Jednako je");
+	}
+	else if(x != y)
+	{
+		Debug.Log("Različito je");
+	}
+}
+
 6.) Ivica ima 5 jabuka, a Marica ima 2 jabuke, Ivica joj uzme 1 jabuku. Marica izjavi da je Ivica Smrad. Napišite programski
+
+int i = 5;
+int m = 2;
+
+void Start()
+{
+	i++;
+	m--;
+	Debug.Log("Ivica smrade!");
+}
+
 7.) X je javni broj. Neka se prije nultog framea ispiše vrijednost x.
+
+public int x;
+
+void Awake()
+{
+	Debug.Log(x);
+}
+
 8.) U startu zbroji javnu vrijednost x i javnu vrijednost y. Ako je njihov zbroj 10, neka se svaki frame ispiše "Može", a ako njihov zborj nije 10 neka se svaki frame ispiše "Reka sam nemože!"
 
+public int x;
+public int y;
 
+void Update()
+{
+	if(x + y == 10)
+	{
+		Debug.Log("Može");
+	}		
+	else if(x + y != 10)
+	{
+		Debug.Log("Raka sam nemože!");
+	}
+}
 
+Nastavak:
+71.) Imajte dva javna cijela broja. Njihov rezultat zbrajanja se sprema u javnu varijablu. Postupak je sljedeći. Svaki frame se prvi cijeli broj mora povecati za 1, potom se racuna rezultat zbrajanja prvog broja i drugog. Ako je rezultat manji od 500 ispisuje se ("Manji"), ako je između 500 i 2000 ispisuje se "Prosječan", a ako je veći ispisuje se "Največi"
 
+public int x;
+public int y;
+public int rez;
 
+private void Update()
+{
+	x++;
+	rez = x + y;
+	if(rez < 500)
+	{
+		Debug.Log("Manji sam!");
+	}
+	else if(rez > 500 && rez < 2000)
+	{
+		Debug.Log("Prosječan sam!");
+	}
+	else
+	{
+		Debug.Log("Največi sam hehe ;)!");
+	}
+}
 
+72.) x ima vrijednost 7, ali je x privatna varijabla. Napišite da se u startu ispiše vrijednost x varijable.
 
+int x = 7;
 
+void Start()
+{
+	Debug.Log(x);
+}
+
+73.) U početku zbroji javnu vrijednost koja prima vrijednosti cijelih brojeva i javnu vrijednost koja prima vrijednost decimalnih brojeva. Ako je njihov zbroj 10 neka se svaki frame ispiše "Banana", a ako je manji od 10 neka se ispiše "Mrkvica". Obavezno koristiti samo jednu metodu.
+
+public int x;
+public float y;
+
+void Update()
+{
+	if(x + y == 10)
+	{
+		Debug.Log("Banana");
+	}
+	else if(x + y < 10)
+	{
+		Debug.Log("Mrkvica");
+	}
+}
+
+74.) Napišite skriptu gdje se zbrajaju dva javna broja u metodi start i ispisuje im se rezultat na primjer: Rezultat zbrajanja brojeva 8 i 9.5 je 17.5
+
+public int x;
+public float y;
+public float zbr;
+
+void Start()
+{
+	zbr = x + y;
+	Debug.Log("Rezultat zbrajanja brojeva " + x + " i " + y + " je " + zbr);
+}
+
+*Bool
+- Što je to Bool?
+- Bool je vrsta varijable koja pohranjuje u sebe isključivo 2 moguće vrijednosti, a to su točno ili netočno.
+- Može biti samo True ili False
+- Tehnički se može reći da ide 0 ili 1
+npr.
+bool banana = false;
+bool died = true;
+bool gameEnded; //Kada ne piše vrijednost onda je null, ako je null to je kao da je 0, a pošto ne može biti 0 onda je false
+bool zmajcek = false; <=> bool zmajcek;
+
+75.) Neka se zbrajaju dva javna broja, ako je njihov zbroj veci od 15 neka bool endGame postane true, ako su manji ili jednaki neka je false. Ovo napravite u drugoj, vlastitoj metodi, Ako je endGame true onda neka se ispiše u konzoli da je igra završena, a ako je false neka ispiše da si preživio.
+
+public int x;
+public int y;
+bool endGame = false; //bool endGame;
+
+void Start()
+{
+	if(x + y > 15)
+	{
+		endGame = true;
+	}
+	else
+	{
+		endGame = false;
+	}
+	CheckIfEndGame();
+}
+
+void CheckIfEndGame()
+{
+	if(endGame == true)
+	{
+		Debug.Log("Igra je završila");
+	}
+	else if(endGame == false)
+	{
+		Debug.Log("Preživio/la si");
+	}
+}
+
+76.)Neka su dva javna broja float vrijednosti. Za pocetne vrijednosti neka budu 12.3 i 18.2. Definirajte i privatni bool banana. Banana je na pocetku false. Ako je umnožak dva broja veci ili jednak 100 neka banana postane true i u konzoli neka se ispiše "Banana je pojedena", ako je banana false neka se ispiše "Banana je citava". 
+Riješite na dva načina. 1. koristeći samo metodu Awake. 2. koristeći metodu start i vlastitu metodu.
+
+77.) Napišite skriptu gdje ćete imati start metodu i metodu naziva vašeg imena. U startu neka se pozove metoda vašeg imena. Metoda vašeg imena neka ima naredbu da ispiše u konzoli "Ja sam unity developer i pametniji sam nego gobelodt developer".
 
 
 

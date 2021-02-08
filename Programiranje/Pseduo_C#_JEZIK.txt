@@ -1734,11 +1734,11 @@ void Start
 	z == nM * 2.5 - X;
 )
 
-93.) x je javan broj koji je 100. Ispisi u konzoli sve parne brojeve od 0 do x.
+94.) x je javan broj koji je 100. Ispisi u konzoli sve parne brojeve od 0 do x.
 
-94.) Napisi primjer for petlje.
+95.) Napisi primjer for petlje.
 
-95.) Prepišite skriptu i prepravite greške te joj napišite komentare
+96.) Prepišite skriptu i prepravite greške te joj napišite komentare
 
 flaoat X_X = 67f;
 publik float xD:
@@ -1754,7 +1754,7 @@ void Update()
 	]
 
 
-96.) Prepišite skriptu i prepravite greške te joj napišite komentare
+97.) Prepišite skriptu i prepravite greške te joj napišite komentare
 
 boll marmun = false;
 intx = 11:
@@ -1773,6 +1773,70 @@ Void Update()
 {
 	y = y * Z * x:
 }
+
+** NOVA VRSTA VARIJABLE **
+
+-string 
+
+string je tekstualni zapis, mogu se zapisivati rijeci, slova, brojevi i znakovi
+
+npr.
+
+string ime = "Pero";
+string prezime = "Peric";
+string datumRodenja = "19.1.2011";
+string visina = "189 cm";
+
+
+98) Napišite skriptu koja ucitava upisane javne vrijednosti za igracevo ime, prezime, broj godina (int), visinu (int), te grad iz kojega dolazi. U metodi start se trebaju ispisati u konzoli sve njegove vrijednosti.
+npr. "Ja sam Marko Maric. Imam 28 godina, te sam visok 169 cm i dolazim iz mjesta koje se zove Špickovina!"
+
+
+public string ime;
+public string prezime;
+public string grad;
+public int godine;
+public int visina;
+
+
+void Start()
+{
+	Debug.Log("Ja sam " + ime + " " + prezime + ". Imam " + godine + " godina, te sam visok " + visina + " cm i dolazim iz mjesta koje se zove " + grad + "!");
+}
+
+99.) Napišite skriptu koja ucitava javne vrijednosti, zatim te podatke ispisuje u navedeni tekst:
+"Moje ime je _________ i ja dolazim iz grada koji se zove ___________, a višlji sam od covjeka koji se zove __________ za ______ cm". To znaci a morate imati u kodu ucitavanje 2 vrijednosti imena, 2 vrijednosti visine i 2 vrijednosti grada, te dvije solucije teksta ovisno o tome koji je lik višlji.
+
+public string ime1;
+public string ime2;
+public int visina1;
+public int visina2;
+public string grad1;
+public string grad2;
+
+void Start()
+{
+	if(visina1 > visina2)
+	{
+		Debug.Log("Moje ime je " + ime1 + " i ja dolazim iz grada koji se zove " + grad1 + ", a višlji sam od čovjeka koji se zove " + ime2 + " za " + (visina1 - visina2) + " cm");
+	}
+	
+	else if(visina1 < visina2)
+	{
+		Debug.Log("Moje ime je " + ime2 + " i ja dolazim iz grada koji se zove " + grad2 + ", a višlji sam od čovjeka koji se zove " + ime1 + " za " + (visina2 - visina1) + " cm");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

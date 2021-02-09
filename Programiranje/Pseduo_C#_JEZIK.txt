@@ -1896,19 +1896,165 @@ void Update()
 
 100.) Napišite while petlju koja je istinita dok god je int x vece ili jednako od 0. U while petlji treba biti naredba koja x smanjuje za 2, te ispisuje u konzoli "Ja volim " + x.
 
+public int x;
+
+void Start()
+{
+	while(x >= 0)
+	{
+		Debug.Log("Ja volim " + x);
+		x -= 2;
+	}
+}
 
 101.) Napišite skriptu koja ce ugasiti igru ako je slucajno igracev health pao ispod 0 ili je 0.
 Naredba koja gasi igru (.exe) se piše: Application.Quit();
 
+public float health = 100f;
+
+void Update()
+{
+	if(health <= 0)
+	{
+		Application.Quit();
+	}
+}
+
 
 102.) Napišite skriptu koja ce imati vašu vlasititu metodu. Ta vaša vlastita metoda mora ispisati u konzoli "Prošlo je 60", svaki put kada se prikaže 60 frameova. (brojac koji broji frameove se resetira nakon 60 frameova i ponovo broji do 60 i tako dok god skripta radi)
 
+int frameCounter = 0; //boj koliko se frameova pokazalo
+
+void Update()
+{
+	frameCounter++;
+	FrameCounterShow();
+}
+
+void FrameCounterShow()
+{
+	if(frameCounter == 60)
+	{
+		Debug.Log("Prošlo je 60");
+		frameCounter = 0;
+	}
+}
+
 103.) Napišite for petlju koja piše u konzoli odbrojavanje (npr. 10, 9, 8, 7...), ali krece od pocetne javne vrijednosti, te ne smije pasti ispod 0 (zadnji broj zapisani u ispisu treba biti 0). U slucaju da je broj upisan negativan (npr. -102) onda ga se treba pretvoriti prvo u pozitivan i krenuti odbrojavati, a ako je 0 onda se treba pretvoriti u 10.
+
+public int pocetno;
+
+void Start()
+{
+	if(pocetno < 0)
+	{
+		pocetno *= -1;
+	}
+	else if(pocetno == 0)
+	{
+		pocetno = 10;
+	}
+
+	for(int i = pocetno; i >= 0; i--)
+	{
+		if(i > 0)
+		{
+			Debug.Log(i + ",");
+		}
+		else if(i == 0)
+		{
+			Debug.Log(i + ".");
+		}
+	}
+}
 
 104.) Vrijednost X je javna, dok god je vrijednost y = 10 (pocetna y je 10 iako je y javan), oduzmite od X y (ne pohranjujete rezultat u X), te ako je rezultat oduzimanja negativan broj (manji od 0) neka se ispiše "Negativo", ako je veci ispišite "Pozitivno", a ako je 0 neka se ispiše "Neutralno". Svaki put kada se ispiše tekst u konzoli neka se y umanji za 0.5.
 
 105.) Napišite skriptu koja unosi igraceve informacije (username, ime championa, level, hp + 2 po izboru). Podatci se trebaju ispisati "Player (username) is playing with (champion). (username) is (level) level starting with: (hp) + (2 vase varijable)" Podatci se ispisuju tako da svaki frame se hp smanjuje za 1. Kada je igracu HP pao ispod 0 ili je 0 neka se ispiše SAMO JEDNOM "Player (username) has been killed". Poslje ispisa da je igrac umro se ne smije više ništa ispisivati.
 
+106.) Imamo 2 public int-a nazovimo ih start i end. 
+U Start methodi ispisati -1 ako je start broj manji od nule ili end broj manji od nule ili end manji od start broja.
+Ako nije onda zbrojiti sve neparne brojeve izmedu start (inkluzivno) i end (inkluzivno) brojeva. 
+Nakon toga ispisati taj zbroj. Inkluzivno znaci ukljucujuci.
 
+107.) Imamo public int nazovimo ga number. U Start methodi ispiši -1 ako je public int (number) negativan.
+A ako nije negativan ispisi zbroj prve i zadnje znamenke.
+Tip: Koristi while.
 
+* Primjeri: *
+-> ako je number 252 -> ispisati se treba 4 jer prva znamenka je 2 (gledano s ljeva) i zadnja je (gledano s ljeva) pa 2 + 2 = 4
+-> ako je number 257 -> ispisati se treba 9 jer 2 + 7 = 9 -> 2 je prva 7 je zadnja
+-> ako je number 0 -> ispisati se treba 0
+-> ako je number 10 -> ispisati se treba 1 jer 1 + 0 = 1
+-> ako je number 12587 -> ispisati se treba 8 jer je 1 + 7 = 8
+-> ako je number 5 -> ispisati se treba 10, jer je 5 prva i zadnja znaci 5 + 5 = 10
+-> ako je number -10 -> ispisati se treba -1 jer je -10 negativan
 
+108.) Definiraj public broj koji representira/predstavlja broj kilobajta.
+Ako je broj kilobajta negativan u Start methodi ispiši text "Broj ne valja.".
+A ako je broj kilobajta positivan ispiši koliko je to megabajta i kilobajta.
+
+* Primjeri: *
+Ako su kilobajti 1025 ispisati "1025 KB je 1 MB i 1 KB."
+Ako su kilobajti -10 ispisati "Broj ne valja."
+Ako su kilobajti 3000 ispisati "3000 KB je 2 MB i 952 KB."
+
+Tip: 1 MB (MegaBajt) je 1024 KB (kiloBajta)
+
+109.) Što ce uciniti ova metoda Update?
+
+int x= 4;
+
+void Update()
+{
+	while(x>0)
+	{	
+		if(x>0)
+		{ 
+			Application.Quit();
+		}
+		x++;
+	}	
+}
+
+110.) Neka je X 4, a Y 5 i neka se njihov zbroj izracuna u startu u varijablu Z, a onda neka se svaki frame Z uveca za X.
+
+111.) Napisi metodu Odbrojac koja odbrojava od 5 do 0 i koristi while petlju. Metoda ispisuje brojeve od 5 do 0.
+
+112.) Napiši for petlju koja prvi frame ispisuje neparne brojeve od x do y koji je 90.
+
+113.) Crashaj Unity! Ozbiljno, napiši skriptu za koju misliš da će 100% crashati unity. Slobodno koristi internet.
+
+114.) Ispišite sve brojeve od javne vrijednosti do nula (javna vrijesnot se može unjeti samo pozitivan broj)
+
+115.) Ispišite sve parne vrijednosti od neke javne vrijednosti do 0
+
+116.) Neka se zbrajaju dva javna broja, ako je njihov zbroj veci od 15 neka bool endGame postane true, ako su manji ili jednaki neka je false. Ako je endGame true onda neka se ispiše u konzoli da je igra završena, a ako je false neka ispiše preživio si.
+
+*TEŠKI ZADATCI ZA KRAJ:
+
+117.) Isprogramirajte osnovni krizic kruzic. (bez programskog djela unosa X i O igraca).
+Dakle imajte dve javne vrijednosti za imena igraca. Imajte dodjelu koji je igrac X a koji O. Dodjelite vrijednosti svih 9 polja. Napravite svoju skriptu koja provjerava ako je jedan igrac napravio niz od 3 za pobjedu.
+
+118.) Napišite skriptu gdje igrac unosi 15 ocijena (Hrv, Mat, Eng itd.). U slucaju da ima 3 ili više jedinica neka mu se ispiše da pada razred, u suprotnom neka mu se izracuna prosjek.
+
+119.) Napravite program za upis u srednju školu. U inspectoru se unose vrijednosti hrv za 7 i 8 razred i isto tako za eng i matematiku. Zatim neka su dva javna stringa za dva predmeta koji se traze (npr. fizika i kemija) sa ocjenama iz 7 i 8 razreda. Zatim se gleda prosjek ocijena iz 5,6,7 i 8 razreda. Broj bodova je zbroj ocijena svih unesenih. Imajte provjeru da unesena ocijena mora biti veca od jedan i manja od 6.
+
+120.) Napišite skriptu koja ce nam imati sva obilježja championa iz MOBA tipa igre. Takoder pripremite i moci, dmg za njega sve potreben informacije koje smatrate da jedan MOBA champion ima. (Nemojte zaboraviti provjeru jel umro, respawn itd.) i sve iskomentirati.
+
+121.) Napišite skritpu gdje igrac unosi rijecima boju: (CRVENA, BIJELA, PLAVA, CRNA, ŽUTA, ZELENA) te mu se u konzoli za tu boju ispisuje HEX-a vrijednosti i RGB vrijednost kao npr.
+Unos = BIJELA
+U konzoli:
+R: 255, G: 255, B: 255
+#FFFFFF
+Vrijednosti mozete naci na internetu: 
+https://www.rapidtables.com/web/color/RGB_Color.html
+
+122.) Neka se upisuje vrijednost u intu, a zatim string sa igracevim imenom. Potom neka se za vrijednost inta ispise ime npr. ako je ime "Marko" a int 3 onda ce se ispisati:
+"MarkoMarkoMarko" i pohrati ce se vrijednost u string imena.
+
+123.) Rafaelina papiga, cije je ime Papigapapigapapigapapigapapiga, cim nauci neku novu rijec, pocinje je
+izgovarati uzastopno bez prestanka. Rafaela je uocila da ce papiga svaku rijec najprije izgovoriti tocno pet
+puta bez stanke. Na primjer, rijec „deda“ bit ce izgovorena kao „dedadedadedadedadeda“.
+Napiši program koji, za zadanu rijec, ispisuje papigin izgovor te rijeci.
+Npr. Deda - DedaDedaDedaDedaDeda, ho - hohohohoho

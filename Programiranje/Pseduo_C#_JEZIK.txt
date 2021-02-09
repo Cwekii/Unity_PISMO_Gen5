@@ -1827,21 +1827,87 @@ void Start()
 	}
 }
 
+*NOVO*
+
+
+WHILE PETLJA (dok petlja)
+
+odvija s dok je tvrdnja tocna
+OPASNA ZA UNITY! - ako je napisano krivo ruši (crasha) Unity, ali ne samo Unity nego u gorim situacijama može izbrisati dio projekta i/ili ugasiti racunalo
+
+Kako se piše while petlja:
+
+while(uvijet)
+{
+	naredba;
+	naredba koja utjece na uvijet;
+}
+
+*Infinity loop* - while petlja (ne samo while) koja se ponavlja u beskonacnost jer joj uvijet nikada ne može prestati vrijediti jer naredba koja utjece na nju ne radi pravilno
+
+Primjer pravilnog:
+
+int broj = 4;
+
+void Start()
+{
+	while(broj > 0)
+	{
+		Debug.Log("Broj je: " + broj);
+		broj--;
+	}
+}
+
+Primjer infinity loopa:
+
+int broj = 4;
+
+void Start()
+{
+	while(broj > 0)
+	{
+		Debug.Log("Broj je: " + broj);
+		broj++;
+	}
+}
+
+KAKO NE KORISTI WHILE PETLJU!!!
+
+bool gameOver;
+bool spawned;
+float timer;
+
+void Update()
+{
+	while(gameOver == false)
+	{
+		if(spawned == false)
+		{
+			//ucini nešto
+		}
+		else if(timer >= 2.0f)
+		{
+			timer += Time.deltaTime;
+		}
+	}
+}
 
 
 
+100.) Napišite while petlju koja je istinita dok god je int x vece ili jednako od 0. U while petlji treba biti naredba koja x smanjuje za 2, te ispisuje u konzoli "Ja volim " + x.
 
 
+101.) Napišite skriptu koja ce ugasiti igru ako je slucajno igracev health pao ispod 0 ili je 0.
+Naredba koja gasi igru (.exe) se piše: Application.Quit();
 
 
+102.) Napišite skriptu koja ce imati vašu vlasititu metodu. Ta vaša vlastita metoda mora ispisati u konzoli "Prošlo je 60", svaki put kada se prikaže 60 frameova. (brojac koji broji frameove se resetira nakon 60 frameova i ponovo broji do 60 i tako dok god skripta radi)
 
+103.) Napišite for petlju koja piše u konzoli odbrojavanje (npr. 10, 9, 8, 7...), ali krece od pocetne javne vrijednosti, te ne smije pasti ispod 0 (zadnji broj zapisani u ispisu treba biti 0). U slucaju da je broj upisan negativan (npr. -102) onda ga se treba pretvoriti prvo u pozitivan i krenuti odbrojavati, a ako je 0 onda se treba pretvoriti u 10.
 
+104.) Vrijednost X je javna, dok god je vrijednost y = 10 (pocetna y je 10 iako je y javan), oduzmite od X y (ne pohranjujete rezultat u X), te ako je rezultat oduzimanja negativan broj (manji od 0) neka se ispiše "Negativo", ako je veci ispišite "Pozitivno", a ako je 0 neka se ispiše "Neutralno". Svaki put kada se ispiše tekst u konzoli neka se y umanji za 0.5.
 
-
-
-
-
-
+105.) Napišite skriptu koja unosi igraceve informacije (username, ime championa, level, hp + 2 po izboru). Podatci se trebaju ispisati "Player (username) is playing with (champion). (username) is (level) level starting with: (hp) + (2 vase varijable)" Podatci se ispisuju tako da svaki frame se hp smanjuje za 1. Kada je igracu HP pao ispod 0 ili je 0 neka se ispiše SAMO JEDNOM "Player (username) has been killed". Poslje ispisa da je igrac umro se ne smije više ništa ispisivati.
 
 
 

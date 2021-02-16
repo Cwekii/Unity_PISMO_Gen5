@@ -1,7 +1,7 @@
 Zadatci za ponavljanje:
 1) Napišite koju vrijednost u C# jeziku imaju sljedeći izrazi:
 a) 2 + 8 * 3
-b) 8 * (3 + 2)
+b) 8 * (3 + 2) 
 c) 8 / 3 + 2
 d) 8 % 3 + 2
 e) 31 % 4 + 9 * 2
@@ -28,6 +28,8 @@ h) i * "2"
 int a=10, b=3;
 int c;
 c = a / b;
+
+Rj: 3
 
 4) Napišite skriptu koja će uzeti početne vrijednosti objekta na sceni (njegov scale) i invertati ga (sve scale vrijednosti postaviti na minus)
 

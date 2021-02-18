@@ -10,4 +10,13 @@
 
 6) Promijeni glasnocu audio sourca prema javnoj varijabli
 
+7) Što je audio source ?
+
+8) Što je transform ?
+
+9) Koje tri vrste stvari na objektu mijenja transform komponenta ?
+
+10) Nabroji šest vrsti varijabli.
+
+
 

@@ -1,0 +1,13 @@
+1) Kreiraj kocku (cube). Napisi skriptu tako da kocka ubrzava prema dolje 10 m/s. Kada dosegne y = 0 neka stane.
+
+2) dodijeli rigidbody na skriptu
+
+3) Zamrzni kretanje po svim pozicija i sve rotacije s jednom naredbom
+
+4) Napisi skriptu koja generira silu na objekt prema specificnoj tocki, npr (10, 10, 10)
+
+5)Napiši kako pozivamo metodu za nalaženje Transform komponente objekta koji se zove keks
+
+6) Promijeni glasnocu audio sourca prema javnoj varijabli
+
+

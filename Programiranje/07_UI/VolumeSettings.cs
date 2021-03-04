@@ -9,6 +9,7 @@ public class VolumeSettings : MonoBehaviour
     public Slider slid;
     public Text btnSoundText;
     public Button btn;
+    public Color cl;
 
     private void Start()
     {

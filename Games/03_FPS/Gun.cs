@@ -9,38 +9,38 @@ public class Gun : MonoBehaviour
     [Header("Ammo:")]
     public int maxAmmo; //Iznos koliko na početku imamo municije
     int currentAmmo; //koliko imamo u trenutku municije
-    public Text ammoText;
+    public Text ammoText; //prikaz koliko imamo metaka
 
     [Header("About weapon:")]
     public float fireRate; //Koliki je vremenski razmak između metaka
-    float fireRateRestart;
-    public float accuracy;
-    public float reloadTime;
-    float reloadTimeReset;
-    public float recoil;
-    public Camera mainCamera;
-    public Camera scopeCamera;
+    float fireRateRestart;//Resetira pocetno vrijeme za fireRate
+    public float accuracy;//Preciznost oružja u pikselima
+    public float reloadTime;//Brzina mjenjanaj municije
+    float reloadTimeReset;//Restart vremena mjenjanja municije
+    public float recoil;// Trzaj - Ne koristimo DZ
+    public Camera mainCamera; //Playerova FP camera
+    public Camera scopeCamera;//Scope kamera
 
     [Header("Bullet info:")]
-    public Rigidbody bulletPrefab;
-    public Transform bulletSpawnPosition;
-    AudioSource bulletSound;
+    public Rigidbody bulletPrefab;//Prefab metka kojeg puca ta puška
+    public Transform bulletSpawnPosition;//Mjesto gdje se metak stvara (najčešće izlaz cijevi na oružju)
+    AudioSource bulletSound;//Zvuk ispucaja - mora komponenta biti na oružju
     Bullet bulletScript;
 
     [Header("Fire Mode: *Single Fire mode is default*")]
-    public bool singleFire = true;
-    public bool automaticFire;
-    public bool burstFire;
-    int fireMode = 0;
+    public bool singleFire = true;//Pucamo jedan metak po kliku - num 0
+    public bool automaticFire;//Pucamo metke dok god držimo klik miša - num 1
+    public bool burstFire;//Pucamo po 3 metka po kliku miša - num 2
+    int fireMode = 0;// numerirana vrsta pucanja 
 
     private void Start()
     {
-        currentAmmo = maxAmmo;
-        ShowAmmo();
-        fireRateRestart = fireRate;
-        reloadTimeReset = reloadTime;
-        bulletSound = GetComponent<AudioSource>();
-        bulletScript = bulletPrefab.gameObject.GetComponent<Bullet>();
+        currentAmmo = maxAmmo; //Postavljamo da na početku imamo maksimalni iznos metaka
+        ShowAmmo();//Prikazuje na UI iznos metaka
+        fireRateRestart = fireRate;//Postavljamo restart vrijednost za fireRate
+        reloadTimeReset = reloadTime;//Postavljamo vrijednost za reload
+        bulletSound = GetComponent<AudioSource>();//Dodjeljujemo komponentu audioSource
+        bulletScript = bulletPrefab.gameObject.GetComponent<Bullet>(); //Uzmimamo pristup Bullet skripti preko prefaba
 
         if(singleFire == true)
         {
@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
         {
             fireMode = 1;
         }
-        else if(burstFire == true)
+        else if(burstFire == true) //DZ
         {
             fireMode = 2;
         }
@@ -118,6 +118,7 @@ public class Gun : MonoBehaviour
         cloneBullet.velocity = bulletScript.speed * ray.direction;
     }
 
+    //Metoda za prikaz municije
     public void ShowAmmo()
     {
         ammoText.text = currentAmmo + "/" + maxAmmo;

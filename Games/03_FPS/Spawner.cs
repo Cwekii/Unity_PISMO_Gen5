@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         timer -= Time.deltaTime;
-        if(timer <= 0)
+        if (timer <= 0)
         {
             timer = timerReset;
             int randomEnemy = Random.Range(0, enemies.Length);

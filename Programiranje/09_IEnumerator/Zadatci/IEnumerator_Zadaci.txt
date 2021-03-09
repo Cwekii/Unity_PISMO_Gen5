@@ -1,0 +1,11 @@
+1. Napišite skriptu timera koristeći IEnumerator.
+Vrijeme se mora zapisivati i prikazivati na UI textu npr. "01:34", "00:28", "10:45" itd. (vrijeme raste od 00:00 do max 59:59)
+
+2. Napišite skriptu koja stvara prefab (nasumično bira iz arraya od barem 3 prefaba) na random poziciji na sceni (x = 0 - 10, y = 0 - 20, z = -15 - 15) svakih 5 sekundi koristeći IEnumerator
+
+3. Napišite skriptu koristeći IEnumerator gdje nakon 10 sekundi od početka igre se ispiše "Bravo!" na UI textu
+
+4. Napišite skriptu koja će na on trigger enter metodi pozvati ienumerator i nakon 5 sekundi ispisati "nisi uspio pobjeći" (Scenu posložite po svojoj želji)
+
+5. Napišite skriptu sa IEnumeratorom gdje na UI text-u se prikazuje health, a imate 2 ienumeratora. Prvi koji vam svakih 5 sekundi health poveća za 5 i drugi koji vam svakih 10 sekundi skine hp za 5%. Na sceni imate i on trigger stay metodu gdje vam se svaki frame health povecava za 5 * Time.deltaTime (Scenu posložite po svojoj želji)
+

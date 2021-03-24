@@ -60,7 +60,7 @@ public class IEnumerator_Survive : MonoBehaviour
             int stoneChange = (int)Random.Range(stone * -0.05f, stone * 0.05f);
             stone += stoneChange;
 
-            notifications.text += days + ". Day we went to war and result is: " + "\n" + "Population: " + populationChange + "\n" +"Gold: " + goldChange + "\n" + "Food: " + foodChange + "\n" + "Water: " + waterChange + "\n" + "Wood: " + woodChange + "\n" + "Iron: " + ironChange + "\n" + "Stone: " + stoneChange + "\n";
+            notifications.text = days + ". Day we went to war and result is: " + "\n" + "Population: " + populationChange + "\n" +"Gold: " + goldChange + "\n" + "Food: " + foodChange + "\n" + "Water: " + waterChange + "\n" + "Wood: " + woodChange + "\n" + "Iron: " + ironChange + "\n" + "Stone: " + stoneChange + "\n" + notifications.text;
             NewValues();
         }
     }
@@ -79,11 +79,11 @@ public class IEnumerator_Survive : MonoBehaviour
 
     void NewNotificationGain(int data, string jedinica)
     {
-        notifications.text += days + ". New " + data + " " + jedinica + "\n";
+        notifications.text = days + ". New " + data + " " + jedinica + "\n" + notifications.text;
     }
     void NewNotificationLose(int data, string jedinica)
     {
-        notifications.text += days + ". Lost " + data + " " + jedinica + "\n";
+        notifications.text = days + ". Lost " + data + " " + jedinica + "\n" + notifications.text;
     }
 
     //Odi u lov - gumb

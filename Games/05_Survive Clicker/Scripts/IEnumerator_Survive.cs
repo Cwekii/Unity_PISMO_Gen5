@@ -12,6 +12,7 @@ public class IEnumerator_Survive : MonoBehaviour
     public Text stoneText;
     public Text waterText;
     public Text ironText;
+    public Text notifications;
 
     public Text dayText;
 
@@ -21,14 +22,12 @@ public class IEnumerator_Survive : MonoBehaviour
 
     private void Start()
     {
-        woodText.text = wood + " m";
-        foodText.text = food + " kg";
-        goldText.text = gold + " €";
-        populationText.text = population.ToString();
-        stoneText.text = stone + " t";
-        waterText.text = water + " L";
-        ironText.text = iron + " bars";
-        dayText.text = days + ". day";
+        NewValues();
+        StartCoroutine(DayIncrese());
+        StartCoroutine(FoodLose());
+        StartCoroutine(FoodGain());
+        StartCoroutine(PopulationGain());
+        StartCoroutine(PopulationLose());
     }
 
     //Naše mogućnosti
@@ -39,13 +38,29 @@ public class IEnumerator_Survive : MonoBehaviour
         {
             gold -= 30;
             food -= (int)(population * 1.2f);
-            wood += (int)Random.Range(wood * -0.1f, wood * 0.25f);
-            gold += (int)Random.Range(gold * 0f, gold * 0.3f);
-            food += (int)Random.Range(food * -0.05f, food * 0.15f);
-            population += (int)Random.Range(population * -0.13f, population * 0.27f);
-            water += (int)Random.Range(water * -0.15f, water * -0.05f);
-            iron += (int)Random.Range(iron * -0.3f, iron * 0.15f);
-            stone += (int)Random.Range(stone * -0.05f, stone * 0.05f);
+
+            int woodChange = (int)Random.Range(wood * -0.1f, wood * 0.25f);
+            wood += woodChange;
+
+            int goldChange = (int)Random.Range(gold * 0f, gold * 0.3f);
+            gold += goldChange;
+
+            int foodChange = (int)Random.Range(food * -0.05f, food * 0.15f);
+            food += foodChange;
+
+            int populationChange = (int)Random.Range(population * -0.13f, population * 0.27f);
+            population += populationChange;
+
+            int waterChange = (int)Random.Range(water * -0.15f, water * -0.05f);
+            water += waterChange;
+
+            int ironChange = (int)Random.Range(iron * -0.3f, iron * 0.15f);
+            iron += ironChange;
+
+            int stoneChange = (int)Random.Range(stone * -0.05f, stone * 0.05f);
+            stone += stoneChange;
+
+            notifications.text += days + ". Day we went to war and result is: " + "\n" + "Population: " + populationChange + "\n" +"Gold: " + goldChange + "\n" + "Food: " + foodChange + "\n" + "Water: " + waterChange + "\n" + "Wood: " + woodChange + "\n" + "Iron: " + ironChange + "\n" + "Stone: " + stoneChange + "\n";
             NewValues();
         }
     }
@@ -61,7 +76,17 @@ public class IEnumerator_Survive : MonoBehaviour
         waterText.text = water + " L";
         ironText.text = iron + " bars";
     }
-    //Odi u lov
+
+    void NewNotificationGain(int data, string jedinica)
+    {
+        notifications.text += days + ". New " + data + " " + jedinica + "\n";
+    }
+    void NewNotificationLose(int data, string jedinica)
+    {
+        notifications.text += days + ". Lost " + data + " " + jedinica + "\n";
+    }
+
+    //Odi u lov - gumb
     //Sell wood (10 wood 1 gold)
     //Buy wood ( 5 wood 1 gold)
     //Buy food (5 food za 5 golda)
@@ -111,8 +136,45 @@ public class IEnumerator_Survive : MonoBehaviour
         while(!gameOver)
         {
             yield return new WaitForSeconds(Random.Range(6, 18));
-            food += (int)Random.Range(population * 2.7f, population * 5.5f);
+            int gainedFood = (int)Random.Range(population * 2.7f, population * 5.5f);
+            food += gainedFood;
             foodText.text = food + " kg";
+            NewNotificationGain(gainedFood, "kg");
+        }
+    }
+
+    //Populacija se "razmnožila" hehe sexali su se
+    IEnumerator PopulationGain()
+    {
+        while(gameOver == false)
+        {
+            yield return new WaitForSeconds(Random.Range(15, 60));
+            if (population > 2 && population <= 100)
+            {
+                int popBoost = (int)Random.Range(1, 5);
+                population += popBoost;
+                NewNotificationGain(popBoost, "people");
+            }
+            else if (population > 100)
+            {
+                int popBoost = (int)Random.Range(population * 0.02f, population * 0.05f);
+                population += popBoost;
+                NewNotificationGain(popBoost, "people");
+            }
+            populationText.text = population.ToString();
+        }
+    }
+
+    //Umru nam stariji i bolesni ljudi
+    IEnumerator PopulationLose()
+    {
+        while(gameOver != true)
+        {
+            yield return new WaitForSeconds(Random.Range(10, 40));
+            int populetionDecrease = (int)Random.Range(population * 0.01f, population * 0.03f);
+            population -= populetionDecrease;
+            populationText.text = population.ToString();
+            NewNotificationLose(populetionDecrease, "people");
         }
     }
 }

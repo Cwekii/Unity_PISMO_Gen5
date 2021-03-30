@@ -50,6 +50,7 @@ public class Highscore : MonoBehaviour
             //Dodaj novi highscore
             AddNewHighscore(userNick, maxScore);
             //Prikaži sustav sada kad smo stavili novi highscore
+            displayHighscore.myHighscore.text = userNick + " - " + PlayerPrefs.GetInt("Highscore");
         }
     }
 
@@ -74,7 +75,7 @@ public class Highscore : MonoBehaviour
         {
             Debug.Log("Upload Successffull");
             //Vrati nam listu highscorova
-            
+            DownloadHighscores();
         }
 
         //Ako je zahtjev failao i imamo error
@@ -106,6 +107,7 @@ public class Highscore : MonoBehaviour
             //Formatirnje teksta
             FormatHighscore(www.downloadHandler.text);
             //Prikaz skinutog texta u UI u unityu
+            displayHighscore.ShowOnTextWhenHighscoresDownloaded(highscoreList);
         }
 
         //Ako je neuspješno i nije preuzeto

@@ -1,0 +1,1 @@
+Napravite sustav koji ce na tipku space ucitavati sljedecu (po buildu) scenu async te ce imat loading scenu prije samog ucitavanja. Na tipku "b" ce ucitavati prijasnju scenu isto tako na async nacin sa scenom loadinga izmedu

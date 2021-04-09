@@ -1,0 +1,8 @@
+1. Što je audio source ?
+- Audio Source je varijabla.
+
+2. Što je transform ?
+- Transform je komponenta.
+
+3. Koje tri vrste stvari na objektu mijenja transform komponenta ?
+- Transform komponenta mijenja poziciju, rotaciju i veličinu objekta.

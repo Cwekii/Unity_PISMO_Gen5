@@ -1,8 +1,57 @@
-1. Što je audio source ?
-- Audio Source je varijabla.
+1. Što je ScriptableObject?
+- Data kontejner gdje se pohranjuju veliki data iznosi
+neovisno o razrednoj instanci.
 
-2. Što je transform ?
-- Transform je komponenta.
+2. Što je Var?
+- Vrsta varijable koja se prilagođava unosu koja se u početku
+ne može definirati. Koristi se samo unutar neke
+petlje/metode za privremenu vrijednost.
 
-3. Koje tri vrste stvari na objektu mijenja transform komponenta ?
-- Transform komponenta mijenja poziciju, rotaciju i veličinu objekta.
+3. Što je GC?
+- Garbage collection.
+
+4. Što je Bool?
+- Vrsta varijable koja u sebe pohranjuje isključivo 2 moguće
+vrijednosti, a to su TOČNO ili NETOČNO.
+
+5. Što je Float?
+- Vrsta varijable za decimalne brojeve.
+
+6. Što radi metoda OnTrackingFound(), a što
+onTrackingLost()?
+- Za omogućiti i onemogućiti rendering i collision detection
+na digitalnom sadržaju koji je child od targeta.
+
+7. Što nam dopušta/omogućuje Collider?
+- Dopušta ili onemogućuje sudaranje objekata jedan od
+drugoga.
+
+8. Što je uvjet?
+- Skup riječi koje govore što se treba ispuniti kako bi se izvršio
+niz/red naredbi. Postoje dva uvjeta if i while.
+
+9. Što je Coroutine?
+- Metoda koja u osnovi razdvaja njezino izvršavanje u više
+dijelova.
+
+10. Što je debugiranje?
+- Postupak pružanja informacija developeru ima li pogreške
+te koja je greška ili ispis rada programiranja u konzoli.
+Piše se Debug.Log(“”).
+
+11. Što je Post-processing i navedi 3 primjera?
+- kolekcija efekata koji daju bolji izgled igri. Sadrži efekte
+depth-enhancing vignettes, motion blur, fish-eye perspektive
+itd.
+
+12 Što je vuforia?
+- Engine developer portal.
+
+13. Što je audio listener?
+- Prima informacije iz bilo kojeg datog audio izvora u sceni te
+reproducira zvukove kroz zvučnike računala.
+
+14. Što je box collider i za što se koristi?
+- Collider u obliku kocke koji se koristi kao i bilo koji drugi
+collider. Najčešće se stavlja na objekte u oblicima kvadra ili
+kocke.

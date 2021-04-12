@@ -44,6 +44,15 @@ public class QuizQuestion : ScriptableObject
         internal set;
     }
 
+    public void OnValidate()
+    {
+        if(correctAnswer > answers.Length)
+        {
+            correctAnswer = 0;
+        }
+        RenameScriptableObjectToMatchQuestion();
+    }
+
     void RenameScriptableObjectToMatchQuestion()
     {
         /* Primjer pitanja i zapisa:
@@ -61,6 +70,14 @@ public class QuizQuestion : ScriptableObject
 #if UNITY_EDITOR
         string assetPath = AssetDatabase.GetAssetPath(this.GetInstanceID());
 #endif
-
+        string shouldEndWith = "/" + desiredName + ".asset";
+#if UNITY_EDITOR
+        if(assetPath.EndsWith(shouldEndWith) == false)
+        {
+            Debug.Log("Want to rename to: " + desiredName);
+            AssetDatabase.RenameAsset(assetPath, desiredName);
+            AssetDatabase.SaveAssets();
+        }
+#endif
     }
 }

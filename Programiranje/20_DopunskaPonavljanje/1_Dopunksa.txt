@@ -1,4 +1,4 @@
-1.) Napišite skriptu koja može pomicati kocku po svim osima (javne varijable), rotirati (javne varijable) i povećavati (javne varijable) svake sekunde
+1.) Napišite skriptu koja može pomicati kocku po svim osima (javne varijable), rotirati (javne varijable) i povećavati (javne varijable) svake sekunde.
 
 2.) Napravite na sceni jedan cube koji ima tag "Player" i jednu sferu koja ima tag "Sfera". Na oba objekta stavite rigidbody i isključite gravitaciju. Napišite skriptu koja ispisuje u debugu kada je cube ušao u sferu, kada je unutra i kada je izašao. Testirate ju tako što vi tokom play modea pomićete cube u sferu i van.
 

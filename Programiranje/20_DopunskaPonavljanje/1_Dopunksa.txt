@@ -1,0 +1,69 @@
+1.) Napišite skriptu koja može pomicati kocku po svim osima (javne varijable), rotirati (javne varijable) i povećavati (javne varijable) svake sekunde
+
+2.) Napravite na sceni jedan cube koji ima tag "Player" i jednu sferu koja ima tag "Sfera". Na oba objekta stavite rigidbody i isključite gravitaciju. Napišite skriptu koja ispisuje u debugu kada je cube ušao u sferu, kada je unutra i kada je izašao. Testirate ju tako što vi tokom play modea pomićete cube u sferu i van.
+
+3.) Imajte na sceni 2 audiosourcea, napišite skriptu s kojom na tipku "space" palite prvi i gasite drugi ili obrnuto.
+
+4.) Napišite skriptu koja ima javnu varijablu "Health". Kada cube stoji u sferi neka gubi health za "5 * Time.deltaTime"
+
+
+5.) Napišite skriptu koja radi da se svakih (javna vrijednost varijable) sekundi stvori kocka(prefab) na poziciji (broj stvorene kocke ,broj stvorene kocke, broj stvorene kocke).
+
+
+6.) Napišite skriptu koja prikazuje vrijeme u minutama i sekundama, vrijeme kreće od 0 sekundi i raste po realnom vremenu te se prikazuje na textu na UI. Odradite to sa Invoke Rapeatingom.
+
+7.) Napišite skriptu koja na tipku W udara silom na objekt u smjeru X osi, na tipku S u negativnom smjeru X osi, na tipku A u pozitivnom smjeru Z osi, a na tipku D u negativnom smjeru Z osi
+
+
+8.) Napišite skriptu koja ima 2 arraya. Jedan sa objektima za stvarati , a drugi sa pozicijama za stvoriti (empty game objecti), neka svakih 5 sekundi na random poziciji (iz arraya) se stvori random objekt (iz arraya)
+
+
+9.) Napišite skriptu za health koja će utjecati na slider koji pokazuje health. Max iznos je 100, a
+min je 0. Svakih 5 sekundi health se regenerira za 2.5, a svaki put kada se stisne tipka "a" neka se skine 10 bodova sa heltha. Sve to naravno utječe na slider.
+
+10.) Napravite skriptu koja učitava 3 fonta u array. Na pritisku lijeve tipke miša neka se promjeni
+font za jedan na veću u arrayu, a na pritisku tipke neka se promjeni font za jedan nižu u
+arrayu. Svaka promjena fonta je vidljiva na tekstu na sceni. Također mora biti i jedan text
+mesh pro na sceni koji će samo brojati koliko puta je napravljena promjena fonta.
+
+11.) Napravite na sceni 1 text i 3 gumba
+Na tekstu se prikazuju bodovi. Sa pritiskom miša
+na prvi gumb, bodovi porastu za 1.
+Sa pritiskom miša na drugi gumb bodovi se smanje za 1.
+Sa pritiskom miša na treci gumb, spreme se bodovi
+u Player Prefs.
+Bodovi se NE SMIJU spremati kad god se povećaju
+ili smanje nego isključivo kada se pritisne
+treći gumb (button).
+
+
+12.) Na sceni napravite audioSource i jedan UI Slider.
+Napravite skriptu da je jačina audioSourcea povezana 
+sa vrijednošću slidera.
+Dakle ako je slider value 0.5 onda je i volume
+na audioSourceu 0.5.
+No bitna je stvar da se jačina zvuka (slidera) 
+sprema u player prefs tako da igraču ostane
+jačina zvuka kakvu je htio.
+
+13.) Napravite na sceni lika koji se krece sa W, A, S, D.
+Nije bitna perspektiva niti način kretanja.
+Bitno je da se na tipku "Space" spremi njegova pozicija i 
+sa ponovnim pokretanjem igre on krene od te pozicije.
+Malo postavite neke oblike po sceni da vam bude lakše
+prepoznati jel se spremilo ili nije.
+
+14.) Napišite skriptu gdje se bool "Umro" aktivira kada objekt dotakne drugi objekt. Napravite i drugu varijantu gdje se bool "Umro" aktivira kada objekt izađe kroz drugi objekt.
+
+15.) Napravite scenu i skriptu. Kada player uđe u potpunosti unutar forcefielda (Sphera neka fora boje) počinjemo pratiti vrijeme playera unutar forcefield objekta u sekundama (Mora biti prikazanu na UI-u). Kada player u 
+potpunosti izađe iz forcefielda taj podatak se zabilježava vrijeme koje je bio unutar forcefielda u sekundama u PlayerPrefs.
+
+16.) Imajte input Filed u koju upisujete koliko godina imate. Zatim neka se radi provjera ako imate više od 18 ili manje godina. Ako imate više neka se ispiše "Ti si punoljetan i imaš " + broj godina + ". A to je ustvari: " + broj godina pretvoren u mjesece. (broj godina * 12) (Na UI i u DEbug)
+
+17.) Napravite array gameObjecta i neka se svakih 3 sekunde stvori jedan game object na random poziciji na sceni po vašem izboru. Nakon svakih 10 stavranaj se brzina stvarnja smanji za 10%. Ne smije se dogoditi da se objekt stvara brže od 1 sekunde.
+
+18.) Napravite timer koji ima bool. Ako je taj bool true onda se vrijeme povecava od 0 svaku sekundu gdje ima lijepo razdvojene sate, minute i sekunde. Ako je bool false neka se vrijeme odbrojava od neke početne javne vrijednosti do 0 isto za sekunde minute i sate.
+
+19.) Napišite statičnu klasu koja ce u sebe pohranjivati sustav saveanja playerove pozicije. Na sceni se save radi na tipku P i sprema se pozicija i rotacija igrača.
+
+20.) Napravite ienumerator koji je beskonačan i ispisuje vrijeme u sekundama, minutama i satima. Neka vrijeme bude precizno. 

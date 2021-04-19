@@ -1,0 +1,12 @@
+OBAVEZNE STVARI ZA GAME DESIGN:
+- UI
+- GAMEPLAY
+- NUMBER OF PLAYER
+- HOW TO PLAY
+- SCORING SYSTEM
+- WIN/LOSE SYSTEM DEFINIRAN
+- TARGET AUDIENCE
+- Grubi GDD (Koji su likovi/oblici/informacije/dizajn itd. (Npr. "Pogodi tko sam" - popis svih likova i slike likova)
+- ASSETS (Boje, UI spriteovi itd.)
+- DEVICES (smartphone, pc, tablet...) 
+- OPERATING SYSTEM/s (Android, iOS, Windows, WebGL...)

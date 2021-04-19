@@ -22,7 +22,7 @@
 min je 0. Svakih 5 sekundi health se regenerira za 2.5, a svaki put kada se stisne tipka "a" neka se skine 10 bodova sa heltha. Sve to naravno utječe na slider.
 
 10.) Napravite skriptu koja učitava 3 fonta u array. Na pritisku lijeve tipke miša neka se promjeni
-font za jedan na veću u arrayu, a na pritisku tipke neka se promjeni font za jedan nižu u
+font za jedan na veću u arrayu, a na pritisku desne tipke neka se promjeni font za jedan nižu u
 arrayu. Svaka promjena fonta je vidljiva na tekstu na sceni. Također mora biti i jedan text
 mesh pro na sceni koji će samo brojati koliko puta je napravljena promjena fonta.
 

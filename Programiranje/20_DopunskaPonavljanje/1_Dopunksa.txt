@@ -64,6 +64,6 @@ potpunosti izađe iz forcefielda taj podatak se zabilježava vrijeme koje je bio
 
 18.) Napravite timer koji ima bool. Ako je taj bool true onda se vrijeme povecava od 0 svaku sekundu gdje ima lijepo razdvojene sate, minute i sekunde. Ako je bool false neka se vrijeme odbrojava od neke početne javne vrijednosti do 0 isto za sekunde minute i sate.
 
-19.) Napišite statičnu klasu koja ce u sebe pohranjivati sustav saveanja playerove pozicije. Na sceni se save radi na tipku P i sprema se pozicija i rotacija igrača.
+19.) Napišite statičnu klasu koja ce u sebe pohranjivati sustav saveanja playerove pozicije. Na sceni se save radi na tipku P i sprema se pozicija igrača.
 
 20.) Napravite ienumerator koji je beskonačan i ispisuje vrijeme u sekundama, minutama i satima. Neka vrijeme bude precizno. 

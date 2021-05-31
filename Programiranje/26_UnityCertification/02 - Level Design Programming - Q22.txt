@@ -1,0 +1,29 @@
+
+
+A Programmer is working on a prototype for an action adventure game for the PC platform.
+ 
+ The designers are working in three separate scene files: one for the level itself, one for the enemy spawners and enemies, and another for the pickups that the player needs to collect.
+ 
+ The level scene is already loaded. The Programmer wants to keep all three scenes in the hierarchy for debugging purposes.
+ 
+ Which two methods should the Programmer use to load the other two scenes on top of the level scene? (Choose two.)
+
+
+
+Answers: 
+1. SceneManager.CreateScene 
+2. SceneManager.UnloadScene 
+3. SceneManager.LoadScene 
+4. LoadSceneMode 
+5. SceneManager.MergeScene 
+
+
+
+Correct Answers: 
+3. SceneManager.LoadScene 
+4. LoadSceneMode 
+
+
+
+Explanation: 
+Explanation LoadScene along with LoadSceneMode set to additive will allow the Programmer to load the two additional scenes into the hierarchy at runtime and keep all three scenes available for debugging. UnloadScene will not load in a scene. It will unload the scene that is passed in by name or index and return true if the scene is successfully unloaded. MergeScene will load the new scenes, but it will destroy the original scene after moving all root nodes into the new scene loaded, and all three scenes will not be available for debugging. CreateScene will create a new scene and will not load an existing scene. References SceneManager.MergeScenes SceneManager.UnloadScene LoadSceneMode SceneManager.LoadScene SceneManager.CreateScene

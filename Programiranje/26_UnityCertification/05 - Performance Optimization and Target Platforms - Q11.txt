@@ -1,0 +1,23 @@
+
+A Programmer is porting a 2D space game from PC to mobile. There are fight scenes in which the player is engaged with enemy ships in a firefight and race scenes in which the player is racing other ships. There are many different types of asteroid meshes that are used during these racing scenes.
+
+During the race scenes where a smooth frame rate is the main concern, the Programmer is having difficulty keeping the gameplay smooth and consistent. The Programmer finds that the garbage collector is firing infrequently, but that is the cause of the CPU Spikes. The Programmer knows that the data being generated during the race scenes consists of small blocks that are only used briefly.
+
+What should the Programmer do to improve gameplay?
+
+
+Answers: 
+1. Use a small heap with fast and frequent garbage collection. 
+2. Implement incremental garbage collection. 
+3. Ensure that all large blocks of data in arrays are kept under 1024 bytes to avoid them being treated in any special way. 
+4. Use reusable object pools. 
+
+
+
+Correct Answers: 
+1. Use a small heap with fast and frequent garbage collection. 
+
+
+
+Explanation: 
+Explanation The Programmer should implement a small heap with fast and frequent garbage collection. This approach requests garbage collection at a regular frame interval, which will make it happen more frequently, but there will be less to clean up. This results in faster garbage collection with minimal effect on gameplay. The Programmer should implement garbage collection at a consistent frame interval with code like the following: if (Time.frameCount % 30 == 0) { System.GC.Collect(); } The Programmer should not ensure that all large blocks of data in arrays are kept under 1024 bytes to avoid them being treated in any special way. Doing this will cause performance issues because copying and returning arrays is very expensive, and Unity suggests avoiding doing this on mobile platforms. The Programmer should not implement incremental garbage collection. While this can be a great feature, it does not do well with changing object references like that of a quick race through space. Implementing this would likely overwhelm the marking between frames and end up defaulting to full non-incremental garbage collection. The Programmer should not implement reusable object pools because the data being collected is the asteroids, which are all unique. Object pools are good for having the same objects reused, so this would not work with all the asteroid variants. References Understanding Automatic Memory Management Cross-Platform Considerations

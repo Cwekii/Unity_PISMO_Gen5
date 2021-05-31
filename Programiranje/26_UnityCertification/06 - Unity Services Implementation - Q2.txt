@@ -1,0 +1,22 @@
+
+A Programmer needs to add some simple Unity Ads to an existing mobile game. The Designer specified that under no circumstances should the ads have a negative impact on the players, but ads can reward the player with extra ammunition for watching the ads to the end.
+
+What two things should the Programmer ensure? (Choose two.)
+
+
+Answers: 
+1. Ads are offered all the time. 
+2. Ads are skippable. 
+3. Ads provide a reward for watching the entire ad only. 
+4. Ads are opt-out only. 
+
+
+
+Correct Answers: 
+2. Ads are skippable. 
+3. Ads provide a reward for watching the entire ad only. 
+
+
+
+Explanation: 
+Explanation The Programmer should ensure that simple Unity Ads are always skippable. Forcing a player to watch ads with no way to skip them creates a negative impact on the gameplay experience and the players. The Programmer should ensure that a reward is only provided if the ad is watched in its entirety. Allowing a reward for not watching the whole ad diminishes the credibility of the game. The Programmer should not make ads opt-out. Forcing players to watch ads or opt out will have a negative impact on players. The Programmer should ensure that simple Unity Ads are opt-in only. The Programmer should not offer ads that reward the player all the time. Offering ads that provide a reward all of the time can create an imbalance or advantage in the gameplay. References Best practices guide Video advertisement best practices

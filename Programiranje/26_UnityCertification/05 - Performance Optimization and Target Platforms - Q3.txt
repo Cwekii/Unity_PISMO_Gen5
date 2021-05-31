@@ -1,0 +1,22 @@
+
+A Programmer is optimizing a 3D adventure game and is reducing the GPU load. The Programmer has a number of static meshes in a scene and wants to go through each to mark them as an Occludee, but not an Occluder.
+
+Which two static meshes should the Programmer mark in this way? (Choose two.)
+
+
+Answers: 
+1. Objects with transparency 
+2. Objects with backfaces 
+3. Objects that are small 
+4. Objects that will get close to the camera 
+
+
+
+Correct Answers: 
+1. Objects with transparency 
+3. Objects that are small 
+
+
+
+Explanation: 
+Explanation Objects with transparency may cover another object, but they will not hide it. The Programmer should mark this object as Occludee but not Occluder. The Programmer should ignore any objects that are too small to occlude anything else when calculating occlusion to prevent unnecessarily processing every frame. Objects that have backfaces are good candidates for blocking out other objects, making them Occluders. Objects that will get close to the camera are more likely to be blocking other objects and are therefore obvious Occluders. References Occlusion Culling

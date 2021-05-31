@@ -1,0 +1,43 @@
+
+
+A Programmer is given the following code as a starting point for a GameManager script:
+ 
+ public class GameManager : MonoBehaviour 
+ {
+     public BoardManager m_boardScript; 
+ 
+     private int m_level = 1; 
+ 
+     void Awake() 
+     {
+         m_boardScript = GetComponent<BoardManager>(); 
+         InitGame(); 
+     }
+ 
+     void InitGame() 
+     {
+         m_boardScript.SetupScene(m_level);
+     }
+ }
+ 
+ What can the Programmer determine about the game from this code? (Choose two.)
+
+
+
+Answers: 
+1. GameManager has a method named SetupScene that takes a single integer value to represent the level that should be set up. 
+2. BoardManager is a singleton. 
+3. The private variable m_level will allow the Programmer to test setup of any level that exists if it has been properly numbered. 
+4. There is a method in the BoardManager named SetupScene that takes a single integer value to represent the level the Board Manager should set up. 
+5. The use of a Board Manager is redundant and the Game Manger should do all the work to keep the code in one place. 
+
+
+
+Correct Answers: 
+3. The private variable m_level will allow the Programmer to test setup of any level that exists if it has been properly numbered. 
+4. There is a method in the BoardManager named SetupScene that takes a single integer value to represent the level the Board Manager should set up. 
+
+
+
+Explanation: 
+Explanation The Programmer can determine that the BoardManager script has a method named SetupScene that takes a single integer variable that represents the level the BoardManager should set up. The Programmer can also determine that changing the value of the private integer variable m_level should cause the BoardManager to set up the level identified. The Programmer cannot accurately determine if the BoardManager is a singleton. If BoardManager was a correctly written singleton, GetComponent would not be called. Instead, m_boardScript would be set via assignment of an instance variable from within the BoardManager class. The Programmer cannot determine that the BoardManager is redundant. In fact, better maintainable and readable code comes from keeping the purpose of Scripts singular and modular in nature. The Programmer cannot determine that the GameManger has a method named SetupScene. The BoardManager has this method, not the GameManager. References Writing the Game Manager

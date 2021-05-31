@@ -1,0 +1,25 @@
+
+
+A Programmer is building a 3rd-person racing game and needs to use a Particle System to emit dust clouds from the cars that trail the vehicle for a short time (.25 to .5 seconds).
+ 
+ Which two Particle System modules should the Programmer use to achieve the desired effect? (Choose two.)
+
+
+
+Answers: 
+1. Noise module 
+2. Inherit Velocity module 
+3. Trails module 
+4. Sub Emitters module 
+5. Triggers module 
+
+
+
+Correct Answers: 
+2. Inherit Velocity module 
+3. Trails module 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Trails module in particle mode to have the dust particles trail the vehicles. The Programmer should use the Inherit Velocity module to emit the dust clouds from the car. This effect is very useful for emitting particles from a moving object when particles should be moving at a percentage of the speed of the object they appear to come from. The Programmer should not use the Sub Emitters module for a simple dust trail that does not require different effects or textures to emulate. The Programmer should not use the Triggers module. The Triggers module should be used when you need to implement a callback on collisions from the Particle System, which is not required in this case. The Programmer should not use the Noise module. While the Noise module is a simple and effective way to create interesting patterns and effects like smoke rising and swirling from a campfire, the Inherit Velocity module will do a better job of rendering the effect you want. References Trails module Inherit Velocity module Sub Emitters module Triggers module Noise module

@@ -1,0 +1,39 @@
+
+A Programmer is working on a 3D puzzle game for mobile platforms in which the player uses warp gates to get around a level. Warp gates only operate in pairs. The warp gates use colliders set to triggers.
+
+The programmer is using the following code:
+
+public class Warp : MonoBehaviour {
+    private GameObject m_warpMate; 
+
+    void OnTriggerEnter(Collider other){
+        if (other.tag == "Player") { 
+            other.transform.position = m_warpMate.transform.position;
+ 
+other.GetComponent<PlayerController>().setDest(m_warpMate.transform.position);
+         }
+      }
+      public void setWarpMate(GameObject mate){ m_warpMate = mate; }
+}
+
+The Programmer discovers a bug. If the player is not moving fast enough or reverses direction at just the right moment, the player bounces back and forth between a set of warp gates, breaking the gameplay.
+
+What should the Programmer do? (Choose two.)
+
+
+Answers: 
+1. Update the warping code to include an allowWarp Boolean to prevent the receiving warp from working until the player exits the trigger: public class Warp : MonoBehaviour { private GameObject m_warpMate; private bool m_allowWarp = false; void OnTriggerEnter(Collider other){ if ((other.tag == "Player") && (m_allowWarp)) { m_warpMate.GetComponent().AllowWarp(false); other.transform.position = m_warpMate.transform.position; other.GetComponent().setDest(m_warpMate.transform.position); } } void OnTriggerExit() { m_allowWarp = true; } public void AllowWarp(bool allowed) { m_allowWarp = allowed; } public void setWarpMate(GameObject mate){ m_warpMate = mate; } } 
+2. Use Debug.Log statements to debug this issue. 
+3. Use the Frame Debugger and inspect both the sending and receiving warp gates just before and just after the warping to debug the issue. 
+4. Update the warping code to position the player in front of the warp rather than on top of the warp: public class Warp : MonoBehaviour { private GameObject m_warpMate; void OnTriggerEnter(Collider other){ if (other.tag == "Player") { other.transform.position = m_warpMate.transform.position; other.GetComponent().setDest(m_warpMate.transform.position -1f); } } public void setWarpMate(GameObject mate){ m_warpMate = mate; } } 
+
+
+
+Correct Answers: 
+1. Update the warping code to include an allowWarp Boolean to prevent the receiving warp from working until the player exits the trigger: public class Warp : MonoBehaviour { private GameObject m_warpMate; private bool m_allowWarp = false; void OnTriggerEnter(Collider other){ if ((other.tag == "Player") && (m_allowWarp)) { m_warpMate.GetComponent().AllowWarp(false); other.transform.position = m_warpMate.transform.position; other.GetComponent().setDest(m_warpMate.transform.position); } } void OnTriggerExit() { m_allowWarp = true; } public void AllowWarp(bool allowed) { m_allowWarp = allowed; } public void setWarpMate(GameObject mate){ m_warpMate = mate; } } 
+3. Use the Frame Debugger and inspect both the sending and receiving warp gates just before and just after the warping to debug the issue. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Frame Debugger and step through the frames just before and just after the warping takes place while inspecting the player and warp gate game objects. This would reveal that the receiving warp is allowed to function immediately on receiving the player. This is the actual bug causing the problem. The Programmer should implement the solution that includes the Boolean for allowing or not allowing the warp to function and the OnTriggerExit strategy for re-enabling the warp to permit the player to go back if they choose, after exiting the trigger. The Programmer should not use Debug.Log statements to try to debug this problem. Debug.Log statements are best for ensuring that your code is being reached during runtime. Since you know the warp gate code is executing, Debug.Log statements will not help uncover the issue. The problem is not that the player is warping directly on top of the second warp when they should be warping to 1 meter in front of it or behind it. Changing the place the player is warped to will look buggy and will not solve the problem if the player reverses direction on entering a warp. The bug will persist. References Debugger for Unity Profiler overview Frame Debugger Debug.Log

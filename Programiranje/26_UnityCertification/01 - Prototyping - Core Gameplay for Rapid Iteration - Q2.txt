@@ -1,0 +1,28 @@
+
+A Programmer is working on a game prototype of a 2D top down shooter game for mobile platforms. The player controls an alien spaceship and is defending their home world from a human invasion. The movement is not based in physics but transform position updates directly from user input. 
+
+The enemy (human) ships shoot two types of projectiles: lasers and missiles. The Player's ship has only lasers. All can have their shots easily detected using a trigger. Scoring is based on the number of human ships destroyed, for which there needs to be a HUD element showing the current count of casualties. 
+
+A future iteration of this prototype may introduce small planetoids for the player to avoid and use strategically to hide behind to attack the human enemy.
+
+Which two components will be required to properly prototype this game? (Choose two.)
+
+
+Answers: 
+1. RigidBody 
+2. Canvas 
+3. Mesh Renderer 
+4. Particle System 
+5. Sphere Collider set to Trigger 
+6. Sprite Renderer 
+
+
+
+Correct Answers: 
+2. Canvas 
+6. Sprite Renderer 
+
+
+
+Explanation: 
+Explanation A canvas will be required for the player HUD system to display the accurate count of human ships destroyed. Sprite renderers would be required to display the player and enemy ships as well as the projectiles and in a future iteration, planetoids, if they are further explored. Because this is a 2D game prototype, a sphere collider would not be required. A circle collider would be a better decision because it is designed for 2D. A mesh renderer is not required for 2D games, which typically use sprite graphics. A Rigid Body component is designed for 3D objects. A RigidBody2D set to kinematic would be the right selection, not a RigidBody component. A Particle System is not required for a game prototype. These can be process intensive and need to be planned out by a game designer. Particle Systems should be selectively added into a game after the prototyping phase. References Sphere Collider Canvas Mesh Renderer RigidBody SpriteRenderer Particle System

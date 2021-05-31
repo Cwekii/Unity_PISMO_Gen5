@@ -1,0 +1,23 @@
+
+A Programmer is implementing Asset Bundles in an open world 3D space exploration game. The Programmer will need to keep the download size of the Asset Bundles small.
+
+The game will only require some of the assets in any bundle at one time because the player ultimately is in control of which planet they will visit.
+
+Given these requirements, which compression method should the Programmer use for the Asset Bundles?
+
+
+Answers: 
+1. standard compression (LZMA) 
+2. chunk based compression (LZ4) 
+3. no compression 
+4. custom compression 
+
+
+
+Correct Answers: 
+2. chunk based compression (LZ4) 
+
+
+
+Explanation: 
+Explanation The Programmer should use chunk based compression (LZ4) because of the requirement to load only parts of an asset bundle (individual assets) depending on where the player decides to explore, and because of the requirement to keep file size down. Chunk Based (LZ4) compression is the best option because it provides compression and allows for individual assets to be extracted without needing to decompress the entire Asset Bundle. The Programmer should not use no compression. With no compression, the assets remain full size, and this does not help to reduce the size of the download. The Programmer should not use standard compression (LZMA). While it will help keep the size of the Asset Bundles down, it does not allow for individual assets to be pulled from the bundle without decompressing the entire Asset Bundle. The Programmer should not use custom compression, which requires the Programmer to write their own compression and decompression algorithms and take the time to allow for extraction of individual assets. This is not the recommended compression method. References Assets, Resources and AssetBundles Asset Bundle Compression AssetBundle

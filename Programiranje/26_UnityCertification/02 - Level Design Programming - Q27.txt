@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a PC game with a target screen resolution of 1280 x 720. The Programmer is given a two-minute video in mp4 format and needs to render this as a cinematic. 
+ 
+ What should the Programmer use? (Choose two.)
+
+
+
+Answers: 
+1. a 3D Texture, Texture component 
+2. the VideoPlayer class 
+3. a Movie Texture, Texture component 
+4. the Video Clip class 
+5. a Render Texture, Texture component 
+
+
+
+Correct Answers: 
+2. the VideoPlayer class 
+4. the Video Clip class 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Video Clip class to store the video so that it only needs to be loaded from disk once. The Programmer should also use the Video Player class to control the playing of the cinematic at the correct time. The Programmer should not use a Render Texture, Texture component. Render Textures are special Textures that are designed to have a camera render into it. The Programmer should not use a 3D Texture, Texture component. 3D Textures are designed to only be created from script and applied to 3D Game Objects. The Programmer should not use a Movie Texture, Texture component. This Texture type has been marked as obsolete. The Video Player class is recommended instead. References VideoPlayer Render Texture 3D Textures Movie Textures

@@ -1,0 +1,25 @@
+
+A Programmer is implementing In-App Purchasing for a 3D Mobile Adventure game that is only targeted at the Apple App store. The Programmer wants to offer a consumable item named 100 gems to be used as an in-game currency.
+
+The Programmer creates and initializes the store for a single consumable item, 100 gems, but the Programmer notices that players are losing their purchases between gameplay sessions.
+
+The Programmer now needs to add a RestorePurchases() method.
+
+Which of the following is the correct implementation?
+
+
+Answers: 
+1. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " +result + ". If no further messages, no purchases available to restore."); }); } } 
+2. public void RestorePurchases() { // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } } 
+3. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); } } 
+4. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } 
+
+
+
+Correct Answers: 
+1. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " +result + ". If no further messages, no purchases available to restore."); }); } } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the following: public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension<IAppleExtensions>(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } } This will restore the purchases for this player. The Programmer should not implement the following: public void RestorePurchases() { // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension<IAppleExtensions>(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ".If no further messages, no purchases available to restore."); }); } } This fails to check whether the Unity Purchasing system has been initialized first. The Programmer should not implement the following: public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } var apple = extensionProvider.GetExtension<IAppleExtensions>(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } This fails to check to see whether the player is operating from an Apple device. The Programmer should not implement the following: public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension<IAppleExtensions>(); } } This fails to actually restore the purchases. References Setting up Unity IAP Restoring Transactions

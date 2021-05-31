@@ -1,0 +1,25 @@
+
+A Programmer implements Unity Cloud Build for a 2D Puzzle game with a single build target. The Programmer wants to execute some code that generates a custom build number right before the Unity Cloud Build runs on the project.
+
+The code to generate the build number has already been written and resides in a singleton within the project named BuildNumGen. There is an Instance property available. The method they want to execute is named GetBuildNumber().
+
+What should the Programmer do to accomplish this? (Choose two.)
+
+
+Answers: 
+1. Add the call to generate the Build Number to one of the project's Start methods so that it is always executed. 
+2. Add the following code to a script named PreBuild.cs in the Assets folder of the project: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } 
+3. Add BuildNumGen.Instance.GetBuildNumber to the Pre-Export Method Name field on the build target's Advanced Options. 
+4. Add the following code to a script named PreBuild.cs in the Editor folder: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } 
+5. Add PreExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+
+
+
+Correct Answers: 
+4. Add the following code to a script named PreBuild.cs in the Editor folder: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } 
+5. Add PreExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+
+
+
+Explanation: 
+Explanation The Programmer should add the following code to a script named PreBuild.cs in the Editor folder: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } This will be accessible for the Unity Cloud Build system to call. The Programmer should also add PreExport to the Pre-Export Method Name field on the build target's Advanced Options. The Programmer should not add BuildNumGen.Instance.GetBuildNumber to the Pre-Export Method Name field on the build target's Advanced Options. The method names for pre and post export of builds need to be accessible from a script in the project's Editor folder, and they need to be public static methods. The Programmer should not add the following code to a script named PreBuild.cs in the Assets folder of the project: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } Unity Cloud Build can only execute code that is located in the project's Editor folder for pre and post build operations. The Programmer should not add the call to generate the Build Number to one of the project's Start methods so that it is always executed. A build number should represent a build of the product, not a run of the product. References Unity Cloud Build Cloud Build Pre- and post-export methods Advanced options

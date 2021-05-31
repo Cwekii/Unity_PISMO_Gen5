@@ -1,0 +1,23 @@
+
+
+A Programmer is building an in-game heads-up-display (HUD) that requires the player character in the game to appear to reach up and press a button on the player's UI. The UI needs to maintain its position and orientation at all times during game play.
+ 
+ Which render mode property should the Programmer use for the UI Canvas to accomplish this?
+
+
+
+Answers: 
+1. Screen Space - Camera 
+2. World Space 
+3. Screen Space - Overlay 
+4. Target Display - Display 1 
+
+
+
+Correct Answers: 
+1. Screen Space - Camera 
+
+
+
+Explanation: 
+Explanation The Programmer should set the render mode property of the UI Canvas to Screen Space - Camera, so that the canvas is rendered as if it were drawn on a plane object some distance from the selected camera. It always maintains the same onscreen size and distance to fit within the camera frustum. The Programmer should not set the render mode property of the UI Canvas to Screen Space - Overlay. This will cause the UI to be drawn over top of all other graphics, and it will be rendered without reference to the scene or camera. The Programmer should not set the render mode property of the UI Canvas to World Space. This will cause the UI to be rendered as if it were a plane object in the scene, but additional code would need to be developed to keep the UI facing the camera at the same size and distance to fit within the camera frustum. The Programmer should not set the Render Mode property to Target Display - Display 1. This option is only available within the Render Mode property set to ScreenSpace - Overlay, which will cause the UI to be drawn on top of all other graphics, and it will be rendered without reference to the scene or camera. References Canvas

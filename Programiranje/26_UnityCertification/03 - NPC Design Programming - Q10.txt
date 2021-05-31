@@ -1,0 +1,29 @@
+
+
+A Programmer needs to spawn exactly 12 non-player characters (NPCs) into a level.
+ 
+ There are four different spawn points. The Programmer wants to spawn the same number of enemies at each of the locations.
+ 
+ Each of the spawn points is contained in an array of Vector3s named m_spawnPoints.
+ 
+ The NPC prefab is set in the inspector and stored in the variable m_enemyPrefab. 
+ 
+ Which code block should the Programmer use?
+
+
+
+Answers: 
+1. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+2. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[e], Quaternion.Identity); } } 
+3. for(int sp = 0; sp < 3; sp++) { for (int e = 0; e < 4; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+4. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; sp++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+
+
+
+Correct Answers: 
+1. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+
+
+
+Explanation: 
+Explanation The programmer should use the following code block: for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } This will correctly spawn three NPCs at each of the four spawn points. The programmer should not use the following code block: for(int sp = 0; sp < 3; sp++) { for (int e = 0; e < 4; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } This will spawn four NPCs at the first three spawn points and none at the last spawn point. The Programmer should not use the following code block: for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[e], Quaternion.Identity); } } This will also spawn four NPCs at the first three spawn points and none at the last spawn point. The Programmer should not use the following code block: for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; sp++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } This will cause an index out of bounds error on the m_spawnPoints array. References Loops

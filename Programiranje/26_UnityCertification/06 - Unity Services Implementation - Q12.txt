@@ -1,0 +1,23 @@
+
+A Programmer is developing a 2D mobile game and using Unity Cloud Build. On the last commit, the Unity Cloud Build reports a failed build.
+
+Where should the Programmer look first to try and get a quick idea of why the build failed? (Choose two.)
+
+
+Answers: 
+1. In the Compact Log on Unity Cloud Build 
+2. In the Builds folder 
+3. In the Full Log on Unity Cloud Build 
+4. In the Log on the device the build was installed to 
+5. On their local development machine 
+
+
+
+Correct Answers: 
+1. In the Compact Log on Unity Cloud Build 
+5. On their local development machine 
+
+
+
+Explanation: 
+Explanation One of the first places to check to get a quick idea of why a build might have failed is the in the Compact Log in Unity Cloud Build. The Programmer can also get a quick idea of why a build might have failed on their local development machine. Simply doing a build locally can save a lot of time. Looking through the full Log on Unity Cloud Build may reveal the reason for the failed build, but this is not as quick as checking the Compact Log or doing a quick local build. Checking the Builds folder will not help the Programmer determine what went wrong. There is a good chance that the Builds folder is empty because the build failed. The build failed, so it was not installed on a device. This is also a manual process that is performed and not part of Unity Cloud Build. References Unity Cloud Build

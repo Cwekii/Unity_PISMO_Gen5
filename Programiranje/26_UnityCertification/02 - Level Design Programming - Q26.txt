@@ -1,0 +1,21 @@
+
+A Programmer is working on a First-Person Shooter (FPS) in a scene named deepDungeon and needs to load in a new scene for a secret room named theSecretRoom that has just been discovered by the player. The new scene needs to be loaded without unloading any of the existing scenes or assets.
+
+Which LoadHiddenRoom() method should the Programmer use?
+
+
+Answers: 
+1. private void LoadHiddenScene() { StartCoRoutine(AsyncSceneLoader()); } IEnumerator AsyncSceneLoader() { AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("theHiddenRoom"); while (!asyncLoad.isDone) { yield return null; } } 
+2. private void LoadHiddenRoom() { SceneManager.LoadScene(“theHiddenRoom”); } 
+3. private void LoadHiddenRoom() { SceneManager.LoadScene(“theHiddenRoom”, LoadSceneMode.Additive); } 
+4. private void LoadHiddenScene() { SceneManager.MergeScenes(“theHiddenRoom”,”deepDungeon, LoadSceneMode.Additive); } 
+
+
+
+Correct Answers: 
+3. private void LoadHiddenRoom() { SceneManager.LoadScene(“theHiddenRoom”, LoadSceneMode.Additive); } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the version of LoadHiddenRoom() that uses the SceneManager.LoadScene method and the LoadSceneMode.Additive enum. Using the SceneManager.LoadScene method with the LoadSceneMode.Additive enum adds the new scene without getting rid of anything that is already loaded. LoadSceneAsync is also an option, using the same enum, but it needs to be specified. This will generate the desired result. The Programmer should not use the version or LoadHiddenRoom() that uses the SceneManager.LoadSceneAsync method on its own. This would replace the current scene, which is not the desired outcome. The LoadScene and LoadSceneAsync methods need to have the LoadSceneMode.Additive enum to prevent the current scene from being unloaded. The Programmer should not use the version of LoadHiddenRoom() that uses the SceneManager.MergeScenes method. SceneManager.MergeScene merges a source scene into a destination scene and deletes the source scene. This is not the desired outcome and would cause loss of data for the Programmer. References SceneManager.LoadScene SceneManager.LoadSceneAsync SceneManager.MergeScenes LoadSceneMode

@@ -1,0 +1,21 @@
+
+
+Which method is the correct way to log messages in the console during runtime with C#?
+
+
+
+Answers: 
+1. Debug.Log() 
+2. Console.Log() 
+3. System.Writeln() 
+4. System.Out() 
+
+
+
+Correct Answers: 
+1. Debug.Log() 
+
+
+
+Explanation: 
+Explanation Debug.Log() is the best way to send messages to the console during runtime. You should not use Console.Log() in Unity with C#. Console.Log() is a JavaScript method. You should use Debug.Log(). You should not use System.Writeln() in Unity with C#. System.WriteLn() is a C++ method. You should use Debug.Log(). You should not use System.Out() in Unity with C#. System.Out() is a C++ method. You should use Debug.Log(). References Debug.Log

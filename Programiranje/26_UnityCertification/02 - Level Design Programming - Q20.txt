@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a simple 2D game for mobile and wants to ensure that the game runs fast and is optimized for mobile devices.
+ 
+ What should the Programmer do to optimize for the mobile platforms? (Choose two.)
+
+
+
+Answers: 
+1. Use Object Pooling. 
+2. Use RigidBodies limited to 2 dimensions. 
+3. Make sure that all objects are destroyed when out of sight and only instanced as they need to be. 
+4. Make use of OnGui() for the HUD. 
+5. Write a custom physics system for the game. 
+
+
+
+Correct Answers: 
+1. Use Object Pooling. 
+5. Write a custom physics system for the game. 
+
+
+
+Explanation: 
+Explanation The Programmer should write a custom physics system for the game. While it is more complicated and limited, it will be much faster than the Unity Physics system providing it is a simple game. The Programmer should also use Object Pooling. Instantiate and Destroy are process-intensive methods, and Object Pooling will dramatically improve performance. The Programmer should not Use RigidBodies limited to 2 dimensions. This is a waste of resources and the reason for the RigidBody2D component. The Programmer should not make sure that all objects are destroyed when out of sight. Instantiate and Destroy are process-intensive, so Object Pooling is recommended. The Programmer should not use OnGui() for the HUD or HUD elements. Canvas elements are much better for HUDs and performance. References Scripting and Gameplay Methods

@@ -1,0 +1,29 @@
+
+
+A Programmer is working on a 3rd-person action/adventure game for PC and must implement a GPU instanced particle system.
+ 
+ The Programmer has been supplied with the mesh that the particle system must render. 
+ 
+The Programmer needs to implement a Particle system for GPU Instancing.
+ 
+ What should the programmer do? (Choose two).
+
+
+
+Answers: 
+1. Use a shader for the renderer material that supports GPU instancing. 
+2. Set the Particle system's renderer mode to Billboard. 
+3. Set the Particle system's renderer mode to Mesh. 
+4. De-select the Enable GPU Instancing checkbox. 
+5. The Programmer does not need to perform any additional actions. GPU Instancing is the default behavior for Particle systems in Unity. 
+
+
+
+Correct Answers: 
+1. Use a shader for the renderer material that supports GPU instancing. 
+3. Set the Particle system's renderer mode to Mesh. 
+
+
+
+Explanation: 
+Explanation The Programmer needs to set the Particle system's renderer mode to Mesh and ensure that they are using a shader for the render material that supports GPU instancing. The default behavior of the Unity Particle System is Billboard particles. The Programmer should not set the Particle System's renderer mode to Billboard. Mesh mode is required to use the GPU for Instancing in the particle system. The Programmer should not de-select the Enable GPU Instancing checkbox. This selection is needed to ensure that Unity uses the GPU for instancing mesh particle systems. References Particle System GPU Instancing

@@ -1,0 +1,26 @@
+
+A Programmer is working on a 3D action / adventure game that includes a small shipping and receiving area in a building where the player is required to load several objects onto the back of a truck within a time limit.
+
+The player will drive a forklift and pick up the items to load onto the truck. The forklift has two forks, and the player can either attempt to pick up items using one or both forks. Additionally, the player can choose to wedge items between the forks.
+
+The Programmer needs to set up the RigidBody and Colliders for the forklift.
+
+What should the Programmer do to setup and handle collision for the forks to accomplish this functionality without causing any performance issues?
+
+
+Answers: 
+1. Create two Box colliders, one for each fork, and use a single RigidBody component on the same object. 
+2. Create a single Mesh collider that mimics the shape of both forks and use a single RigidBody component on the same object. 
+3. Create two Mesh colliders, one for each fork, and parent them under a single RigidBody. 
+4. Create three Box colliders, one for each fork and one set as a trigger, to act as the empty space between the forks for wedging objects, and parent them to a single RigidBody. 
+5. Create a single Box collider that covers the shape of both forks and use a single RigidBody component on the same object. 
+
+
+
+Correct Answers: 
+1. Create two Box colliders, one for each fork, and use a single RigidBody component on the same object. 
+
+
+
+Explanation: 
+Explanation The Programmer should create two Box colliders, one for each fork, and use a single RigidBody component on the same object. The concave geometry of the forklift's forks and the requirement to wedge items between them means the simple Box Colliders under one Rigidbody will perform the best for this gameplay. The Programmer should not use one or two Mesh colliders. Mesh colliders are performance heavy, and the physics system needs to do extensive checking on Mesh colliders. While the functionality could be implemented, it would come at a performance cost. The Programmer should not use a single Box collider. A single Box collider would not allow the player to wedge objects between the two forks. This would not produce the requested functionality. The Programmer should not use three Box colliders. Adding a third Box collider as a trigger would be an unnecessary resource, as would the dedicated child objects for the colliders. References Rigidbody BoxCollider Mesh Collider

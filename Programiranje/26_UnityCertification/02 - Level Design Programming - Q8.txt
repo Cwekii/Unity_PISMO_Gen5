@@ -1,0 +1,23 @@
+
+
+A Programmer is working on a 1st-person shooter game and needs to calculate the reflection of a laser beam off a clicked object.
+ 
+ Which of the RaycastHit property should the Programmer use to calculate the reflection angle correctly?
+
+
+
+Answers: 
+1. RaycastHit.point 
+2. RaycastHit.normal 
+3. RaycastHit.triangleIndex 
+4. RaycastHit.distance 
+
+
+
+Correct Answers: 
+2. RaycastHit.normal 
+
+
+
+Explanation: 
+Explanation The Programmer should use the RaycastHit.normal property. It can be used to calculate the reflection vector of the surface the Raycast hit. The Programmer should not use the RaycastHit.point property. It returns the impact point in world space that the RaycastHit collides. The Programmer should not use the RaycastHit.distance property. It returns the distance from the ray's origin to the impact point. The Programmer should not use RaycastHit.triangleIndex. It returns the index of the triangle hit, providing the collision was on a Mesh Collider. References RaycastHit.distance RaycastHit.normal RaycastHit RaycastHit.triangleIndex RaycastHit.point

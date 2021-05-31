@@ -1,0 +1,29 @@
+
+
+A Programmer is tasked with creating a Finite State Machine (FSM) based AI that can be configured in the Unity Inspector.
+ 
+ The Programmer decides to use the Delegate Pattern and ScriptableObjects.
+ 
+ Which three parts of this setup are the best candidates for the ScriptableObjects? (Choose three.)
+
+
+
+Answers: 
+1. The actions 
+2. The states 
+3. The machine 
+4. The state transitions 
+5. The Finite State Machine 
+6. The StateController 
+
+
+
+Correct Answers: 
+1. The actions 
+2. The states 
+4. The state transitions 
+
+
+
+Explanation: 
+Explanation The actions are an ideal candidate for ScriptableObjects that can be tuned in the inspector by a designer or non-programmer. The states are also an ideal candidate for ScriptableObjects because they can encompass the transitions and actions, which are also good candidates for ScriptableObjects. The state transitions can be pure serializable classes, and that makes them a good candidate for ScriptableObjects that can be managed through the inspector. The Finite State Machine needs to be based on MonoBehaviour, not ScriptableObjects. The StateController needs to inherit from MonoBehaviour to leverage the Unity Update Loop and monitor the State Machine. The Machine or Finite State Machine needs to be based on MonoBehaviour, not ScriptableObjects. References Finite State AI with the Delegate Pattern ScriptableObject

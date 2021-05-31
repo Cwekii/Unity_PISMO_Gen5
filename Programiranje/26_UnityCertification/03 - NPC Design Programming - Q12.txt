@@ -1,0 +1,27 @@
+
+
+A Programmer is building a mobile 2D space game that will have wave after wave of enemy ships come for the player with guns blazing.
+ 
+ What should the Programmer do to enhance the immersion of the player? (Choose three.)
+
+
+
+Answers: 
+1. Have the enemies play a loud explosion sound when they die. 
+2. Spawn all the enemies for the wave at once so a big group of them can come for the player at one time. 
+3. Have the enemy ships disappear as soon as they are hit. 
+4. Have the enemy ships explode with a particle system that is attached to the enemy ship and fired when it is hit. 
+5. Spawn the enemies off of the screen so that the player does not know which direction they will enter the screen from. 
+6. Keep the number of alive enemy ships visible in the HUD along with the number of kills the player has made. 
+
+
+
+Correct Answers: 
+4. Have the enemy ships explode with a particle system that is attached to the enemy ship and fired when it is hit. 
+5. Spawn the enemies off of the screen so that the player does not know which direction they will enter the screen from. 
+6. Keep the number of alive enemy ships visible in the HUD along with the number of kills the player has made. 
+
+
+
+Explanation: 
+Explanation The Programmer should have the enemy ships spawn off screen so the player does not know which direction they will enter the screen from. This will keep the players engaged because they never know where the enemy is coming from next. The Programmer should also have the enemy ships explode with a particle system that is attached to the enemy ship and fired when it is hit. This type of "juice" or "polish" can be very engaging and keep the player immersed in the fire fight. The Programmer should also keep the number of alive enemy ships visible in the HUD along with the number of kills the player has made. This provides a sense of progression between waves and will give the player an idea of how many more are coming for them. The Programmer should not spawn all the enemies for the wave at once. This is a process-intensive process and will induce lag on mobile devices that will break the player's immersion. The Programmer should not have the enemy ships disappear when they are hit. This will cause a feeling that is lackluster for the player and break the immersion. The Programmer should not have the enemies play a loud explosion sound when the enemies die. Instead, the Programmer should provide some variation to the explosion sound and keep it to the same level as the rest of the game sounds, while keeping in mind that most players play mobile games with the sound off. References How do YOU make your game look good? 5 Important Ways to Add Polish to Your Game

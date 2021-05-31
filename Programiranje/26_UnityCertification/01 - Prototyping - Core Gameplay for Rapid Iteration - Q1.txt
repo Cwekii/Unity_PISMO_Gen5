@@ -1,0 +1,35 @@
+
+A Programmer is working on an Infinite Platformer prototype that focuses on navigating 2D platforms with increasingly more difficult jumps while avoiding enemy NPCs.
+
+The NPCs will look similar, but not identical. Different colors or slight variance in shape will help the player figure out how to avoid or use them. The player can jump on NPCs to kill them, but more important, the player will bounce when jumping on them, allowing the player extra distance to be able to reach platforms that are further away. At the most difficult levels, the player will have to carefully time their jumping and bouncing off multiple NPCs if they want to make it to the next platform.
+
+The primary goal of the game is the distance traveled. If the player falls off the screen because they miss a platform, they immediately wrap to the top of the screen and continue falling back into the level while losing a life. The player will have enough lives to die a few times this way, but does not die from colliding with enemies. A future iteration of the prototype may explore the idea of earning extra lives if they kill enough enemies. However the main purpose of the enemy is to help the player get further in the level. The player cannot go back, only forward, to the right, but they can stop if they need to.
+
+The player is awarded points for how far they get, and bonus points for enemies killed. Lives and score need to be shown to the player at all times, but not be distracting. The player’s movements are going to be physics based, but precise control is required while jumping.
+
+The levels need to be randomly procedurally generated from several different sections. The same section cannot appear next to itself. Enemies should randomly appear on these platforms, with flying enemies filling gaps. Gaps farther than the player can jump will always have a flying enemy for them to bounce off of.
+
+Given these requirements, which of the following game mechanics and features are Must Haves? (Choose all that apply.)
+
+
+Answers: 
+1. Physics based rendering 
+2. Player must always be moving and cannot move backwards 
+3. Randomly generated levels 
+4. Points awarded for how long the player stays alive 
+5. Enemies kill the player by touch 
+6. Multiple enemy types 
+7. Player re-spawns where they die 
+8. Precise air control 
+
+
+
+Correct Answers: 
+3. Randomly generated levels 
+6. Multiple enemy types 
+8. Precise air control 
+
+
+
+Explanation: 
+Explanation Though appearing similar, different colors or slight variance in shape will identify the different types of enemies. Identifying enemies by color or shape is a core game mechanic. It is stated that the player requires precise control while jumping even though their movement is physics based when not jumping. Precise air control is a core game mechanic. The levels need to be randomly procedurally generated from several different sections. This is a core game mechanic. The requirement clearly states that the player does not die from colliding with the enemies. Enemies killing the player by touch is not a core game mechanic. The player earns points by the distance they travel and bonus points for the number of enemies killed. Points are not awarded for how long they stay alive. Points awarded for how long the player stays alive is not a core mechanic. The player’s movements are physics based, and nothing was mentioned about the rendering system. Physics based rendering is not a core game mechanic. The requirement states that the player cannot go back, only forward, to the right, but they can stop if they need to. Players having to always be moving and unable to move backwards is not a core game mechanic. The player wraps to the top of the screen and continues falling back into the level while losing a life. Re-spawning the player where they die is not a core game mechanic. References 2D infinite generating level in all direction Platformer Microgame 2D Physics

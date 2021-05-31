@@ -1,0 +1,23 @@
+
+
+A Programmer is tasked with finding bottlenecks and monitoring player progress through the linear sequences in a mobile game.
+ 
+ Which Analytics component would be most useful for the Programmer?
+
+
+
+Answers: 
+1. The Segment Builder of Unity Analytics 
+2. The Funnel Analyzer of Unity Analytics 
+3. The Event Manager of Unity Analytics 
+4. The Livestream page of the Unity Analytics Dashboard 
+
+
+
+Correct Answers: 
+2. The Funnel Analyzer of Unity Analytics 
+
+
+
+Explanation: 
+Explanation The Funnel Analyzer in Unity Analytics would be the most useful for the Programmer. Funnels track player progress through linear sequences of events, tasks, or actions in your game. You can use funnels to better understand how players move through important sequences and to detect possible bottlenecks where players run into problems. The Segment Builder in Unity Analytics is more about the different demographics such as country, platform, or spending patterns. It will not help identify bottlenecks in a game or user progression. The Event Manager contains a list of all the standard and custom events and parameters you have dispatched from your project. It is not designed to help find bottlenecks or monitor player progress. The Livestream page of Unity Analytics lets you see player demographics in real time. It is not It is not designed to help find bottlenecks or monitor player progress. That is what the Funnel Analyzer and Funnels are for. References Funnel Analyzer page Segment Builder Event Manager Livestream page

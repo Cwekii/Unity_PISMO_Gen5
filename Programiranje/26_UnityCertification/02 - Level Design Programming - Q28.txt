@@ -1,0 +1,50 @@
+
+A Programmer is building a twin stick shooter and needs to implement a Pre-Rendered Cinematic cutscene between scenes to cover any scene loading going on the background.
+
+The requirements state that gameplay needs to be paused while the Cinematic is playing, in the event that a longer Pre-Rendered sequence is introduced. A global EventManagers TriggerEvent that takes two parameters: Pause and a Boolean, to either pause gameplay on un-pause gameplay, will handle this pause and un-pause functionality.
+
+The requirements also insist that the player can skip the Cinematic if they want, even at the cost of seeing some elements being loaded behind the Cinematic. 
+
+The Programmer has the following code in the CinematicController class:
+
+CinematicController.cs
+
+using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Video;
+
+public class CinematicController : MonoBehaviour {public enum CinematicType {Realtime,PreRendered}private PlayableDirector cinematicTimeline;private Camera cineCam;private Camera mainCam;private VideoPlayer videoPlayer;private int currentCinematic;void Start() {cinematicTimeline = this.GetComponent<PlayableDirector>();cineCam = this.GetComponentInChildren<Camera>();videoPlayer = this.GetComponentInChildren<VideoPlayer>();mainCam = Camera.main;videoPlayer.targetCamera = mainCam;videoPlayer.loopPointReached += VideoEnded;RealtimeCameraMode(false);}void Update() {if (currentCinematic >= 0) {if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) {RestorePlay();}}}
+
+public void StartCinematic(CinematicType type) {if (type < 0)return;
+
+currentCinematic = (int)type;EventManager.TriggerEvent("Pause", true);
+
+if (type == CinematicType.Realtime) {RealtimeCameraMode(true);cinematicTimeline.Play();} else {if (videoPlayer.source == VideoSource.VideoClip && videoPlayer.clip == null) {Debug.LogError("Pre-rendered video clip not set! Gameplay paused.");} else {videoPlayer.Play();}}}
+
+void RestorePlay() {currentCinematic = -1;RealtimeCameraMode(false);EventManager.TriggerEvent("Pause", false);}
+
+private void RealtimeCameraMode(bool isCinematic) {cineCam.enabled = isCinematic;mainCam.enabled = !isCinematic;}
+
+private void VideoEnded(VideoPlayer player) {player.Stop();RestorePlay();}}
+
+What should the programmer do to ensure that all of the above required functionality is in their code? (Choose two.)
+
+
+
+Answers: 
+1. Change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { SkipCinematic(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { RestorePlay(); } } } 
+2. Add a SkipCinematic method Like the following: void SkipCinematic() { if (currentCinematic == 0) { videoPlayer.Stop(); } else { cinematicTimeline.Stop(); } RestorePlay(); } 
+3. Change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { RestorePlay(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { SkipCinematic(); } } } 
+4. Add a SkipCinematic method Like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } } 
+5. Add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } RestorePlay(); } 
+
+
+
+Correct Answers: 
+1. Change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { SkipCinematic(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { RestorePlay(); } } } 
+5. Add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } RestorePlay(); } 
+
+
+
+Explanation: 
+Explanation The Programmer should add a SkipCinematic method Like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } RestorePlay(); } This will properly stop both pre-rendered video cut-scenes and real-time rendered cinematics, while un-pausing gameplay as required. The Programmer should also change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { SkipCinematic(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { RestorePlay(); } } } This ensures that the player can properly skip the cinematic if they want. The Programmer should not add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { videoPlayer.Stop(); } else { cinematicTimeline.Stop(); } RestorePlay(); } This would attempt to stop a pre-rendered video if it thought the Playable Director was running and vice versa. The Programmer should not add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } } This will stop the playback of the cinematic but not resume gameplay, leaving the player in a paused state. The Programmer should not change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { RestorePlay(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { SkipCinematic(); } } } This will attempt to RestorePlay when the player thinks they are skipping a Cinematic and will attempt to skip a cinematic once the playback of it has finished. References PlayableDirector VideoPlayer Cinematics, cutscenes & more

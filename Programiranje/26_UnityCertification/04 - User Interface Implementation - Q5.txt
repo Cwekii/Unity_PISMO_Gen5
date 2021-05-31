@@ -1,0 +1,23 @@
+
+A Programmer is working on a 2D mobile puzzle game. Profiling reveals that the GUI is using too many resources. The Programmer needs to reduce the game's CPU consumption.
+
+Which two actions should the Programmer perform to reduce the processing? (Choose two.)
+
+
+Answers: 
+1. Change the camera of the UI canvas to Screen Space - Overlay. 
+2. Disable is Raycast Target on all of the UI elements that cannot be touched. 
+3. Set the Blocking Objects of the canvas using a procedurally generated BitMask. 
+4. Change the camera of the UI canvas to Screen Space - Camera. 
+5. Disable is Raycast Target on all of the GUI and Screen elements. 
+
+
+
+Correct Answers: 
+1. Change the camera of the UI canvas to Screen Space - Overlay. 
+2. Disable is Raycast Target on all of the UI elements that cannot be touched. 
+
+
+
+Explanation: 
+Explanation The Programmer should change the camera of the UI canvas to Screen Space - Overlay. Screen Space - Overlay uses less processing because changing the camera's transform does not require repositioning each UI element. The Programmer should also disable is Raycast Target on all of the UI elements that cannot be touched. The Graphics Raycaster acts as a raycaster specific to touch events for UI elements on a canvas. The engine has to check against every UI element that has is Raycast Target enabled every frame there is UI interaction. The Programmer should not set the Blocking Objects of the canvas using a procedurally generated BitMask. This would increase the processing required, not reduce it. The Programmer should not change the camera of the UI canvas to Screen Space - Camera. This would require repositioning of all the UI elements whenever the transform of the camera changed. The Programmer should not disable is Raycast Target on all of the GUI and Screen elements. This would break interaction on the elements that need to be touched or clicked. References GraphicRaycaster.Raycast Some of the best optimization tips for Unity UI

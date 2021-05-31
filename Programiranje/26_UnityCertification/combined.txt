@@ -1,0 +1,2435 @@
+
+c:\users\korisnik\desktop\gpp\01 - Prototyping - Core Gameplay for Rapid Iteration - Q1.txt
+
+A Programmer is working on an Infinite Platformer prototype that focuses on navigating 2D platforms with increasingly more difficult jumps while avoiding enemy NPCs.
+
+The NPCs will look similar, but not identical. Different colors or slight variance in shape will help the player figure out how to avoid or use them. The player can jump on NPCs to kill them, but more important, the player will bounce when jumping on them, allowing the player extra distance to be able to reach platforms that are further away. At the most difficult levels, the player will have to carefully time their jumping and bouncing off multiple NPCs if they want to make it to the next platform.
+
+The primary goal of the game is the distance traveled. If the player falls off the screen because they miss a platform, they immediately wrap to the top of the screen and continue falling back into the level while losing a life. The player will have enough lives to die a few times this way, but does not die from colliding with enemies. A future iteration of the prototype may explore the idea of earning extra lives if they kill enough enemies. However the main purpose of the enemy is to help the player get further in the level. The player cannot go back, only forward, to the right, but they can stop if they need to.
+
+The player is awarded points for how far they get, and bonus points for enemies killed. Lives and score need to be shown to the player at all times, but not be distracting. The player’s movements are going to be physics based, but precise control is required while jumping.
+
+The levels need to be randomly procedurally generated from several different sections. The same section cannot appear next to itself. Enemies should randomly appear on these platforms, with flying enemies filling gaps. Gaps farther than the player can jump will always have a flying enemy for them to bounce off of.
+
+Given these requirements, which of the following game mechanics and features are Must Haves? (Choose all that apply.)
+
+
+Answers: 
+1. Physics based rendering 
+2. Player must always be moving and cannot move backwards 
+3. Randomly generated levels 
+4. Points awarded for how long the player stays alive 
+5. Enemies kill the player by touch 
+6. Multiple enemy types 
+7. Player re-spawns where they die 
+8. Precise air control 
+
+
+
+Correct Answers: 
+3. Randomly generated levels 
+6. Multiple enemy types 
+8. Precise air control 
+
+
+
+Explanation: 
+Explanation Though appearing similar, different colors or slight variance in shape will identify the different types of enemies. Identifying enemies by color or shape is a core game mechanic. It is stated that the player requires precise control while jumping even though their movement is physics based when not jumping. Precise air control is a core game mechanic. The levels need to be randomly procedurally generated from several different sections. This is a core game mechanic. The requirement clearly states that the player does not die from colliding with the enemies. Enemies killing the player by touch is not a core game mechanic. The player earns points by the distance they travel and bonus points for the number of enemies killed. Points are not awarded for how long they stay alive. Points awarded for how long the player stays alive is not a core mechanic. The player’s movements are physics based, and nothing was mentioned about the rendering system. Physics based rendering is not a core game mechanic. The requirement states that the player cannot go back, only forward, to the right, but they can stop if they need to. Players having to always be moving and unable to move backwards is not a core game mechanic. The player wraps to the top of the screen and continues falling back into the level while losing a life. Re-spawning the player where they die is not a core game mechanic. References 2D infinite generating level in all direction Platformer Microgame 2D Physics
+
+
+c:\users\korisnik\desktop\gpp\01 - Prototyping - Core Gameplay for Rapid Iteration - Q2.txt
+
+A Programmer is working on a game prototype of a 2D top down shooter game for mobile platforms. The player controls an alien spaceship and is defending their home world from a human invasion. The movement is not based in physics but transform position updates directly from user input. 
+
+The enemy (human) ships shoot two types of projectiles: lasers and missiles. The Player's ship has only lasers. All can have their shots easily detected using a trigger. Scoring is based on the number of human ships destroyed, for which there needs to be a HUD element showing the current count of casualties. 
+
+A future iteration of this prototype may introduce small planetoids for the player to avoid and use strategically to hide behind to attack the human enemy.
+
+Which two components will be required to properly prototype this game? (Choose two.)
+
+
+Answers: 
+1. RigidBody 
+2. Canvas 
+3. Mesh Renderer 
+4. Particle System 
+5. Sphere Collider set to Trigger 
+6. Sprite Renderer 
+
+
+
+Correct Answers: 
+2. Canvas 
+6. Sprite Renderer 
+
+
+
+Explanation: 
+Explanation A canvas will be required for the player HUD system to display the accurate count of human ships destroyed. Sprite renderers would be required to display the player and enemy ships as well as the projectiles and in a future iteration, planetoids, if they are further explored. Because this is a 2D game prototype, a sphere collider would not be required. A circle collider would be a better decision because it is designed for 2D. A mesh renderer is not required for 2D games, which typically use sprite graphics. A Rigid Body component is designed for 3D objects. A RigidBody2D set to kinematic would be the right selection, not a RigidBody component. A Particle System is not required for a game prototype. These can be process intensive and need to be planned out by a game designer. Particle Systems should be selectively added into a game after the prototyping phase. References Sphere Collider Canvas Mesh Renderer RigidBody SpriteRenderer Particle System
+
+
+c:\users\korisnik\desktop\gpp\01 - Prototyping - Core Gameplay for Rapid Iteration - Q3.txt
+
+A Programmer is building a prototype for a 3D adventure game and needs to implement pickups for the player. The player game object has a RigidBody and a Capsule Collider attached to it, as well as a PlayerController script that contains the code below:
+
+“PlayerController.cs”
+
+void OnCollisionEnter(Collision collision) {
+   if(collision.gamebject.tag == “pickup”) {
+      collision.gameObject.GetComponent<pickup>().PlayerPickedUp();
+   }
+}
+
+“Pickup.cs”
+
+public enum PickUpType { AMMO, HEALTH, WEAPON }; 
+… 
+
+[SerializeField]
+private PickupType m_pickupType;
+
+… 
+
+public void PlayerPickedUp() {
+  Destroy(this.gameObject, 1); 
+}
+
+The Pickup game object is tagged pickup and has a collider and a pickup script attached to it with a public method named PlayerPickedUp() in it as well as a public Enumeration named PickUpType declared just outside the Pickup Class. A private variable marked as set is set in the inspector for the pickup. It can be used to tell the player what type of pickup was obtained. Currently there are only three pickup types (ammunition, health packs, and a generic weapon). 
+
+When the player collides with the pickup, it is successfully destroyed. 
+
+What does the Programmer need to do to ensure that the player can successfully pick up a pickup in the game and know which of the pickup types was collected?
+
+
+Answers: 
+1. Change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object and also update the OnCollisionEnter method in the PlayerController to catch and then do something with the returned result. 
+2. Implement another method to return the type of pickup before calling the PlayerPickedUp() method on collision. 
+3. Change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object. 
+4. Query the Pickup class for the m_pickupType directly before calling the PlayerPickedUp method in the Pickup class and having the game object destroy itself. 
+5. Change the PlayerPickedUp method to the following: public PickUpType PlayerPickedUp() { return this; Destroy(this.gameObject); } 
+
+
+
+Correct Answers: 
+1. Change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object and also update the OnCollisionEnter method in the PlayerController to catch and then do something with the returned result. 
+
+
+
+Explanation: 
+Explanation The Programmer should change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object and also update the OnCollisionEnter method in the PlayerController to catch and then do something with the returned result. By changing the PlayerPickedUp method to return a PickUpType and having that method return the m_pickupType variable, as well as having the call to PlayerPickedUp catch the return, the Programmer will be able to determine the type for pickup that was set in the inspector for each specific pickup. The Programmer cannot query the m_pickupType variable directly because it is set to private. The Programmer should not change the PlayerPickedUp() method to return the type before Destroy is called. This will cause the pickups to no longer disappear or be destroyed. The Programmer should not query the Pickup class for the m_pickupType directly before calling the PlayerPickedUp method in the Pickup class. Adding an additional method to query the type of pickup is not efficient and adds unnecessary complexity to the coupling of these two objects. The Programmer should not change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object. If the Programmer only changes the PlayerPickedUp method in the Pickup class, they will still not know what type of pickup was returned. The Programmer needs to catch the returned object to see what m_pickupType was set to. References Object.Destroy MonoBehaviour.OnCollisionEnter(Collision) SerialzeField
+
+
+c:\users\korisnik\desktop\gpp\01 - Prototyping - Core Gameplay for Rapid Iteration - Q4.txt
+
+
+Which method is the correct way to log messages in the console during runtime with C#?
+
+
+
+Answers: 
+1. Debug.Log() 
+2. Console.Log() 
+3. System.Writeln() 
+4. System.Out() 
+
+
+
+Correct Answers: 
+1. Debug.Log() 
+
+
+
+Explanation: 
+Explanation Debug.Log() is the best way to send messages to the console during runtime. You should not use Console.Log() in Unity with C#. Console.Log() is a JavaScript method. You should use Debug.Log(). You should not use System.Writeln() in Unity with C#. System.WriteLn() is a C++ method. You should use Debug.Log(). You should not use System.Out() in Unity with C#. System.Out() is a C++ method. You should use Debug.Log(). References Debug.Log
+
+
+c:\users\korisnik\desktop\gpp\01 - Prototyping - Core Gameplay for Rapid Iteration - Q5.txt
+
+A Game Programmer is prototyping a patrolling NPC enemy that is supposed to walk around on a platform. The NPC keeps falling off the platform. Currently the NPC uses raycasts to detect the ground ahead of it.
+
+Which method is best to help debug the NPCs behavior and see why it keeps falling off the platform?
+
+
+Answers: 
+1. Gizmos.DrawRay to visually inspect the raycasts 
+2. Debug.Log to write out the raycast position and direction 
+3. Debug.Log to write out the raycast start and end points 
+4. Debug.LogWarning to write out the results of the raycast when the edge of a platform is found 
+5. Gizmos.DrawWireSphere to visually inspect the raycast range 
+
+
+
+Correct Answers: 
+1. Gizmos.DrawRay to visually inspect the raycasts 
+
+
+
+Explanation: 
+Explanation Gizmos.DrawRay should be used to visualize how the ray is behaving in the scene. It will help to determine if the raycasts are positioned and pointing in the right direction. Gizmos.DrawWireSphere only draws a wireframe sphere given a position and a radius. It would not help to determine the direction a raycast is pointing. Debug.Log would print out vector3 values in plain text. These would be very difficult to interpret in plain text and would not help debugging this type of issue. Debug.LogWarning is designed to log warnings about your code to the console or a log file. It is not intended to debug this type of issue. References Gizmos.DrawRay Gizmos.DrawWireSphere Debug.Log Debug.LogWarning
+
+
+c:\users\korisnik\desktop\gpp\01 - Prototyping - Core Gameplay for Rapid Iteration - Q6.txt
+
+A Programmer is developing a prototype for a 3D adventure game, 
+
+When the player collides with the pickups, the pickups are moving just before they are destroyed and collected.
+
+What should the Programmer check and correct first? (Choose two.)
+
+
+Answers: 
+1. The Programmer should check that the pickup item has its RigidBody position frozen on the x, y, and z axis. 
+2. The Programmer should check that the RigidBody is set to kinematic. 
+3. The Programmer should check that the pickup item has its RigidBody rotation frozen on the x, y, and z axis. 
+4. The Programmer should check that the pickup item has a RigidBody attached to it. 
+5. The Programmer should check that the Collider on the Pickup is set to be a trigger and the method OnTriggerEnter(Collider) is being used and not OnCollisionEnter(Collision). 
+
+
+
+Correct Answers: 
+2. The Programmer should check that the RigidBody is set to kinematic. 
+5. The Programmer should check that the Collider on the Pickup is set to be a trigger and the method OnTriggerEnter(Collider) is being used and not OnCollisionEnter(Collision). 
+
+
+
+Explanation: 
+Explanation The Programmer should check that the Collider on the Pickup is set to be a trigger and the method OnTriggerEnter(Collider) is being used and not OnCollisionEnter(Collision). When working with game objects that you want to collide with but not have them react to physics, you need to use the OnTrigger methods and have the collider set to is Trigger. The Programmer should also check that That the RigidBody is set to kinematic. Kinematic RigidBodies do not react to collisions or suffer gravity effects, but enable the trigger to detect any collider. The position freeze of the RigidBody in not the issue. The physics system for the pickup object itself should be disabled so that a trigger fires but the collision is still registered. The rotation freeze of the RigidBody in not the issue. The physics system for the pickup object itself should be disabled so that a trigger fires but the collision is still registered. The Pickup item already has a RigidBody attached to it or it would not be moving on collisions. It would not detect or respond to other game objects. References Collider.OnTriggerEnter(Collider) Collider.OnCollisionEnter(Collision) Ridigbody.isKinematic Rigidbody.freezeRotation Position Constraints
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q1.txt
+
+
+A Programmer is working on a prototype for a physics game that adds thrust to a game object's Rigidbody component. The variable rb is a reference to the Game Object's Rigidbody. The thrust variable has been set in the inspector and is of float type.
+ 
+ In which method should the Programmer place the following code to ensure that it works correctly?
+ 
+ rb.AddForce(transform.forward * thrust);
+
+
+
+Answers: 
+1. Update() 
+2. LateUpdate() 
+3. EarlyUpdate() 
+4. FixedUpdate() 
+
+
+
+Correct Answers: 
+4. FixedUpdate() 
+
+
+
+Explanation: 
+Explanation The Programmer should place the code in the FixedUpdate method. The FixedUpdate method is Unity's frame-rate independent method for physics calculations. The Programmer should not use the Update method. It is called every frame and should not be used for physics calculations like applying force to Rigidbodies. The Programmer should not use the LateUpdate method. It fires after all Update methods have fired and is best suited for things like follow cameras. The Programmer should not use the EarlyUpdate method. It fires before all Update methods are called and is currently classed as experimental. References MonoBehaviour.FixedUpdate() MonoBehaviour.Update() MonoBehaviour.LateUpdate() EarlyUpdate
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q10.txt
+
+
+A Programmer needs to clean up the runtime spawning of fireball prefabs into a 3rd-person action/adventure game. The fireballs are currently being instanced by a line of code that reads as follows:
+ 
+ GameObject fireball = Instantiate(m_fireballPrefab, m_spawnLocation, Quaternion.identity); 
+ 
+ The m_fireballPrefab variable has been configured in the inspector to point to the Fireball prefab. The m_spawnLocation variable has been configured in the inspector to the correct position.
+ 
+ The m_fireballContainer variable is set in the inspector to the "Fireballs" Game Object in the hierarchy.
+ 
+ Now the Programmer needs to ensure that the newly spawned prefab is attached to a parent "Fireballs" Game Object in the project hierarchy to help keep the hierarchy neat and orderly.
+ 
+ Which code should the Programmer use?
+
+
+
+Answers: 
+1. fireball.transform.parent = m_fireballContainer.transform; 
+2. fireball = m_fireballContainer; 
+3. fireball.transform.parent = m_fireballContainer; 
+4. fireball.parent = m_fireballContainer; 
+
+
+
+Correct Answers: 
+1. fireball.transform.parent = m_fireballContainer.transform; 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: fireball.transform.parent = m_fireballContainer.transform; This correctly sets the transform of the m_fireballContainer in the hierarchy to be the parent transform of the newly spawned fireball Game Object. The Programmer should not use the following code: fireball = m_fireballContainer; fireball is a Game Object and not a transform, and m_fireballContainer is a Game Object and not the transform of the Game Object. The Programmer should not use the following code: fireball.parent = m_fireballContainer; fireball.parent is unknown to Unity, and this will throw an exception. The Programmer should not use the following code: fireball.transform.parent = m_fireballContainer; The m_fireballContainer is a Game Object and not the transform of the Game Object. References Transform.parent
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q11.txt
+
+A Programmer is building a 3D action game that requires a lot of explosions in quick repetition during some points of game play. It has been decided that the Programmer should implement a thread safe object pool to instantiate the exploding prefabs at runtime.
+
+The Programmer creates the generic object pool class shown below so they can re-use it for other objects if needed. They know that this way, all they need to do is create an empty class that inherits from ObjectPool, attach that class to a game object in the inspector, and set the prefab and number of objects to pool. 
+
+using UnityEngine;
+using System.Collections.Generic;
+
+public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour {
+   public T m_prefab;
+
+   public int m_size;
+
+   private List<T> m_freeList;
+   private List<T> m_usedList;
+ 
+   public T Get() {
+      var numFree = m_freeList.Count;
+      if (numFree == 0)
+         return null;
+
+      var pooledObject = m_freeList[numFree - 1];
+      m_freeList.RemoveAt(numFree - 1);
+      m_usedList.Add(pooledObject);
+      return pooledObject;
+   }
+
+   public void ReturnObject(T pooledObject) {
+      Debug.Assert(m_usedList.Contains(pooledObject));
+ 
+      m_usedList.Remove(pooledObject);
+      m_freeList.Add(pooledObject);
+
+      var pooledObjectTransform = pooledObject.transform;
+      pooledObjectTransform.parent = transform;
+      pooledObjectTransform.localPosition = Vector3.zero;
+      pooledObject.gameObject.SetActive(false);
+   }
+}
+
+The Programmer has a prefab of the explosion and is trying to get the pool to work but it throws errors. The Programmer realizes that they need to warm the pool with an Awake() method.
+
+Which Awake() method should the Programmer implement?
+
+
+Answers: 
+1. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); } 
+2. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } 
+3. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); m_freeList.Add(pooledObject); } } 
+4. public void Awake() { for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } 
+
+
+
+Correct Answers: 
+2. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the following Awake() method: public void Awake() { m_freeList = new List<T>(m_size); m_usedList = new List<T>(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } This will initialize the free and used lists properly and instantiate the correct number of prefabs into the pool for use. The Programmer should not implement the following Awake() method: public void Awake() { for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } This does not properly initialize the free and used lists before populating the pool. The Programmer should initialize the lists before populating them. The Programmer should not implement the following Awake() method: public void Awake() { m_freeList = new List<T>(m_size); m_usedList = new List<T>(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); m_freeList.Add(pooledObject); } } This does not disable the prefabs in the free list. In the case of explosions, that would cause the explosions to explode in the pool, which is not the desired outcome. The Programmer should not implement the following Awake() method: public void Awake() { m_freeList = new List<T>(m_size); m_usedList = new List<T>(m_size); } This initializes the lists for the object pool but does not populate them with the prefab. References Type-safe object pool for Unity TypeSafeObjectPool
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q12.txt
+
+
+A Programmer is working on a prototype for a mobile platformer game and needs to build a script that will generate all of the platforms in the game.
+ 
+ How should the Programmer implement the logic for this script?
+
+
+
+Answers: 
+1. The Programmer should create a single level generator script and attach it to an empty Game Object in the hierarchy of the scene. 
+2. The Programmer should attach a script to a prefab that is loaded in the game from the game manager. 
+3. The Programmer should build base classes that do not use MonoBehaviour. 
+4. The Programmer should separate all of the logic for creating the platforms into small discrete pieces that are connected through a controlling script that is not attached to anything. 
+
+
+
+Correct Answers: 
+1. The Programmer should create a single level generator script and attach it to an empty Game Object in the hierarchy of the scene. 
+
+
+
+Explanation: 
+Explanation The Programmer should create a single level generator script and attach it to an empty Game Object in the hierarchy of the scene to keep all of the level generation logic in a single place that is easy to access. The Programmer should not embed generators or managers in prefabs unless there is a strong case to do this. Embedding scripts in prefabs will require additional processing by Unity, so the performance will suffer. The Programmer should not separate all of the logic for creating the platforms into small discrete pieces that are connected through a controlling script that is not attached to anything. The logic for platform generation is best suited in a single location. The Programmer should not build base classes that do not use MonoBehaviour if they are attached directly to Game Objects in the hierarchy. MonoBehaviour allows the Programmer to leverage the built-in functions that Unity provides such as Start, and Update. Generator and Manager scripts benefit from the use of the MonoBehaviour base class and should be used. References Game Managers
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q13.txt
+
+
+A Programmer is given the following code as a starting point for a GameManager script:
+ 
+ public class GameManager : MonoBehaviour 
+ {
+     public BoardManager m_boardScript; 
+ 
+     private int m_level = 1; 
+ 
+     void Awake() 
+     {
+         m_boardScript = GetComponent<BoardManager>(); 
+         InitGame(); 
+     }
+ 
+     void InitGame() 
+     {
+         m_boardScript.SetupScene(m_level);
+     }
+ }
+ 
+ What can the Programmer determine about the game from this code? (Choose two.)
+
+
+
+Answers: 
+1. GameManager has a method named SetupScene that takes a single integer value to represent the level that should be set up. 
+2. BoardManager is a singleton. 
+3. The private variable m_level will allow the Programmer to test setup of any level that exists if it has been properly numbered. 
+4. There is a method in the BoardManager named SetupScene that takes a single integer value to represent the level the Board Manager should set up. 
+5. The use of a Board Manager is redundant and the Game Manger should do all the work to keep the code in one place. 
+
+
+
+Correct Answers: 
+3. The private variable m_level will allow the Programmer to test setup of any level that exists if it has been properly numbered. 
+4. There is a method in the BoardManager named SetupScene that takes a single integer value to represent the level the Board Manager should set up. 
+
+
+
+Explanation: 
+Explanation The Programmer can determine that the BoardManager script has a method named SetupScene that takes a single integer variable that represents the level the BoardManager should set up. The Programmer can also determine that changing the value of the private integer variable m_level should cause the BoardManager to set up the level identified. The Programmer cannot accurately determine if the BoardManager is a singleton. If BoardManager was a correctly written singleton, GetComponent would not be called. Instead, m_boardScript would be set via assignment of an instance variable from within the BoardManager class. The Programmer cannot determine that the BoardManager is redundant. In fact, better maintainable and readable code comes from keeping the purpose of Scripts singular and modular in nature. The Programmer cannot determine that the GameManger has a method named SetupScene. The BoardManager has this method, not the GameManager. References Writing the Game Manager
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q14.txt
+
+A Programmer is building a 3D FPS game that heavily uses delegates in most of the code base. There are memory leaks caused by improperly removing game objects from the levels at runtime, and systems are running out of memory.
+
+The Programmer knows that the memory issues are caused because of all the delegates and needs to ensure that they are cleaned up properly before the objects are removed.
+
+What should the Programmer do before removing the objects from the levels so that the memory leaks are fixed?
+
+
+Answers: 
+1. Unsubscribe from any UnityEvent that an object may be listening to before removing it from the level. 
+2. Unsubscribe from any UnityAction that an object may be listening to before removing it from the level. 
+3. Set any UnityAction that an object may be listening to as null before removing it from the level. 
+4. Set any UnityEvent that an object may be listening to as null before removing it from the level. 
+
+
+
+Correct Answers: 
+1. Unsubscribe from any UnityEvent that an object may be listening to before removing it from the level. 
+
+
+
+Explanation: 
+Explanation The Programmer should unsubscribe from any UnityEvent that an object may be listening to before removing it from the level. Unsubscribing from any UnityEvents an object is listening to is required before removing a game object from a scene. Failing to do so will cause memory leaks. The Programmer should not set any UnityEvents to null or any other value. You do not Set UnityEvents, you Subscribe or Unsubscribe from them. The Programmer should not set any UnityActions to null before removing the object from the level. UnityActions are used to dynamically call multiple functions within a class. You do not need to set these to null before removing an object from the scene. The Programmer should not unsubscribe from any UnityActions. UnityActions are used to dynamically call multiple functions within a class. You do not need to unsubscribe from them before removing an object from a scene. References UnityEvent UnityAction
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q15.txt
+
+
+A Programmer is working on a 3rd-person action/adventure game for PC and must implement a GPU instanced particle system.
+ 
+ The Programmer has been supplied with the mesh that the particle system must render. 
+ 
+The Programmer needs to implement a Particle system for GPU Instancing.
+ 
+ What should the programmer do? (Choose two).
+
+
+
+Answers: 
+1. Use a shader for the renderer material that supports GPU instancing. 
+2. Set the Particle system's renderer mode to Billboard. 
+3. Set the Particle system's renderer mode to Mesh. 
+4. De-select the Enable GPU Instancing checkbox. 
+5. The Programmer does not need to perform any additional actions. GPU Instancing is the default behavior for Particle systems in Unity. 
+
+
+
+Correct Answers: 
+1. Use a shader for the renderer material that supports GPU instancing. 
+3. Set the Particle system's renderer mode to Mesh. 
+
+
+
+Explanation: 
+Explanation The Programmer needs to set the Particle system's renderer mode to Mesh and ensure that they are using a shader for the render material that supports GPU instancing. The default behavior of the Unity Particle System is Billboard particles. The Programmer should not set the Particle System's renderer mode to Billboard. Mesh mode is required to use the GPU for Instancing in the particle system. The Programmer should not de-select the Enable GPU Instancing checkbox. This selection is needed to ensure that Unity uses the GPU for instancing mesh particle systems. References Particle System GPU Instancing
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q16.txt
+
+
+A Programmer is building a 3rd-person racing game and needs to use a Particle System to emit dust clouds from the cars that trail the vehicle for a short time (.25 to .5 seconds).
+ 
+ Which two Particle System modules should the Programmer use to achieve the desired effect? (Choose two.)
+
+
+
+Answers: 
+1. Noise module 
+2. Inherit Velocity module 
+3. Trails module 
+4. Sub Emitters module 
+5. Triggers module 
+
+
+
+Correct Answers: 
+2. Inherit Velocity module 
+3. Trails module 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Trails module in particle mode to have the dust particles trail the vehicles. The Programmer should use the Inherit Velocity module to emit the dust clouds from the car. This effect is very useful for emitting particles from a moving object when particles should be moving at a percentage of the speed of the object they appear to come from. The Programmer should not use the Sub Emitters module for a simple dust trail that does not require different effects or textures to emulate. The Programmer should not use the Triggers module. The Triggers module should be used when you need to implement a callback on collisions from the Particle System, which is not required in this case. The Programmer should not use the Noise module. While the Noise module is a simple and effective way to create interesting patterns and effects like smoke rising and swirling from a campfire, the Inherit Velocity module will do a better job of rendering the effect you want. References Trails module Inherit Velocity module Sub Emitters module Triggers module Noise module
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q17.txt
+
+
+A Programmer is tasked with improving the clouds in a 3rd-person action/adventure game for PC. The play testers commented that the current particle system for the clouds looks weak and lacks volume.
+ 
+ The current Particle System is using a simple texture for the cloud Particle System.
+ 
+ What should the Programmer do to improve this Particle System?
+
+
+
+Answers: 
+1. Change the Pivot point for rotating the texture to make the clouds appear more random from one another in final shape. 
+2. Using the Render module, switch the system from billboards to Mesh and use an actual Mesh object for the clouds. 
+3. Use the Flip property of the Render module to eliminate some of the repetitive patterns from the Particle System. 
+4. Increase the Max-Particle size number of the Render module until the cloud looks like it takes up more volume. 
+
+
+
+Correct Answers: 
+2. Using the Render module, switch the system from billboards to Mesh and use an actual Mesh object for the clouds. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Render module to switch the particles from billboard textures to Mesh objects. This is the best way to improve the sense of volume for the clouds. The Programmer should not increase the Max-Particle size of the Render module. This will result in bigger clouds that still lack volume. The Programmer should not flip some of the particles to remove some of the repetitive patterns from the Particle System. This will not make the clouds appear to take up more volume, but it will help to reduce any repetitive patterns. The Programmer should not change the Pivot point for rotating the texture. This will not make the clouds appear to take up more volume, but it will help to reduce any repetitive patterns. References Renderer module
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q18.txt
+
+A Programmer wants to simulate a soft shadow under his characters in a 3D adventure game.
+
+The Programmer needs these shadows to look good but also be as efficient as possible.
+
+Which method is the most efficient for the Programmer to generate a soft shadow under a character?
+
+
+Answers: 
+1. Use a spotlight with Soft Shadows enabled. 
+2. Use a light that does not affect geometry, but uses the Glow effect. 
+3. Use a light that does not affect geometry, but uses the Halo effect. 
+4. Use a Projector to project a shadow texture. 
+
+
+
+Correct Answers: 
+4. Use a Projector to project a shadow texture. 
+
+
+
+Explanation: 
+Explanation The Programmer should use a Projector to project a shadow texture. A Projector can paint a texture on the ground and is more efficient at suggesting a soft shadow than using a light. Shadows are the number one use of Projectors in Unity. The Programmer should not use the Glow effect. The Glow effect uses Bloom, which creates fringes of light extending from the borders of light areas. This is not suitable for shadows. The Programmer should not use the Halo effect. Halos are light areas around light sources. This is not suitable for shadows. The Programmer should not use a spotlight with Soft Shadows enabled. A spotlight has high rendering overhead and should be used sparingly. This is not an efficient way to cast shadows for characters. References Projector Image Effect reference Bloom Halo Spotlight
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q19.txt
+
+
+What has the highest impact on performance and should be eliminated wherever possible to improve performance?
+
+
+
+Answers: 
+1. Baking in static lighting 
+2. Texture compression 
+3. Realtime shadows 
+4. Draw call batching 
+
+
+
+Correct Answers: 
+3. Realtime shadows 
+
+
+
+Explanation: 
+Explanation Realtime shadows are nice, but they can have a high impact on performance, both in terms of extra draw calls for the CPU and extra processing on the GPU. These should be eliminated whenever possible. Using compressed textures decreases the size of your textures. This is a performance improvement and should be done whenever possible. Baked in static lighting not only looks better, but it can perform two to three times better. This is a performance improvement and should be done whenever possible. Draw call batching is a great way to improve performance. This should be done whenever possible. References Optimizing graphics performance Light troubleshooting and performance Draw call batching
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q2.txt
+
+A Programmer is working on a 3D action / adventure game that includes a small shipping and receiving area in a building where the player is required to load several objects onto the back of a truck within a time limit.
+
+The player will drive a forklift and pick up the items to load onto the truck. The forklift has two forks, and the player can either attempt to pick up items using one or both forks. Additionally, the player can choose to wedge items between the forks.
+
+The Programmer needs to set up the RigidBody and Colliders for the forklift.
+
+What should the Programmer do to setup and handle collision for the forks to accomplish this functionality without causing any performance issues?
+
+
+Answers: 
+1. Create two Box colliders, one for each fork, and use a single RigidBody component on the same object. 
+2. Create a single Mesh collider that mimics the shape of both forks and use a single RigidBody component on the same object. 
+3. Create two Mesh colliders, one for each fork, and parent them under a single RigidBody. 
+4. Create three Box colliders, one for each fork and one set as a trigger, to act as the empty space between the forks for wedging objects, and parent them to a single RigidBody. 
+5. Create a single Box collider that covers the shape of both forks and use a single RigidBody component on the same object. 
+
+
+
+Correct Answers: 
+1. Create two Box colliders, one for each fork, and use a single RigidBody component on the same object. 
+
+
+
+Explanation: 
+Explanation The Programmer should create two Box colliders, one for each fork, and use a single RigidBody component on the same object. The concave geometry of the forklift's forks and the requirement to wedge items between them means the simple Box Colliders under one Rigidbody will perform the best for this gameplay. The Programmer should not use one or two Mesh colliders. Mesh colliders are performance heavy, and the physics system needs to do extensive checking on Mesh colliders. While the functionality could be implemented, it would come at a performance cost. The Programmer should not use a single Box collider. A single Box collider would not allow the player to wedge objects between the two forks. This would not produce the requested functionality. The Programmer should not use three Box colliders. Adding a third Box collider as a trigger would be an unnecessary resource, as would the dedicated child objects for the colliders. References Rigidbody BoxCollider Mesh Collider
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q20.txt
+
+
+A Programmer is working on a simple 2D game for mobile and wants to ensure that the game runs fast and is optimized for mobile devices.
+ 
+ What should the Programmer do to optimize for the mobile platforms? (Choose two.)
+
+
+
+Answers: 
+1. Use Object Pooling. 
+2. Use RigidBodies limited to 2 dimensions. 
+3. Make sure that all objects are destroyed when out of sight and only instanced as they need to be. 
+4. Make use of OnGui() for the HUD. 
+5. Write a custom physics system for the game. 
+
+
+
+Correct Answers: 
+1. Use Object Pooling. 
+5. Write a custom physics system for the game. 
+
+
+
+Explanation: 
+Explanation The Programmer should write a custom physics system for the game. While it is more complicated and limited, it will be much faster than the Unity Physics system providing it is a simple game. The Programmer should also use Object Pooling. Instantiate and Destroy are process-intensive methods, and Object Pooling will dramatically improve performance. The Programmer should not Use RigidBodies limited to 2 dimensions. This is a waste of resources and the reason for the RigidBody2D component. The Programmer should not make sure that all objects are destroyed when out of sight. Instantiate and Destroy are process-intensive, so Object Pooling is recommended. The Programmer should not use OnGui() for the HUD or HUD elements. Canvas elements are much better for HUDs and performance. References Scripting and Gameplay Methods
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q21.txt
+
+A Programmer is building a game that will be available for multiple platforms, including mobile platforms.
+
+The Programmer needs to be able to provide assets that provide the same gameplay for all variants of the game regardless of the platform.
+
+What should the Programmer implement to accomplish this?
+
+
+Answers: 
+1. Take the high-end hardware into account and target for performance on that platform. 
+2. Use AssetBundle variants to allow for models, graphics, and scripts that are better suited for both low-end and high-end platforms. 
+3. The Programmer should do a SOAK test to determine which specs to target and eliminate the systems that run out of resources early from the list of supported platforms. 
+4. Use platform dependent compilation in the game. 
+5. Take the low-end hardware into account and target for performance for those platforms. 
+
+
+
+Correct Answers: 
+2. Use AssetBundle variants to allow for models, graphics, and scripts that are better suited for both low-end and high-end platforms. 
+
+
+
+Explanation: 
+Explanation The Programmer should implement AssetBundles for variants. This is the best way to target a wide range of hardware with varying degrees of performance in a single game. By offering the same assets with different size and complexity of files, the Programmer can offer a game that performs consistently across a variety of hardware. The Programmer should not take the low-end hardware into account and reduce the performance of the game to match the lowest specs. This will have an adverse effect on players using newer hardware. The Programmer should not take only the high-end of performance into account. That will make the game unplayable on low-end systems and ruin the player experience. The Programmer should not use platform dependent compilation. This is only useful to execute different code for different platforms and would not help at all with graphic resolutions or poly count in mesh files. This would be hard to maintain. The Programmer should not use A SOAK test to identify the platforms that run out of memory for the purpose of eliminating them from the list of platforms the game is to run on. A SOAK test is designed to run your game for a long time to determine the patterns of performance. It will not help you to make decisions for platforms. A Game Designer will make the decisions which platforms the game should run on. References Assets, Resources and AssetBundles Platform-specific Best practice guides Platform dependent compilation
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q22.txt
+
+
+A Programmer is working on a prototype for an action adventure game for the PC platform.
+ 
+ The designers are working in three separate scene files: one for the level itself, one for the enemy spawners and enemies, and another for the pickups that the player needs to collect.
+ 
+ The level scene is already loaded. The Programmer wants to keep all three scenes in the hierarchy for debugging purposes.
+ 
+ Which two methods should the Programmer use to load the other two scenes on top of the level scene? (Choose two.)
+
+
+
+Answers: 
+1. SceneManager.CreateScene 
+2. SceneManager.UnloadScene 
+3. SceneManager.LoadScene 
+4. LoadSceneMode 
+5. SceneManager.MergeScene 
+
+
+
+Correct Answers: 
+3. SceneManager.LoadScene 
+4. LoadSceneMode 
+
+
+
+Explanation: 
+Explanation LoadScene along with LoadSceneMode set to additive will allow the Programmer to load the two additional scenes into the hierarchy at runtime and keep all three scenes available for debugging. UnloadScene will not load in a scene. It will unload the scene that is passed in by name or index and return true if the scene is successfully unloaded. MergeScene will load the new scenes, but it will destroy the original scene after moving all root nodes into the new scene loaded, and all three scenes will not be available for debugging. CreateScene will create a new scene and will not load an existing scene. References SceneManager.MergeScenes SceneManager.UnloadScene LoadSceneMode SceneManager.LoadScene SceneManager.CreateScene
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q23.txt
+
+
+A Programmer is working on a First-Person Shooter (FPS) and needs to load in a new scene for a big boss fight. The new scene needs to be loaded additively and the Programmer does not want any lag, loading hiccups, or performance issues during load.
+ 
+ What two methods should the Programmer use? (Choose two.)
+
+
+
+Answers: 
+1. LoadSceneMode 
+2. LoadSceneAsync 
+3. CreateScene 
+4. LoadScene 
+5. MergeScenes 
+
+
+
+Correct Answers: 
+1. LoadSceneMode 
+2. LoadSceneAsync 
+
+
+
+Explanation: 
+Explanation The Programmer should use LoadSceneAsync and LoadSceneMode. LoadSceneAsync with LoadSceneMode set to additive will allow the Programmer to load the additional scene into the hierarchy at runtime without pauses or performance hiccups and keep both scenes available for the player. The Programmer should not use MergeScenes. MergeScenes will load the new scene, but it will destroy the original scene after moving all root nodes into the new scene loaded. The Programmer should not use LoadScene. When using SceneManager.LoadScene, the scene is not loaded immediately. It completes in the next frame. This semi-asynchronous behavior can cause frame stuttering and can be confusing because the load does not complete immediately. The Programmer should not use CreateScene. CreateScene will create a new scene and will not load an existing scene. References SceneManager.MergeScenes LoadSceneMode SceneManager.LoadSceneAsync SceneManager.LoadScene SceneManager.CreateScene
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q24.txt
+
+
+A Programmer needs to load a new Scene but ensure that all other Scenes are unloaded first.
+ 
+ What is best way to accomplish this?
+
+
+
+Answers: 
+1. Call SceneManager.UnloadSceneAsync() on all currently loaded Scenes and then call SceneManager.LoadSceneAsync() on the new Scene. 
+2. Call Resources.UnloadUnusedAssets() and then call SceneManager.LoadSceneAsync() to load in the new Scene. 
+3. Call SceneManager.LoadSceneAsync() with the new Scene and ensure that the LoadSceneMode is set to Single. 
+4. Call SceneManager.UnloadScene() on all currently loaded Scenes and then call SceneManager.LoadSceneAsync() with the new Scene and ensure that the LoadSceneMode is set to Single. 
+
+
+
+Correct Answers: 
+3. Call SceneManager.LoadSceneAsync() with the new Scene and ensure that the LoadSceneMode is set to Single. 
+
+
+
+Explanation: 
+Explanation The Programmer should call SceneManager.LoadSceneAsync() with the LoadSceneMode set to Single. This will ensure that all existing Scenes are unloaded before loading in the new Scene. The Programmer does not need to call SceneManager.UnloadSceneAsync() first. SceneManager.LoadSceneAsync() with the LoadSceneMode set to Single will ensure that all existing Scenes are unloaded before the new Scene is loaded. The Programmer should not use SceneManager.UnloadScene(). This method has been marked as obsolete and will be removed from the Unity API. The Programmer should not call Resources.UnloadUnusedAssets() because the assets in the Scene are currently used. This call can be used after unloading a Scene to free up asset memory. References SceneManager.LoadSceneAsync SceneManager.UnloadSceneAsync SceneManager.UnloadScene
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q25.txt
+
+A Programmer is building a 3D, third person, open-world adventure game. The Programmer is asked to ensure that the player never has to wait for a scene to load.
+
+The Programmer decides that the best approach for this will be to load and unload environment scenes when the player walks around and divides the environment up into a grid. All environment scenes adjacent (diagonally and orthogonally) to the player need to be loaded or loading in a way that produces a nine-square grid of loaded scenes at all times. (See the exhibit.)
+
+The memory budget for all of these scenes is 855 MB.
+
+What is the maximum size each environment scene can be, rounded up to the nearest MB?
+
+
+Answers: 
+
+
+
+Correct Answers: 
+
+
+
+Explanation: 
+Explanation If the memory budget for all nine of the scenes is 855 MB, each scene needs to be no larger than 95 MB (95 * 9 = 855). References LoadSceneMode.Additive SceneManager.LoadScene
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q26.txt
+
+A Programmer is working on a First-Person Shooter (FPS) in a scene named deepDungeon and needs to load in a new scene for a secret room named theSecretRoom that has just been discovered by the player. The new scene needs to be loaded without unloading any of the existing scenes or assets.
+
+Which LoadHiddenRoom() method should the Programmer use?
+
+
+Answers: 
+1. private void LoadHiddenScene() { StartCoRoutine(AsyncSceneLoader()); } IEnumerator AsyncSceneLoader() { AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("theHiddenRoom"); while (!asyncLoad.isDone) { yield return null; } } 
+2. private void LoadHiddenRoom() { SceneManager.LoadScene(“theHiddenRoom”); } 
+3. private void LoadHiddenRoom() { SceneManager.LoadScene(“theHiddenRoom”, LoadSceneMode.Additive); } 
+4. private void LoadHiddenScene() { SceneManager.MergeScenes(“theHiddenRoom”,”deepDungeon, LoadSceneMode.Additive); } 
+
+
+
+Correct Answers: 
+3. private void LoadHiddenRoom() { SceneManager.LoadScene(“theHiddenRoom”, LoadSceneMode.Additive); } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the version of LoadHiddenRoom() that uses the SceneManager.LoadScene method and the LoadSceneMode.Additive enum. Using the SceneManager.LoadScene method with the LoadSceneMode.Additive enum adds the new scene without getting rid of anything that is already loaded. LoadSceneAsync is also an option, using the same enum, but it needs to be specified. This will generate the desired result. The Programmer should not use the version or LoadHiddenRoom() that uses the SceneManager.LoadSceneAsync method on its own. This would replace the current scene, which is not the desired outcome. The LoadScene and LoadSceneAsync methods need to have the LoadSceneMode.Additive enum to prevent the current scene from being unloaded. The Programmer should not use the version of LoadHiddenRoom() that uses the SceneManager.MergeScenes method. SceneManager.MergeScene merges a source scene into a destination scene and deletes the source scene. This is not the desired outcome and would cause loss of data for the Programmer. References SceneManager.LoadScene SceneManager.LoadSceneAsync SceneManager.MergeScenes LoadSceneMode
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q27.txt
+
+
+A Programmer is working on a PC game with a target screen resolution of 1280 x 720. The Programmer is given a two-minute video in mp4 format and needs to render this as a cinematic. 
+ 
+ What should the Programmer use? (Choose two.)
+
+
+
+Answers: 
+1. a 3D Texture, Texture component 
+2. the VideoPlayer class 
+3. a Movie Texture, Texture component 
+4. the Video Clip class 
+5. a Render Texture, Texture component 
+
+
+
+Correct Answers: 
+2. the VideoPlayer class 
+4. the Video Clip class 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Video Clip class to store the video so that it only needs to be loaded from disk once. The Programmer should also use the Video Player class to control the playing of the cinematic at the correct time. The Programmer should not use a Render Texture, Texture component. Render Textures are special Textures that are designed to have a camera render into it. The Programmer should not use a 3D Texture, Texture component. 3D Textures are designed to only be created from script and applied to 3D Game Objects. The Programmer should not use a Movie Texture, Texture component. This Texture type has been marked as obsolete. The Video Player class is recommended instead. References VideoPlayer Render Texture 3D Textures Movie Textures
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q28.txt
+
+A Programmer is building a twin stick shooter and needs to implement a Pre-Rendered Cinematic cutscene between scenes to cover any scene loading going on the background.
+
+The requirements state that gameplay needs to be paused while the Cinematic is playing, in the event that a longer Pre-Rendered sequence is introduced. A global EventManagers TriggerEvent that takes two parameters: Pause and a Boolean, to either pause gameplay on un-pause gameplay, will handle this pause and un-pause functionality.
+
+The requirements also insist that the player can skip the Cinematic if they want, even at the cost of seeing some elements being loaded behind the Cinematic. 
+
+The Programmer has the following code in the CinematicController class:
+
+CinematicController.cs
+
+using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Video;
+
+public class CinematicController : MonoBehaviour {public enum CinematicType {Realtime,PreRendered}private PlayableDirector cinematicTimeline;private Camera cineCam;private Camera mainCam;private VideoPlayer videoPlayer;private int currentCinematic;void Start() {cinematicTimeline = this.GetComponent<PlayableDirector>();cineCam = this.GetComponentInChildren<Camera>();videoPlayer = this.GetComponentInChildren<VideoPlayer>();mainCam = Camera.main;videoPlayer.targetCamera = mainCam;videoPlayer.loopPointReached += VideoEnded;RealtimeCameraMode(false);}void Update() {if (currentCinematic >= 0) {if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) {RestorePlay();}}}
+
+public void StartCinematic(CinematicType type) {if (type < 0)return;
+
+currentCinematic = (int)type;EventManager.TriggerEvent("Pause", true);
+
+if (type == CinematicType.Realtime) {RealtimeCameraMode(true);cinematicTimeline.Play();} else {if (videoPlayer.source == VideoSource.VideoClip && videoPlayer.clip == null) {Debug.LogError("Pre-rendered video clip not set! Gameplay paused.");} else {videoPlayer.Play();}}}
+
+void RestorePlay() {currentCinematic = -1;RealtimeCameraMode(false);EventManager.TriggerEvent("Pause", false);}
+
+private void RealtimeCameraMode(bool isCinematic) {cineCam.enabled = isCinematic;mainCam.enabled = !isCinematic;}
+
+private void VideoEnded(VideoPlayer player) {player.Stop();RestorePlay();}}
+
+What should the programmer do to ensure that all of the above required functionality is in their code? (Choose two.)
+
+
+
+Answers: 
+1. Change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { SkipCinematic(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { RestorePlay(); } } } 
+2. Add a SkipCinematic method Like the following: void SkipCinematic() { if (currentCinematic == 0) { videoPlayer.Stop(); } else { cinematicTimeline.Stop(); } RestorePlay(); } 
+3. Change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { RestorePlay(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { SkipCinematic(); } } } 
+4. Add a SkipCinematic method Like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } } 
+5. Add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } RestorePlay(); } 
+
+
+
+Correct Answers: 
+1. Change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { SkipCinematic(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { RestorePlay(); } } } 
+5. Add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } RestorePlay(); } 
+
+
+
+Explanation: 
+Explanation The Programmer should add a SkipCinematic method Like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } RestorePlay(); } This will properly stop both pre-rendered video cut-scenes and real-time rendered cinematics, while un-pausing gameplay as required. The Programmer should also change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { SkipCinematic(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { RestorePlay(); } } } This ensures that the player can properly skip the cinematic if they want. The Programmer should not add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { videoPlayer.Stop(); } else { cinematicTimeline.Stop(); } RestorePlay(); } This would attempt to stop a pre-rendered video if it thought the Playable Director was running and vice versa. The Programmer should not add a SkipCinematic method like the following: void SkipCinematic() { if (currentCinematic == 0) { cinematicTimeline.Stop(); } else { videoPlayer.Stop(); } } This will stop the playback of the cinematic but not resume gameplay, leaving the player in a paused state. The Programmer should not change the Update method to the following: void Update() { if (currentCinematic >= 0) { if (Input.GetKeyDown(KeyCode.Space)) { RestorePlay(); } if (currentCinematic == 0 && cinematicTimeline.state != PlayState.Playing) { SkipCinematic(); } } } This will attempt to RestorePlay when the player thinks they are skipping a Cinematic and will attempt to skip a cinematic once the playback of it has finished. References PlayableDirector VideoPlayer Cinematics, cutscenes & more
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q29.txt
+
+A Programmer is working on adding a cinematic to a 3D adventure game and needs to know if the timeline has ended. 
+
+What is the best way to accomplish this?
+
+
+Answers: 
+1. Use a timer and synchronize it with the time of the cut scene because there is no valid way to accurately detect the end of a PlayableDirector. 
+2. Implement a co-routine to check for the end of the timeline: public IEnumerator CheckEnd() { while (Math.Abs(_director.duration - _director.time) > 0.2) { yield return new WaitForEndOfFrame(); } } 
+3. Watch for the Playing state to change in the Update loop on a script attached to the game object the PlayableDirector is on: void Update() { if (GetComponent().state != PlayState.Playing) { Debug.Log("PlayableDirector stopped!"); } 
+4. Subscribe to the PlayableDirector.stopped event handler to receive a notification when the cinematic finishes as well as which PlayableDirector it was: using UnityEngine; using UnityEngine.Playables; public class PlayableDirectorWatcher : MonoBehaviour { public PlayableDirector director; void OnEnable(){ director.stopped += OnPlayableDirectorStopped; } void OnPlayableDirectorStopped(PlayableDirector aDirector) { if (director == aDirector) Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped."); } void OnDisable(){ director.stopped -= OnPlayableDirectorStopped; } } 
+
+
+
+Correct Answers: 
+4. Subscribe to the PlayableDirector.stopped event handler to receive a notification when the cinematic finishes as well as which PlayableDirector it was: using UnityEngine; using UnityEngine.Playables; public class PlayableDirectorWatcher : MonoBehaviour { public PlayableDirector director; void OnEnable(){ director.stopped += OnPlayableDirectorStopped; } void OnPlayableDirectorStopped(PlayableDirector aDirector) { if (director == aDirector) Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped."); } void OnDisable(){ director.stopped -= OnPlayableDirectorStopped; } } 
+
+
+
+Explanation: 
+Explanation The Programmer should subscribe to the PlayableDirector.stopped event handler to receive a notification when the cinematic finishes as well as which PlayableDirector it was. This is the most accurate way to know for sure when the end of a RealTime cinematic has finished playing. The Programmer needs to take care and ensure to unsubscribe from the delegate, but this is the correct way. The Programmer should not implement a co-routine to watch for the end of the PlayableDirector. This is messy code with magic numbers and additional processing, for something that has an event handler that can be subscribed to. The Programmer should not watch for the playing state to change in the Update loop on a script attached to the game object that the PlayableDirctor is on. Checking this state every frame would be a performance hit. The Programmer should subscribe to the PlayableDirctor.stopped event handler instead. The Programmer should not use a timer synchronized to the duration of the cutscene. This would be very error prone and hard to debug, as well as a processing hit. The Programmer should subscribe to the PlayableDirector stopped event handler. References PlayableDirector.stopped Delegates Coroutines C# countdown timer
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q3.txt
+
+A Programmer has a script on a player character that has a LayerMask variable named m_shootMask that currently allows it to raycast against Layer 12 (Enemies) and Layer 13 (Destructible).
+
+The Programmer needs to create a method to add Layer 14 (Vehicles) during runtime.
+
+Which two lines of code can the Programmer use to accomplish this? (Choose two.)
+
+
+Answers: 
+1. m_shootMask = m_shootMask + “Vehicles”; 
+2. m_shootMask = LayerMask.GetMask("Vehicles"); 
+3. m_shootMask &= LayerMask.GetMask("Vehicles"); 
+4. m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); 
+5. m_shootMask |= (1 << 14); 
+
+
+
+Correct Answers: 
+4. m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); 
+5. m_shootMask |= (1 << 14); 
+
+
+
+Explanation: 
+Explanation The programmer can use either of these lines of code: m_shootMask |= (1 << 14); m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); m_shootMask |= (1 << 14); uses the OR bitwise assignment operator and shifts by the layer number. The LayerMask has the Vehicles layer added to it. Using the layer number is also more efficient than looking up the Layer's name. m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); will also accomplish what was asked. Although it is less efficient than adding just the Vehicles layer to the existing LayerMask, a complete reassignment of the LayerMask's intended layers will work. m_shootMask = LayerMask.GetMask("Vehicles"); would replace the current value of m_shootMask with only the Vehicles layer. This would not work. m_shootMask &= LayerMask.GetMask("Vehicles"); would clear the Vehicles layer from the m_shootMask, not add to it. Using the layer name and GetMask to look up the layer is also less efficient than using the layer number. m_shootMask = m_shootMask + “Vehicles”; is not the correct syntax for bitwise operations or a LayerMask and would not work. References Physics LayerMask Bitwise and shift operators (C# reference) LayerMask.GetMask
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q4.txt
+
+
+A Programmer is working on a 3rd person action/adventure game for PC and must implement health and ammo pickups that are dropped into the game from above.
+ 
+ Both the health and ammo pickups will be dropped as simple crates that will fall from the sky. A parachute will deploy when the crate is within a variable distance from the ground that the designers can tune through a deploymentHeight variable. The DeplyParachute() method will set the Boolean "deployed" to true when it fires and trigger an animation to open a parachute. The environment colliders have been tagged as "environment". 
+ 
+ The Programmer is tasked with using a downward recast to determine the distance the crate is from the ground and trigger the DeployParachute() method by checking for the "environment" collider by tag.
+ 
+ Which code should the programmer use to properly detect the distance the crate is from the ground and call the DeployParachute() method?
+
+
+
+Answers: 
+1. public float deploymentHeight; private bool deployed; void FixedUpdate() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+2. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } 
+3. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+4. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.up); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+
+
+
+Correct Answers: 
+3. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } By first checking that the parachute has not been deployed, you can save unneeded processing on the downward pointing Ray. By placing the Physics.Raycast() call into a conditional statement, you can determine whether the variable distance for deployment has been met before checking if the collider tag is the one you are looking for. The Programmer should not use the following code: public float deploymentHeight; private bool deployed; void FixedUpdate() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } Although the Raycast() method resides within the Physics namespace, this code should be contained within the Update() loop and not the FixedUpdate() loop to ensure that this code is called exactly once per frame. The Programmer should not use the following code: public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.up); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } The issue here is that the deploymentRay was created pointing up, not towards the ground. If the deploymentRay is created pointing in the wrong direction, the conditional statements will never be true and the DeployParachute() method will never be called. The Programmer should not use the following code: public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } The issue here is that there is no check to see whether the parachute has already been deployed. This will cause the DeployParachute() method to be called multiple times. References Physics.Raycast Object.bool RaycastHit Ray
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q5.txt
+
+
+A Programmer is working on a 1st-person shooter game for PC and needs to add a Raycast for the player's shooting mechanic into existing code.
+ 
+ The origin and the direction of the Raycast have already been calculated and stored in the m_origin and m_direction Vector3 variables.
+ 
+ It has been decided that the RaycastHit information will be stored in a variable named m_hitInfo.
+ 
+ What code can the Programmer use to implement the Raycast to meet these specifications? (Choose two.)
+
+
+
+Answers: 
+1. Physics.Raycast(m_origin, m_direction, m_hitInfo); 
+2. Ray theRay = new Ray(m_direction, m_origin); Physics.Raycast(theRay, m_hitInfo); 
+3. Ray theRay = new Ray(m_origin, m_direction); Physics.Raycast(theRay, m_hitInfo); 
+4. Ray theRay = new Ray(origin, direction); Physics.Raycast(theRay, m_hitInfo); 
+5. Physics.Raycast(origin, m_direction, hitInfo); 
+
+
+
+Correct Answers: 
+1. Physics.Raycast(m_origin, m_direction, m_hitInfo); 
+3. Ray theRay = new Ray(m_origin, m_direction); Physics.Raycast(theRay, m_hitInfo); 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: Ray theRay = new Ray(m_origin, m_direction); Physics.Raycast(theRay, m_hitInfo); This will store the origin and direction variables in a Ray struct that can be passed into the Raycast method call. The Programmer should also use the following code: Physics.Raycast(m_origin, m_direction, m_hitInfo); With this code, all of the correct data is being used for the Raycast, and the m_hitInfo variable will contain the details of any colliders that the ray intersects with. The Programmer should not use the following code: Ray theRay = new Ray(m_direction, m_origin); Physics.Raycast(theRay, m_hitInfo); The Ray struct takes two Vector3 variables (origin and direction). This code will not have the Ray being used in the Raycast pointing the right direction or positioned correctly in world space. The Programmer should not use the following code: Ray theRay = new Ray(origin, direction); Physics.Raycast(theRay, m_hitInfo); The variables origin and direction do not exist, and this will cause an error. The Programmer should not use the following code: Physics.Raycast(m_origin, m_direction, hitInfo); The variable hitInfo does not exist, and this will cause an error. References Physics.Raycast Ray RaycastHit
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q6.txt
+
+
+A Programmer is building a Raycast for a player controller and needs the Raycast to ignore colliders that are set to triggers.
+ 
+ Which property should the Programmer use?
+
+
+
+Answers: 
+1. QueryTriggerInteraction.UseGlobal 
+2. QueryTriggerInteraction.Ignore 
+3. QueryTriggerInteraction.Collide 
+4. Physics.queriesHitTriggers 
+
+
+
+Correct Answers: 
+2. QueryTriggerInteraction.Ignore 
+
+
+
+Explanation: 
+Explanation The Programmer should use the QueryTriggerInteraction.Ignore property. This will explicitly tell the Raycast to ignore all triggers and only report on colliders that are not set to be triggers. The Programmer should not use the QueryTriggerInteraction.UseGlobal property. The default behavior is to have the Raycast report both colliders and triggers. The Programmer should not use the QueryTriggerInteraction.Collide property. This will cause the Raycast to report on all collisions including intersections with triggers. The Programmer should not use Physics.queriesHitTriggers property. This will only return true or false if the Raycast is hitting triggers and is a global setting. References QueryTriggerInteraction Physics.queriesHitTriggers QueryTriggerInteraction.Ignore
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q7.txt
+
+
+A Programmer is working on a 3rd-person action/adventure game and needs to implement a Raycast that collides with everything in layers 1, 2, 3, 4, 5, 6, and 7 but not collide with objects in layer 8 (the player layer). 
+ 
+ The code to do the Raycast is:
+ 
+ // configure layerMask
+ 
+ RaycastHit hit;
+ 
+ if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+ {
+         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+         Debug.Log("Did Hit");
+ }
+ 
+ Which two lines of code and comments does the Programmer need to implement at the beginning of the code segment to accomplish this objective? (Choose two.)
+
+
+
+Answers: 
+1. // Bit shift the index of the layer (8) to get a bit mask int layerMask = 1 << 8; 
+2. // Use the negative of the layerMask layerMask = -layerMask; 
+3. // Load the layer to ignore into the layerMask variable Int layerMask = 8; 
+4. // Load all the layers to ignore into the layerMask Int layerMask = 1 + 2 + 3 + 4 + 5 + 6 + 7; 
+5. // Invert the bit mask to include all layers except for layer 8 layerMask = ~layerMask; 
+
+
+
+Correct Answers: 
+1. // Bit shift the index of the layer (8) to get a bit mask int layerMask = 1 << 8; 
+5. // Invert the bit mask to include all layers except for layer 8 layerMask = ~layerMask; 
+
+
+
+Explanation: 
+Explanation The Programmer should bit shift the index of the layer (8) to get a bitMask by using the bit shift operator <<. This action alone would cause the Raycast to collide with this layer (8), so it is important to remember to also invert the bit mask to so you are including all layers except for this one. The Programmer should also invert the bit mask by using the inverse bit mask operator "~" to ensure that the Raycast collides with everything except the current layer in the bitMask. The Programmer should not load the value of the layer index directly into the layerMask variable. This will be treated as the value 8, not as a bitMask. The Programmer should not just add all the layers together. This results in a value of 28 and not an accurate bitMask. The Programmer should not use the negative of the layerMask but should use the invert operator ~. References Physics.Raycast
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q8.txt
+
+
+A Programmer is working on a 1st-person shooter game and needs to calculate the reflection of a laser beam off a clicked object.
+ 
+ Which of the RaycastHit property should the Programmer use to calculate the reflection angle correctly?
+
+
+
+Answers: 
+1. RaycastHit.point 
+2. RaycastHit.normal 
+3. RaycastHit.triangleIndex 
+4. RaycastHit.distance 
+
+
+
+Correct Answers: 
+2. RaycastHit.normal 
+
+
+
+Explanation: 
+Explanation The Programmer should use the RaycastHit.normal property. It can be used to calculate the reflection vector of the surface the Raycast hit. The Programmer should not use the RaycastHit.point property. It returns the impact point in world space that the RaycastHit collides. The Programmer should not use the RaycastHit.distance property. It returns the distance from the ray's origin to the impact point. The Programmer should not use RaycastHit.triangleIndex. It returns the index of the triangle hit, providing the collision was on a Mesh Collider. References RaycastHit.distance RaycastHit.normal RaycastHit RaycastHit.triangleIndex RaycastHit.point
+
+
+c:\users\korisnik\desktop\gpp\02 - Level Design Programming - Q9.txt
+
+
+A Programmer is working on a 3rd-person space shooter game for PC and must implement shooting missiles from the ship (player).
+ 
+ The variable "missilePrefab" will be set in the inspector, and the prefab has been built so that the missile model properly faces forward on the local Z axis. The code will be in a script that is attached to the ship game object.
+ 
+ Which code should the Programmer use to ensure that the missile fires forward from the player's ship?
+
+
+
+Answers: 
+1. FireMissile() { Instantiate(rocket, transform.position, rotation); } 
+2. FireMissile() { Instantiate(missilePrefab, rotation.position, transform.rotation); } 
+3. FireMissile() { Instantiate(missilePrefab, transform.position, Quaternion.identity); } 
+4. FireMissile() { Instantiate(missilePrefab, transform.position, transform.rotation); } 
+
+
+
+Correct Answers: 
+4. FireMissile() { Instantiate(missilePrefab, transform.position, transform.rotation); } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: FireMissile() { Instantiate(missilePrefab, transform.position, transform.rotation); } Because the code is in a script attached to the player game object, the transform.position and transform.rotation are the ship's position and rotation. The Programmer should not use the following code: FireMissile() { Instantiate(rocket, transform.position, rotation); } The issue here is that rotation is unknown. You should use transform.rotation to pass the right data to the Instantiate method. The Programmer should not use the following code: FireMissile() { Instantiate(missilePrefab, rotation.position, transform.rotation); } The issue here is that rotation.position is unknown. You should use transform.rotation to pass the right data to the Instantiate method. The Programmer should not use the following code: FireMissile() { Instantiate(missilePrefab, transform.position, Quaternion.identity); } The issue here is that Quaternion.identity is the world's rotation, not the player's ship. References Instantiating Prefabs at runtime Object.Instantiate
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q1.txt
+
+
+A Programmer is working on a 3rd-person action adventure for PC and needs to implement the logic for the non-player characters (NPCs) to switch from patrolling to chasing the player.
+ 
+ There will be additional functionality required later in development, so it is critical that the Programmer start off with a system that is easy to change and expand upon.
+ 
+ What should the Programmer consider?
+
+
+
+Answers: 
+1. Code several simple wander and patrol and attack scripts that work together to provide the desired functionality. 
+2. Plan and design a Finite State Machine (FSM) that can easily be applied to all enemies and expanded in the future. 
+3. Use flocking behaviors and have the NPCs work off of emergent behavior. 
+4. Use two scripts, one to patrol on a NavMesh and one to chase the player. 
+
+
+
+Correct Answers: 
+2. Plan and design a Finite State Machine (FSM) that can easily be applied to all enemies and expanded in the future. 
+
+
+
+Explanation: 
+Explanation The Programmer should design an FSM that properly manages the state transitions and conditions of those transitions in one centralized set of scripts that can be scaled to all enemies. The Programmer should not manually code simple wander and patrol scripts. Wandering is not required. Also, this type of logic is usually difficult to scale or maintain. The Programmer should not use NavMeshes for building NPC logic. NavMeshes are a quick way to set areas in which an NPC can move freely but are difficult to get right in pursuit logic. The Programmer should not use emergent behaviors and flocking patterns for planned states. Emergent behavior is difficult to control and can result in undesired NPC behavior. References Finite State Machines [Part 1] Wander Navigation and Pathfinding
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q10.txt
+
+
+A Programmer needs to spawn exactly 12 non-player characters (NPCs) into a level.
+ 
+ There are four different spawn points. The Programmer wants to spawn the same number of enemies at each of the locations.
+ 
+ Each of the spawn points is contained in an array of Vector3s named m_spawnPoints.
+ 
+ The NPC prefab is set in the inspector and stored in the variable m_enemyPrefab. 
+ 
+ Which code block should the Programmer use?
+
+
+
+Answers: 
+1. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+2. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[e], Quaternion.Identity); } } 
+3. for(int sp = 0; sp < 3; sp++) { for (int e = 0; e < 4; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+4. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; sp++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+
+
+
+Correct Answers: 
+1. for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } 
+
+
+
+Explanation: 
+Explanation The programmer should use the following code block: for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } This will correctly spawn three NPCs at each of the four spawn points. The programmer should not use the following code block: for(int sp = 0; sp < 3; sp++) { for (int e = 0; e < 4; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } This will spawn four NPCs at the first three spawn points and none at the last spawn point. The Programmer should not use the following code block: for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; e++) { Instantiate(m_enemyPrefab, m_spawnPoints[e], Quaternion.Identity); } } This will also spawn four NPCs at the first three spawn points and none at the last spawn point. The Programmer should not use the following code block: for(int sp = 0; sp < 4; sp++) { for (int e = 0; e < 3; sp++) { Instantiate(m_enemyPrefab, m_spawnPoints[sp], Quaternion.Identity); } } This will cause an index out of bounds error on the m_spawnPoints array. References Loops
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q11.txt
+
+
+A Programmer needs to efficiently be able to spawn in enemy non-player characters (NPCs), let them run around the level, and then collect them again.
+ 
+ What should the Programmer use to spawn and collect the enemies? (Choose two.)
+
+
+
+Answers: 
+1. A collector that returns the NPCs to the object pool 
+2. A spawner that runs off the Instantiate method 
+3. A series of NPC prefabs that are timed to self-destruct 
+4. A spawner that runs off an object pool 
+5. A collector that destroys the NPCs 
+
+
+
+Correct Answers: 
+1. A collector that returns the NPCs to the object pool 
+4. A spawner that runs off an object pool 
+
+
+
+Explanation: 
+Explanation The Programmer should use an object pool where the number of required NPCs can be warmed and available to spawn into the level as needed. When they are no longer needed, they can be collected and placed back into the object pool. The Programmer should not use the Instantiate method for such a cyclical spawn and collect pattern. The Programmer should not destroy the NPCs with their collection. An Object pool is much more efficient for this type of cyclical spawn and collect pattern. The Programmer should not use self-destructing prefabs. The Instantiate and Destroy methods are processor-intensive, and object pooling would be a better pattern to implement. References Object Pooling
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q12.txt
+
+
+A Programmer is building a mobile 2D space game that will have wave after wave of enemy ships come for the player with guns blazing.
+ 
+ What should the Programmer do to enhance the immersion of the player? (Choose three.)
+
+
+
+Answers: 
+1. Have the enemies play a loud explosion sound when they die. 
+2. Spawn all the enemies for the wave at once so a big group of them can come for the player at one time. 
+3. Have the enemy ships disappear as soon as they are hit. 
+4. Have the enemy ships explode with a particle system that is attached to the enemy ship and fired when it is hit. 
+5. Spawn the enemies off of the screen so that the player does not know which direction they will enter the screen from. 
+6. Keep the number of alive enemy ships visible in the HUD along with the number of kills the player has made. 
+
+
+
+Correct Answers: 
+4. Have the enemy ships explode with a particle system that is attached to the enemy ship and fired when it is hit. 
+5. Spawn the enemies off of the screen so that the player does not know which direction they will enter the screen from. 
+6. Keep the number of alive enemy ships visible in the HUD along with the number of kills the player has made. 
+
+
+
+Explanation: 
+Explanation The Programmer should have the enemy ships spawn off screen so the player does not know which direction they will enter the screen from. This will keep the players engaged because they never know where the enemy is coming from next. The Programmer should also have the enemy ships explode with a particle system that is attached to the enemy ship and fired when it is hit. This type of "juice" or "polish" can be very engaging and keep the player immersed in the fire fight. The Programmer should also keep the number of alive enemy ships visible in the HUD along with the number of kills the player has made. This provides a sense of progression between waves and will give the player an idea of how many more are coming for them. The Programmer should not spawn all the enemies for the wave at once. This is a process-intensive process and will induce lag on mobile devices that will break the player's immersion. The Programmer should not have the enemy ships disappear when they are hit. This will cause a feeling that is lackluster for the player and break the immersion. The Programmer should not have the enemies play a loud explosion sound when the enemies die. Instead, the Programmer should provide some variation to the explosion sound and keep it to the same level as the rest of the game sounds, while keeping in mind that most players play mobile games with the sound off. References How do YOU make your game look good? 5 Important Ways to Add Polish to Your Game
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q13.txt
+
+
+A Programmer is tasked with continuously spawning enemies into a level.
+ 
+ What is the most efficient way to accomplish this?
+
+
+
+Answers: 
+1. Use the Update() method and a timer to call a private Spawn() method at a set interval. 
+2. Use the FixedUpdate() method to call a private Spawn() method. 
+3. Use the InvokeRepeating() method in the Start() method to call a private Spawn() method at a set interval. 
+4. Create a public Spawn() method and have the level manger call it every frame. 
+
+
+
+Correct Answers: 
+3. Use the InvokeRepeating() method in the Start() method to call a private Spawn() method at a set interval. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the InvokeRepeating() method in the Start() method to call a private Spawn() method at a set interval. Unity has designed this method to do the heavy lifting for you. The Programmer should not use the Update() method and a timer for this type of repetitive work. The InvokeRepeating() method is more efficient. The Programmer should not use the FixedUpdate() method for spawning. FixedUpdate() is for the physics system. The Programmer should not have an external script call a public method each frame because it is inefficient. The InvokeRepeating() method was created for this type of situation. References MonoBehaviour.InvokeRepeating MonoBehaviour.Update() MonoBehaviour.FixedUpdate()
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q2.txt
+
+
+A Programmer is tasked with creating a Finite State Machine (FSM) based AI that can be configured in the Unity Inspector.
+ 
+ The Programmer decides to use the Delegate Pattern and ScriptableObjects.
+ 
+ Which three parts of this setup are the best candidates for the ScriptableObjects? (Choose three.)
+
+
+
+Answers: 
+1. The actions 
+2. The states 
+3. The machine 
+4. The state transitions 
+5. The Finite State Machine 
+6. The StateController 
+
+
+
+Correct Answers: 
+1. The actions 
+2. The states 
+4. The state transitions 
+
+
+
+Explanation: 
+Explanation The actions are an ideal candidate for ScriptableObjects that can be tuned in the inspector by a designer or non-programmer. The states are also an ideal candidate for ScriptableObjects because they can encompass the transitions and actions, which are also good candidates for ScriptableObjects. The state transitions can be pure serializable classes, and that makes them a good candidate for ScriptableObjects that can be managed through the inspector. The Finite State Machine needs to be based on MonoBehaviour, not ScriptableObjects. The StateController needs to inherit from MonoBehaviour to leverage the Unity Update Loop and monitor the State Machine. The Machine or Finite State Machine needs to be based on MonoBehaviour, not ScriptableObjects. References Finite State AI with the Delegate Pattern ScriptableObject
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q3.txt
+
+
+A Programmer needs to expand the current logic for the non-player characters (NPCs) in an action/adventure game prototype. The senses of the NPCs need to be built out and tested.
+ 
+ Currently the NPCs just wander around the map and have no senses. A finite state machine (FSM) has been built, but the only state that currently exists is wander.
+ 
+ Which two senses should the Programmer implement first? (Choose two.)
+
+
+
+Answers: 
+1. The Programmer should implement the hearing behavior. If an NPC hears a loud noise (caused by the player or an explosion), the NPC can switch from the wander state to an inspect state. 
+2. The Programmer should implement the sight behavior. If an NPC has a clear line of sight to the player, it can switch from a wander state to a pursuit state. 
+3. The programmer should implement a patrol behavior. As soon as the NPC spawns in, it will begin a patrol path by following waypoints. 
+4. The programmer should implement a psychic behavior. As soon as the NPC spawns in, it can head directly for the player. 
+5. The Programmer should implement the smell behavior. If an NPC is downwind from the player, it will switch to a pursuit state and go after the player. 
+
+
+
+Correct Answers: 
+1. The Programmer should implement the hearing behavior. If an NPC hears a loud noise (caused by the player or an explosion), the NPC can switch from the wander state to an inspect state. 
+2. The Programmer should implement the sight behavior. If an NPC has a clear line of sight to the player, it can switch from a wander state to a pursuit state. 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the sight behavior. This is the most common sense for an NPC and makes a good starting point. If the NPC has a clear line of sight to the player, it can switch to a pursuit state and go after the player. The Programmer should also implement the hearing behavior. This is the second most common sense that NPCs get in video games. If the player triggers a sound, the NPC can switch to an inspect state and go to the source of the sound. This may or may not be where the player actually is. The Programmer should not start with the psychic behavior. While this can be a fun behavior to play with for difficulty, the Programmer should start with pursuit and inspect based on sight and sound. Once these behaviors are already added to the NPC, adding a psychic behavior is trivial. The Programmer should not start with a patrolling behavior. Following a series of waypoints is the evolution of the inspect behavior, where the NPC is already moving to a specific point. Once the inspect state has been added through a sense of sound, having the NPC follow a series of inspect states is trivial. The Programmer should not start with the sense of smell. That would first require a wind mechanism and then a way for the player to see the direction the wind is blowing. When prototyping games, you should start with the simple steps that can be built upon and play-test often. Starting with a sense of sight or sound makes the most sense as a starting point. References State Machine Basics Finite State Machines [Part 1]
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q4.txt
+
+
+A Programmer is building a simple 3rd-person racing game and needs to add in non-player characters (NPCs) and their logic for the player to race against. 
+ 
+ What is best suited for this type of Game AI?
+
+
+
+Answers: 
+1. A flocking pattern with obstacle avoidance as the primary system 
+2. A waypoint system that can be expanded for difficulty 
+3. An A* Pathfinding system that can plot its way around the map 
+4. A NavMesh and NavAgent system that will let the NPCs move freely on the track 
+
+
+
+Correct Answers: 
+2. A waypoint system that can be expanded for difficulty 
+
+
+
+Explanation: 
+Explanation The Programmer should implement a waypoint system that can be expanded for difficulty as the starting point for this type of NPC logic. It is simple, quick, and can be tweaked and tuned by designers during play-testing. The programmer should not use a NavMesh and NavAgent system that lets the NPCs move freely. There will be no way to ensure that they travel in the right direction. The Programmer should not use an A* pathfinding solution unless the simpler waypoint system is determined through play-testing to be inadequate. This type of system is difficult to tune or control without a lot of additional heuristic planning. The Programmer should not use a flocking pattern with obstacle avoidance unless the simpler waypoint system is determined through play-testing to be inadequate. This type of system is difficult to tune or control and is better suited for emergent behaviors. References How to make waypoints Building a NavMesh Flocking
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q5.txt
+
+
+A Programmer is working on an action adventure game for PC and needs to implement non-player character (NPC) behaviors for wild horses.
+ 
+ Which approach will should the Programmer use to get the most natural effect in the shortest amount of time?
+
+
+
+Answers: 
+1. NavMesh and NavAgents 
+2. Behavior Tree 
+3. Finite state machines 
+4. Flocking behaviors 
+
+
+
+Correct Answers: 
+4. Flocking behaviors 
+
+
+
+Explanation: 
+Explanation The Programmer should implement flocking behaviors like Align, Cohesion, Separation, and Evade. This will create emergent behaviors in the NPCs that will look the most natural. The Programmer should not implement Behavior Trees for this type of NPC behavior. Behavior Trees take a considerable amount of planning and coding. The Programmer should not use finite state machines (FSMs) for this type of NPC behaviors. FSMs can look mechanical and take a considerable amount of time to plan and code. The Programmer should not use NavMesh and NavAgents. This alone will not provide a natural effect, and the horses will end up looking like they do not belong together. References 3 Simple Rules of Flocking Behaviors: Alignment, Cohesion, and Separation Flocking Navigation and Pathfinding Finite State Machines [Part 1]
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q6.txt
+
+
+A Programmer is working on a mobile escape game in which the player needs to evade the patrolling non-player characters (NPCs).
+ 
+ The game uses a NavMesh system. NPC navigation incorrectly sees a set of stairs as a slope, which makes the NPCs appear to slide up and down the stairs.
+ 
+ The Programmer needs to ensure accurate placement of the NPCs on the steps of the level.
+ 
+ What should the Programmer do?
+
+
+
+Answers: 
+1. Add a Height Mesh to the walkable surfaces. 
+2. Remove the stairs from the gameplay. 
+3. Add a Height Map to the walkable surfaces. 
+4. Tweak the animations of the NPCs so that they look better. 
+
+
+
+Correct Answers: 
+1. Add a Height Mesh to the walkable surfaces. 
+
+
+
+Explanation: 
+Explanation The Programmer should add a Height Mesh to the walkable surfaces. You can do this by enabling the Height Mesh option on the NavMesh under the advanced settings before building the NavMesh. This will cause the NavMesh to not smooth itself over the walkable area and will more closely match the walkable path. The Programmer should not add a Height Map to the walkable surfaces. Height Maps are for the Terrain system and rendering details, not the NavMesh system. The Programmer should not tweak the animations of the NPCs so they look better. The issues lie with the NavMesh smoothing the walkable surface. Enabling the Height Mesh option under the advanced settings will allow for a more accurate placement of the models. The Programmer should not remove the stairs from the gameplay. The issue lies with the NavMesh smoothing the walkable surface. Enabling the Height Mesh option under the advanced settings will allow for a more accurate placement of the models. References Building Height Mesh for Accurate Character Placement Heightmap
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q7.txt
+
+A Programmer is building a 3D Action/Adventure game and working on a boss fight that takes place in an area that features platforms the player and NPC enemies can jump on to cross over gaps.
+
+The platforms will suddenly rise up from toxic water, stay up for a few seconds, and then drop back down. The player and the NPCs need to avoid the toxic water.
+
+How should the Programmer set up the NavMesh to allow the NPCs to use these platforms?
+
+
+Answers: 
+1. - Create a clone of the platforms and set them where they will be when the water has lifted them. - Leave the collider and remove the renderer. - Set up off-mesh links between the ground and these clones. - Programmatically activate and deactivate these links to control when the NPCs can and cannot use them. 
+2. - Uncheck the static option for the platforms. - Assign a custom NavMesh Area to the platforms. - Programmatically alter the cost of the NavMesh Area to control when NPCs will use it. 
+3. - Set up off-mesh links between the ground and the platforms. - Enable the auto update positions options on the links to account for changes in the vertical positions of the platforms. - Programmatically alter the cost of the NavMesh Area to control when the NPCs should use it. 
+4. - Set up off-mesh links between the ground and the platforms. - Enable the auto update positions options on the links to account for changes in the platform's vertical position. 
+5. - Create a clone of the platforms and set them where they will be when the water has lifted them. - Assign a custom NavMesh Area to these clones. - Programmatically alter the cost of the NavMesh Area to control when the NPCs use it. 
+
+
+
+Correct Answers: 
+1. - Create a clone of the platforms and set them where they will be when the water has lifted them. - Leave the collider and remove the renderer. - Set up off-mesh links between the ground and these clones. - Programmatically activate and deactivate these links to control when the NPCs can and cannot use them. 
+
+
+
+Explanation: 
+Explanation The Programmer should clone the platforms and set them where they will be when the water has lifted them, leave the collider and remove the renderer, and set up off-mesh links between the ground and these clones, allowing them to programmatically activate and deactivate these links to control when the NPCs can and cannot use them. This ensures that the NPCs will behave as expected and not cost additional CPU processing. The Programmer should not set up off-mesh links between the ground and the platforms and enable the auto update positions options on the links to account for changes in the platform's vertical position. This would cause the NPCs to believe they could use the off-mesh links regardless of the toxic water and ruin the gameplay. The Programmer should not uncheck the static option for the platforms, assign a custom NavMesh Area to the platforms, and programmatically alter the cost of the NavMesh Area to control when NPCs will use it. The NPCs would have no off-mesh links to get them from the ground to the platforms. The Programmer should not create a clone of the platforms and set them where they will be when the water has lifted them, assign a custom NavMesh Area to these clones, and programmatically alter the cost of the NavMesh Area to control when the NPCs use it. The NPCs would have no off-mesh links to get them from the ground to the platforms. The Programmer should not set up off-mesh links between the ground and the platforms, enable the auto update positions options on the links to account for changes in their vertical positions, and programmatically alter the cost of the NavMesh Area to control when the NPCs should use it. Doing so would cost additional CPU processing to recalculate the change in costs, and there is no guarantee that the NPCs would not take the higher cost path while the costs were changing. It would be better for the Programmer to programmatically enable and disable the off-mesh links to control the NPCs. References Navigation and Pathfinding OffMeshLink Navigation Areas and Costs
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q8.txt
+
+A Programmer is making a 3D Action/Adventure game. The Programmer is working on a level that is full of areas the player can flood and un-flood by a series of levers to prevent being followed by the NPC enemy characters.
+
+The Programmer needs to implement a NavMesh solution that can easily scale for additional areas. The water is generated and controlled by a shader, so there is no actual object for the NPCs to interact with. 
+
+Which three steps should the Programmer use to accomplish this? (Choose three.)
+
+
+Answers: 
+1. Programmatically assign the area a custom NavMesh when the area is flooded. 
+2. Create a custom NavMesh Area with a very high cost that will cause the NPCs to ignore the area. 
+3. Programmatically change the cost of the custom NavMesh areas to something very high when the area is flooding to preventing the NPCs from using the area. 
+4. Assign the areas that floods a custom NavMesh area. 
+5. Have the water carve the NavMesh. 
+6. Programmatically change the cost of the custom NavMesh areas back to the normal cost when the area is not flooded to allow the NPC enemies to use the area. 
+7. Set the destination of the NPCs back to a non- flooded area. 
+
+
+
+Correct Answers: 
+3. Programmatically change the cost of the custom NavMesh areas to something very high when the area is flooding to preventing the NPCs from using the area. 
+4. Assign the areas that floods a custom NavMesh area. 
+6. Programmatically change the cost of the custom NavMesh areas back to the normal cost when the area is not flooded to allow the NPC enemies to use the area. 
+
+
+
+Explanation: 
+Explanation The Programmer should assign the areas that can flood a custom NavMesh area so that the cost of these areas can be changed easily to prevent the NPCs from using them. The Programmer should also programmatically change the cost of the custom NavMesh areas to something very high when the area is flooding to prevent the NPC enemies from using the area. The Programmer should also programmatically change the cost of the custom NavMesh areas back to the normal cost when the area is not flooded to allow the NPC enemies to use the area. The Programmer should not set the NPCs destination back to a non-flooded area. Enemy NPCs will automatically move towards the nearest traversable area if the area they are currently walking in has too high of a cost. Determining the ideal location to set a new destination would require a lot of additional processing compared with just adjusting the cost of the floodable areas. The Programmer should not create a custom NavMesh Area with a very high cost that will cause the NPC enemies to ignore the area. Creating a separate custom NavMesh Area with a very high cost would prevent NPCs from using it even when they should be chasing the player. The Programmer should not programmatically assign the area a custom NavMesh when the area is flooded. The Programmer should programmatically change the cost of the custom NavMesh area at runtime to a value high enough that the NPCs will avoid the area while it is flooded. The Programmer should not have the water carve the NavMesh. The water is generated by a shader, which cannot carve a custom NavMesh. The Programmer should use custom NavMesh areas that have their cost adjusted for NPCs to use or not use at runtime. References Navigation and Pathfinding Navigation System in Unity Nav Mesh Obstacle Water in Unity Writing Shaders
+
+
+c:\users\korisnik\desktop\gpp\03 - NPC Design Programming - Q9.txt
+
+
+A Programmer is working on a 3rd-person action/adventure game for PC and must implement enemy spawning.
+ 
+ The enemies will spawn from spawners in each level. When they spawn, they should be facing the player. The variable "enemyPrefab" will be set in the inspector and the prefab has been built so that the enemy model properly faces forward on the local Z axis. The playerTransform variable is the Transform of the player.
+ 
+ Which code should the Programmer use to ensure that the enemy is facing the player when it spawns?
+
+
+
+Answers: 
+1. SpawnEnemy(Transform spawner) { Instantiate(enemyPrefab, spawner.position, Quaternion.identity); } 
+2. SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner, Quaternion.LookRotation(relativePos, Vector3.up); } 
+3. SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner.position, Quaternion.LookRotation(relativePos, Vector3.up); } 
+4. SpawnEnemy(Transform spawner) { Vector3 relativePos = spawner.position - playerTransform.position; Instantiate(enemyPrefab, spawner, relativePosition); } 
+
+
+
+Correct Answers: 
+3. SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner.position, Quaternion.LookRotation(relativePos, Vector3.up); } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner.position, Quaternion.LookRotation(relativePos, Vector3.up); } By properly calculating the player's position relative to the spawner and using the Quaternion.LookRotation method, the NPC will always spawn facing the player. The Programmer should not use the following code: SpawnEnemy(Transform spawner) { Instantiate(enemyPrefab, spawner.position, Quaternion.identity); } The issue here is that Quaternion.identity is the world's rotation (X, Y, Z), and the enemy would always spawn facing forward on the world Z axis. The Programmer should not use the following code: SpawnEnemy(Transform spawner) { Vector3 relativePos = spawner.position - playerTransform.position; Instantiate(enemyPrefab, spawner, relativePosition); } The issue here is that relative position was calculated incorrectly and is a Vector3, not a Quaternion. The Programmer should not use the following code: SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner, Quaternion.LookRotation(relativePos, Vector3.up); } The issue here is that spawner is a Transform and not a Vector3. spawner.position would return the Vector3 that the Instantiate method expects. References Object.Instantiate Quaternion.LookRotation
+
+
+c:\users\korisnik\desktop\gpp\04 - User Interface Implementation - Q1.txt
+
+
+A Programmer is building an in-game heads-up-display (HUD) that requires the player character in the game to appear to reach up and press a button on the player's UI. The UI needs to maintain its position and orientation at all times during game play.
+ 
+ Which render mode property should the Programmer use for the UI Canvas to accomplish this?
+
+
+
+Answers: 
+1. Screen Space - Camera 
+2. World Space 
+3. Screen Space - Overlay 
+4. Target Display - Display 1 
+
+
+
+Correct Answers: 
+1. Screen Space - Camera 
+
+
+
+Explanation: 
+Explanation The Programmer should set the render mode property of the UI Canvas to Screen Space - Camera, so that the canvas is rendered as if it were drawn on a plane object some distance from the selected camera. It always maintains the same onscreen size and distance to fit within the camera frustum. The Programmer should not set the render mode property of the UI Canvas to Screen Space - Overlay. This will cause the UI to be drawn over top of all other graphics, and it will be rendered without reference to the scene or camera. The Programmer should not set the render mode property of the UI Canvas to World Space. This will cause the UI to be rendered as if it were a plane object in the scene, but additional code would need to be developed to keep the UI facing the camera at the same size and distance to fit within the camera frustum. The Programmer should not set the Render Mode property to Target Display - Display 1. This option is only available within the Render Mode property set to ScreenSpace - Overlay, which will cause the UI to be drawn on top of all other graphics, and it will be rendered without reference to the scene or camera. References Canvas
+
+
+c:\users\korisnik\desktop\gpp\04 - User Interface Implementation - Q2.txt
+
+
+A Programmer wants to convert the position of viewport space into screen space.
+ 
+ Which method should the Programmer use?
+
+
+
+Answers: 
+1. RectTransform 
+2. RectMask2D 
+3. ScreenToViewportPoint() 
+4. ViewportToScreenPoint() 
+
+
+
+Correct Answers: 
+4. ViewportToScreenPoint() 
+
+
+
+Explanation: 
+Explanation The Programmer should use ViewportToScreenPoint(), which correctly transforms a Vector3 from ViewportSpace into ScreenSpace. The Programmer should not use ScreenToViewportPoint(). It does the opposite of what the Programmer is after. It transforms a Vector3 from ScreenSpace into ViewportSpace. The Programmer should not use the RectTransform. It is a component attached to a Game Object and not a method. The Programmer should not use a RectMask2D. It is a masking control, not a method. References Camera.ScreenToViewportPoint Camera.ViewportToScreenPoint Rect Transform RectMask2D
+
+
+c:\users\korisnik\desktop\gpp\04 - User Interface Implementation - Q3.txt
+
+
+A Programmer is working on building a main menu with the Unity GUI system. The Programmer has the following code:
+ 
+ void OnGUI()
+ {
+     // Constrain all drawing to be within a 800x600 pixel area centered on the screen.
+     GUI.BeginGroup(new Rect(Screen.width / 2 - 400, Screen.height / 2 - 300, 800, 600));
+ 
+     // Draw a box in the new coordinate space defined by the BeginGroup.
+     // Notice how (0,0) has now been moved on-screen
+     GUI.Box(new Rect(0, 0, 800, 600), "This box is now centered! - put main menu here");
+ }
+ 
+ The GUI Box and Rectangle are not displayed.
+ 
+ What did the Programmer do wrong?
+
+
+
+Answers: 
+1. The Programmer needs to end the Group before the GUI Box will render. 
+2. The Programmer should use a Rect outside of the GUI Box. 
+3. OnGui() is no longer used. The Programmer is using an outdated system. 
+4. The Programmer is rendering the GUI Box and Rect outside of the screen's viewable area. 
+
+
+
+Correct Answers: 
+1. The Programmer needs to end the Group before the GUI Box will render. 
+
+
+
+Explanation: 
+Explanation The Programmer needs to end the Group before the GUI Box will render. All BeginGroup calls need to be matched with an EndGroup call. The Programmer is not using an outdated system. OnGui() is the correct method for scripting UI components. The Programmer should not use a Rect outside of the GUI Box. That part of the code is correct. The Programmer did, however, forget to call EndGroup(), which is required for each call to BeginGroup(). The Programmer is not rendering the GUI Box and Rect outside of the screen's viewable area. The Programmer forgot to call EndGroup(), which is required for each call to BeginGroup(). References GUI.EndGroup MonoBehaviour.OnGUI() Immediate Mode GUI (IMGUI)
+
+
+c:\users\korisnik\desktop\gpp\04 - User Interface Implementation - Q4.txt
+
+A Programmer is building a 2D puzzle game for mobile platforms. The requirements state that the game needs to target multiple aspect ratios. The Programmer will need to be sure to adapt the UI to fit these aspect ratios, maintaining the distance of GUI elements from the edge of the screen.
+
+What will the programmer need to set per element to achieve this?
+
+
+Answers: 
+1. Scale of each element in the GUI 
+2. Anchor Points per element in the GUI 
+3. Screen.Main for each element in the GUI 
+4. Blocking Objects per element in the GUI 
+
+
+
+Correct Answers: 
+2. Anchor Points per element in the GUI 
+
+
+
+Explanation: 
+Explanation The Programmer should set Anchor Points per element in the GUI. By anchoring the elements to the screen edges or corners, the game UI will adapt to a number of devices and screens. The Programmer should not set Blocking Objects per element in the GUI. This will cause shifting of elements on different resolutions and cost additional processing. The Programmer should not set Screen.Main per element in the GUI. This would only server to re-attach all of the elements to the main camera on the mobile screen. The Programmer should not set the Scale of each element in the GUI. This will cause uncontrolled distortion in the aspect ratio of the elements on various screen resolutions. References Basic Layout Designing UI for Multiple Resolutions
+
+
+c:\users\korisnik\desktop\gpp\04 - User Interface Implementation - Q5.txt
+
+A Programmer is working on a 2D mobile puzzle game. Profiling reveals that the GUI is using too many resources. The Programmer needs to reduce the game's CPU consumption.
+
+Which two actions should the Programmer perform to reduce the processing? (Choose two.)
+
+
+Answers: 
+1. Change the camera of the UI canvas to Screen Space - Overlay. 
+2. Disable is Raycast Target on all of the UI elements that cannot be touched. 
+3. Set the Blocking Objects of the canvas using a procedurally generated BitMask. 
+4. Change the camera of the UI canvas to Screen Space - Camera. 
+5. Disable is Raycast Target on all of the GUI and Screen elements. 
+
+
+
+Correct Answers: 
+1. Change the camera of the UI canvas to Screen Space - Overlay. 
+2. Disable is Raycast Target on all of the UI elements that cannot be touched. 
+
+
+
+Explanation: 
+Explanation The Programmer should change the camera of the UI canvas to Screen Space - Overlay. Screen Space - Overlay uses less processing because changing the camera's transform does not require repositioning each UI element. The Programmer should also disable is Raycast Target on all of the UI elements that cannot be touched. The Graphics Raycaster acts as a raycaster specific to touch events for UI elements on a canvas. The engine has to check against every UI element that has is Raycast Target enabled every frame there is UI interaction. The Programmer should not set the Blocking Objects of the canvas using a procedurally generated BitMask. This would increase the processing required, not reduce it. The Programmer should not change the camera of the UI canvas to Screen Space - Camera. This would require repositioning of all the UI elements whenever the transform of the camera changed. The Programmer should not disable is Raycast Target on all of the GUI and Screen elements. This would break interaction on the elements that need to be touched or clicked. References GraphicRaycaster.Raycast Some of the best optimization tips for Unity UI
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q1.txt
+
+
+A Programmer needs to improve load times, reduce the memory footprint, and increase rendering performance.
+ 
+ What is the first thing that the Programmer should do?
+
+
+
+Answers: 
+1. Add fog if possible. 
+2. Use multiple pixel lights in place of vertex lights. 
+3. Tweak the Level Of Detail (LOD) system. 
+4. Use compressed textures. 
+
+
+
+Correct Answers: 
+4. Use compressed textures. 
+
+
+
+Explanation: 
+Explanation The Programmer should use compressed textures. Compressed textures use a lot less memory bandwidth than uncompressed 32-bit RGBA textures. The Programmer should not tweak the LOD system first. While this is a way to reduce CPU and GPU loads, it can make the game look bad. The place to start is with compressed textures. The Programmer should not use multiple pixel lights in place of vertex lighting. In fact, multiple pixel lights (directional lights) will lower the performance of the game. The Programmer should not add fog. Fog will hide issues with the LOD system and a far clip plane that's too close to keep the number of active objects in the Scene culled. It will not improve load times or reduce the memory footprint of the game. References Optimizing graphics performance
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q10.txt
+
+
+A Programmer is working on porting a simple low-res RPG game from PC to mobile platforms. What two considerations should the Programmer be aware of that will affect the gameplay on a mobile device? (Choose two.)
+
+
+
+Answers: 
+1. How to re-write all of the existing code so that it works on mobile 
+2. How Unity handles input 
+3. How Unity renders graphics 
+4. The storage requirements of the game 
+5. How the interactive elements of the HUD will need to be changed 
+
+
+
+Correct Answers: 
+2. How Unity handles input 
+4. The storage requirements of the game 
+
+
+
+Explanation: 
+Explanation The Programmer needs to consider how the input will change from keyboard and mouse to touch based input and how that might impact gameplay. The Programmer also needs to be aware of the storage requirements, which would need to be significantly reduced on mobile platforms. How Unity renders graphics is of little concern between desktop and mobile platforms. The Engine handles the low level rendering subsystem and this is a low-res game. The Programmer should not be concerned with re-writing all the existing code. In many cases the same code can be used for both PC and mobile games. The programmer should not be concerned with the interactive elements of the HUD. Most mouse clicks convert naturally to screen taps. References Cross-Platform Considerations
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q11.txt
+
+A Programmer is porting a 2D space game from PC to mobile. There are fight scenes in which the player is engaged with enemy ships in a firefight and race scenes in which the player is racing other ships. There are many different types of asteroid meshes that are used during these racing scenes.
+
+During the race scenes where a smooth frame rate is the main concern, the Programmer is having difficulty keeping the gameplay smooth and consistent. The Programmer finds that the garbage collector is firing infrequently, but that is the cause of the CPU Spikes. The Programmer knows that the data being generated during the race scenes consists of small blocks that are only used briefly.
+
+What should the Programmer do to improve gameplay?
+
+
+Answers: 
+1. Use a small heap with fast and frequent garbage collection. 
+2. Implement incremental garbage collection. 
+3. Ensure that all large blocks of data in arrays are kept under 1024 bytes to avoid them being treated in any special way. 
+4. Use reusable object pools. 
+
+
+
+Correct Answers: 
+1. Use a small heap with fast and frequent garbage collection. 
+
+
+
+Explanation: 
+Explanation The Programmer should implement a small heap with fast and frequent garbage collection. This approach requests garbage collection at a regular frame interval, which will make it happen more frequently, but there will be less to clean up. This results in faster garbage collection with minimal effect on gameplay. The Programmer should implement garbage collection at a consistent frame interval with code like the following: if (Time.frameCount % 30 == 0) { System.GC.Collect(); } The Programmer should not ensure that all large blocks of data in arrays are kept under 1024 bytes to avoid them being treated in any special way. Doing this will cause performance issues because copying and returning arrays is very expensive, and Unity suggests avoiding doing this on mobile platforms. The Programmer should not implement incremental garbage collection. While this can be a great feature, it does not do well with changing object references like that of a quick race through space. Implementing this would likely overwhelm the marking between frames and end up defaulting to full non-incremental garbage collection. The Programmer should not implement reusable object pools because the data being collected is the asteroids, which are all unique. Object pools are good for having the same objects reused, so this would not work with all the asteroid variants. References Understanding Automatic Memory Management Cross-Platform Considerations
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q12.txt
+
+A Programmer is building a 2D puzzle game for PC and wants to implement the best solution for developing across multiple platforms.
+
+The requirements state that the game needs to offer players the best possible experience and performance on all platforms.
+
+What does the Programmer need to do to meet these requirements?
+
+
+Answers: 
+1. Build separate projects for each platform the game will run on. 
+2. Use AssetBundle variants for low and high-end content that will work on all platforms. 
+3. Use platform dependence compilation in the game to have specific chunks of the code written specifically for each platform. 
+4. Target performance for the platform capabilities on the high-end hardware. 
+5. Target performance for the platform capabilities on the low-end hardware. 
+
+
+
+Correct Answers: 
+2. Use AssetBundle variants for low and high-end content that will work on all platforms. 
+
+
+
+Explanation: 
+Explanation The Programmer should use AssetBundle variants for low and high-end content that works on all platforms. By offering the same asset with different size and complexity of files, they could offer a game that performs consistently well across a variety of hardware and platforms. The Programmer should not target the game's performance for the platform capabilities on the high-end hardware. This will cause platforms and hardware on the low-end to suffer and possibly make the game un-playable. The Programmer should not use platform dependence compilation in the game to have specific chunks of the code written specifically for each platform. This will very quickly make the code base un-maintainable and un-manageable. The Programmer should not build separate projects for each platform the game will run on. This would create added overhead to keep the game updated on all platforms and would cause inconsistencies between ports. The Programmer should not target the game's performance for the platform capabilities on the low-end hardware. This will cause a severe limitation in how beautiful the game could look, feel, or play on hardware platforms with a greater processing potential. References Cross-Platform Considerations
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q2.txt
+
+
+Which three rendering optimizations will make your game faster? (Choose three.)
+
+
+
+Answers: 
+1. Use pow, sin and cos in pixel shaders whenever possible. 
+2. Do not use skyboxes to fake geometry. 
+3. Keep the number of different materials per Scene low, and share as many materials between different objects as possible. 
+4. Use more textures per fragment. 
+5. Avoid using fog where possible. 
+6. Bake Lighting rather than use dynamic lighting. 
+
+
+
+Correct Answers: 
+3. Keep the number of different materials per Scene low, and share as many materials between different objects as possible. 
+5. Avoid using fog where possible. 
+6. Bake Lighting rather than use dynamic lighting. 
+
+
+
+Explanation: 
+Explanation To make your game faster, you should avoid using fog where possible. You should also bake your lighting rather than use dynamic lighting. You should also keep the number of materials per Scene low, and share as many materials between different objects as possible. You should not use pow, sin and cos in pixel shaders when possible. They are all process-intensive and will slow down your rendering. You should use skyboxes for fake distant geometry when possible. Not using them when possible is a performance hit that you could avoid. You should use fewer textures per fragment whenever possible. References Optimizing graphics performance
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q3.txt
+
+A Programmer is optimizing a 3D adventure game and is reducing the GPU load. The Programmer has a number of static meshes in a scene and wants to go through each to mark them as an Occludee, but not an Occluder.
+
+Which two static meshes should the Programmer mark in this way? (Choose two.)
+
+
+Answers: 
+1. Objects with transparency 
+2. Objects with backfaces 
+3. Objects that are small 
+4. Objects that will get close to the camera 
+
+
+
+Correct Answers: 
+1. Objects with transparency 
+3. Objects that are small 
+
+
+
+Explanation: 
+Explanation Objects with transparency may cover another object, but they will not hide it. The Programmer should mark this object as Occludee but not Occluder. The Programmer should ignore any objects that are too small to occlude anything else when calculating occlusion to prevent unnecessarily processing every frame. Objects that have backfaces are good candidates for blocking out other objects, making them Occluders. Objects that will get close to the camera are more likely to be blocking other objects and are therefore obvious Occluders. References Occlusion Culling
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q4.txt
+
+A Programmer is implementing Asset Bundles in a CPU-intensive, 3D Pirate game. The Programmer will need to load assets from the Asset Bundles with as little work from the CPU as possible.
+
+Which compression method should the Programmer use for the Asset Bundles?
+
+
+Answers: 
+1. custom compression 
+2. chunk based compression (LZ4) 
+3. no compression 
+4. standard compression (LZMA) 
+
+
+
+Correct Answers: 
+3. no compression 
+
+
+
+Explanation: 
+Explanation The Programmer should use no compression. This way there is very little work for the CPU to access assets from an Asset Bundle. The developer should use this method when CPU resources are low. The Programmer should not use standard compression (LZMA), which requires some additional CPU processing to decompress and manage the memory footprint. LZMA compression uses the most memory to access its contents. This is not the recommended compression method. The Programmer should not use custom compression, which requires that the Programmer create their own compression and decompression algorithms. These would be additional work for the CPU. This is not the recommended compression method. The Programmer should not use chunk based compression (LZ4). There is nothing in the requirements that suggests the Programmer needs to load only part of an asset bundle (individual assets). The primary use of LZ4 is to reduce size and allow for retrieval of individual assets without the need for decompressing the whole Asset Bundle. This is not the recommended method. References AssetBundle Asset Bundle Compression
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q5.txt
+
+A Programmer is implementing Asset Bundles in a 2D Space shooter as a way of providing seasonally themed DLC for the players and reducing the install footprint of the game.
+
+The Programmer has the following function for downloading the material Asset Bundle:
+
+private Material LoadMaterialBundle(string materialName) {
+
+WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0);AssetBundle bundle = www.assetBundle;AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material));Material newMat = bundleRequest.asset as Materialbundle.Unload(false);www.Dispose();return newMat;}
+
+However, the Asset Bundle is only being returned sometimes with very small test materials.
+
+What should the Programmer do to resolve this issue and allow for larger materials to be pulled from an AssetBundle all of the time? (Choose two.)
+
+
+
+Answers: 
+1. Update the LoadMaterialBundle function to the following : private void LoadMaterialBundle(string materialName) { WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0); AssetBundle bundle = www.assetBundle; AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material)); Material newMat = bundleRequest.asset as Material bundle.Unload(false); www.Dispose(); return m_returnedMat; } 
+2. Implement a module level variable named m_bundleMat of Material type. 
+3. Implement the following co-routine: IEnumerator LoadMaterialBundle(string materialName) { while (!Caching.ready){ yield return null; } WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0); yield return www; AssetBundle bundle = www.assetBundle; AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material)); yield return bundleRequest; m_bundleMat = bundleRequest.asset as Material; bundle.Unload(false); www.Dispose(); } 
+4. Implement a module level Material variable named m_returnedMat. 
+
+
+
+Correct Answers: 
+2. Implement a module level variable named m_bundleMat of Material type. 
+3. Implement the following co-routine: IEnumerator LoadMaterialBundle(string materialName) { while (!Caching.ready){ yield return null; } WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0); yield return www; AssetBundle bundle = www.assetBundle; AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material)); yield return bundleRequest; m_bundleMat = bundleRequest.asset as Material; bundle.Unload(false); www.Dispose(); } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the AssetBundle retrieval using a co-routine and implement the module level variable m_bundleMat. A co-routine prevents the processor from blocking on longer processes and asynchronous web calls like the www class provides. The programmer should not use a function for AssetBundle retrieval or implement the module level variable m_returnedMat that the updated function references. The Programmer should instead use a co-routine in place of the function to not block the processing and support the asynchronous nature of the www class. References AssetBundle Building AssetBundles AssetBundles FAQ
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q6.txt
+
+A Programmer is implementing Asset Bundles in an open world 3D space exploration game. The Programmer will need to keep the download size of the Asset Bundles small.
+
+The game will only require some of the assets in any bundle at one time because the player ultimately is in control of which planet they will visit.
+
+Given these requirements, which compression method should the Programmer use for the Asset Bundles?
+
+
+Answers: 
+1. standard compression (LZMA) 
+2. chunk based compression (LZ4) 
+3. no compression 
+4. custom compression 
+
+
+
+Correct Answers: 
+2. chunk based compression (LZ4) 
+
+
+
+Explanation: 
+Explanation The Programmer should use chunk based compression (LZ4) because of the requirement to load only parts of an asset bundle (individual assets) depending on where the player decides to explore, and because of the requirement to keep file size down. Chunk Based (LZ4) compression is the best option because it provides compression and allows for individual assets to be extracted without needing to decompress the entire Asset Bundle. The Programmer should not use no compression. With no compression, the assets remain full size, and this does not help to reduce the size of the download. The Programmer should not use standard compression (LZMA). While it will help keep the size of the Asset Bundles down, it does not allow for individual assets to be pulled from the bundle without decompressing the entire Asset Bundle. The Programmer should not use custom compression, which requires the Programmer to write their own compression and decompression algorithms and take the time to allow for extraction of individual assets. This is not the recommended compression method. References Assets, Resources and AssetBundles Asset Bundle Compression AssetBundle
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q7.txt
+
+
+A Programmer is trying to get a character to release a fireball at a specific point in their animation cycle with an Animation Event.
+ 
+ The code to release the fireball is correct, and the fireball is releasing, but it is not at the right spot in the animation.
+ 
+ What is the best way for the Programmer to debug this issue?
+
+
+
+Answers: 
+1. Use a rigidbody and colliders to have the character actually throw the fireball. 
+2. There is no good way to debug this issue during gameplay. 
+3. Build a timer and watch it for the correct time stop in the animation to move the Animation event to. 
+4. Use the Pause and Frame stepping controls built into the Unity Editor to step through the animation to find the ideal place for the fireball release, and then move the Animation event. 
+
+
+
+Correct Answers: 
+4. Use the Pause and Frame stepping controls built into the Unity Editor to step through the animation to find the ideal place for the fireball release, and then move the Animation event. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Pause and Frame Stepping controls built into the Unity Editor to step through the animation to find the ideal place for the fireball release. This is exactly the type of issue these controls were built to help debug. The Programmer should not build a timer and watch it for the correct time stop in the animation. This is extra throw-away code that will not be accurate if the animation's speed is ever changed. There is a good way for the Programmer to debug this issue during gameplay. The Programmer should use the Pause and Frame stepping controls built into the Unity Editor. The Programmer should not use rigid bodies and colliders to have the character actually throw the fireball. This will cause un-reproducible bugs in the sequence any time the physics system is taxed even a little, causing the animation and release of the fireball to de-synchronize. References Interface Overview
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q8.txt
+
+A Programmer is working on a 3D maze game for the PC and has added a layer named Unwalkable to the game. 
+
+The maze is procedurally generated in a rectangular grid represented by a two-dimensional array of Nodes named m_grid. The node class has a member variable named m_walkable that is checked and set at the time a wall is instantiated during level generation and a Vector3 named m_worldPos, which contains the world position of the wall in the game.
+
+While testing out the game, the Programmer notices that a section of the maze allows the player to walk through the wall.
+
+The Programmer adds a class level float variable named m_nodeDiameter and sets it to a value of 1 with the class declarations.
+
+The Programmer is next going to implement an OnDrawGizmos() method to draw the walkable and unwalkable nodes in white and red cubes just a tiny bit smaller than the grid to visually see the unwalkable areas of the maze as a way to debug this issue.
+
+Which of the following should the Programmer implement?
+
+
+Answers: 
+1. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } } 
+2. void OnDrawGizmos() { for each(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } 
+3. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawSphere(n.m_worldPos, m_nodeDiameter)); } } 
+4. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter - .1f)); } } 
+
+
+
+Correct Answers: 
+4. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter - .1f)); } } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the following method: void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter - .1f)); } } This displays a white cube just smaller than the grid over all walkable areas and a red cube just smaller than the grid over all non-walkable areas. The Programmer should not implement the following method: void OnDrawGizmos() { for each(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } } This method will draw the cubes at the size of the grid and not a tiny bit smaller than the grid. The Programmer should not implement the following method: void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } } This method will not draw the cube in color or a tiny bit smaller than the nodes in the grid. The Programmer should not implement the following method: void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawSphere(n.m_worldPos, m_nodeDiameter)); } } This method will draw red and white spheres and not cubes. References MonoBehaviour.OnDrawGizmos() Debugging C# code in Unity
+
+
+c:\users\korisnik\desktop\gpp\05 - Performance Optimization and Target Platforms - Q9.txt
+
+A Programmer is working on a 3D puzzle game for mobile platforms in which the player uses warp gates to get around a level. Warp gates only operate in pairs. The warp gates use colliders set to triggers.
+
+The programmer is using the following code:
+
+public class Warp : MonoBehaviour {
+    private GameObject m_warpMate; 
+
+    void OnTriggerEnter(Collider other){
+        if (other.tag == "Player") { 
+            other.transform.position = m_warpMate.transform.position;
+ 
+other.GetComponent<PlayerController>().setDest(m_warpMate.transform.position);
+         }
+      }
+      public void setWarpMate(GameObject mate){ m_warpMate = mate; }
+}
+
+The Programmer discovers a bug. If the player is not moving fast enough or reverses direction at just the right moment, the player bounces back and forth between a set of warp gates, breaking the gameplay.
+
+What should the Programmer do? (Choose two.)
+
+
+Answers: 
+1. Update the warping code to include an allowWarp Boolean to prevent the receiving warp from working until the player exits the trigger: public class Warp : MonoBehaviour { private GameObject m_warpMate; private bool m_allowWarp = false; void OnTriggerEnter(Collider other){ if ((other.tag == "Player") && (m_allowWarp)) { m_warpMate.GetComponent().AllowWarp(false); other.transform.position = m_warpMate.transform.position; other.GetComponent().setDest(m_warpMate.transform.position); } } void OnTriggerExit() { m_allowWarp = true; } public void AllowWarp(bool allowed) { m_allowWarp = allowed; } public void setWarpMate(GameObject mate){ m_warpMate = mate; } } 
+2. Use Debug.Log statements to debug this issue. 
+3. Use the Frame Debugger and inspect both the sending and receiving warp gates just before and just after the warping to debug the issue. 
+4. Update the warping code to position the player in front of the warp rather than on top of the warp: public class Warp : MonoBehaviour { private GameObject m_warpMate; void OnTriggerEnter(Collider other){ if (other.tag == "Player") { other.transform.position = m_warpMate.transform.position; other.GetComponent().setDest(m_warpMate.transform.position -1f); } } public void setWarpMate(GameObject mate){ m_warpMate = mate; } } 
+
+
+
+Correct Answers: 
+1. Update the warping code to include an allowWarp Boolean to prevent the receiving warp from working until the player exits the trigger: public class Warp : MonoBehaviour { private GameObject m_warpMate; private bool m_allowWarp = false; void OnTriggerEnter(Collider other){ if ((other.tag == "Player") && (m_allowWarp)) { m_warpMate.GetComponent().AllowWarp(false); other.transform.position = m_warpMate.transform.position; other.GetComponent().setDest(m_warpMate.transform.position); } } void OnTriggerExit() { m_allowWarp = true; } public void AllowWarp(bool allowed) { m_allowWarp = allowed; } public void setWarpMate(GameObject mate){ m_warpMate = mate; } } 
+3. Use the Frame Debugger and inspect both the sending and receiving warp gates just before and just after the warping to debug the issue. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Frame Debugger and step through the frames just before and just after the warping takes place while inspecting the player and warp gate game objects. This would reveal that the receiving warp is allowed to function immediately on receiving the player. This is the actual bug causing the problem. The Programmer should implement the solution that includes the Boolean for allowing or not allowing the warp to function and the OnTriggerExit strategy for re-enabling the warp to permit the player to go back if they choose, after exiting the trigger. The Programmer should not use Debug.Log statements to try to debug this problem. Debug.Log statements are best for ensuring that your code is being reached during runtime. Since you know the warp gate code is executing, Debug.Log statements will not help uncover the issue. The problem is not that the player is warping directly on top of the second warp when they should be warping to 1 meter in front of it or behind it. Changing the place the player is warped to will look buggy and will not solve the problem if the player reverses direction on entering a warp. The bug will persist. References Debugger for Unity Profiler overview Frame Debugger Debug.Log
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q1.txt
+
+
+A Programmer needs to add Unity Ads to an existing game.
+ 
+ Which using declaration is required to use Unity Ads?
+
+
+
+Answers: 
+1. using UnityEngine.Advertisements; 
+2. using System.Collections; 
+3. using UnityEngine.UI; 
+4. using UnityEditor; 
+
+
+
+Correct Answers: 
+1. using UnityEngine.Advertisements; 
+
+
+
+Explanation: 
+Explanation The Programmer needs to use UnityEngine.Advertisements. This is the only way to gain access to Advertisment.Show(). The Programmer does not need System.Collections to enable Unity Ads. System.Collections contains some basic collections that are sometimes used by Unity. The Programmer does not need UnityEngine.UI to enable Unity Ads. UnityEngine.UI contains the API for the user interface. The Programmer does not need UnityEditor to enable Unity Ads. UnityEditor is required for building Editor related scripts and extending the Unity interface. References System.Collections Namespace Advertisement Graphic Editor
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q10.txt
+
+A Programmer is using Unity Cloud Build for a 2D shooter game that is being targeted for multiple platforms. The project code is in a GitHub repository and Cloudbuild is working.
+
+The Programmer needs to add a scene for one of the build targets as a development build and one of the build targets only to the Unity Cloud Build System.
+
+How should the Programmer complete the advanced options form shown in the exhibit for the build target to get this additional scene to build for only the one build target? (Choose two.)
+
+
+Answers: 
+1. Enter the scene name by providing the file path as a relative path from the Assets folder. 
+2. Add the scene name to the Post-Export Method name field. 
+3. Check the Development Builds checkbox. 
+4. Type development in the Scripting define symbols field. 
+5. Uncheck the Development builds checkbox. 
+6. Add the scene name to the Scene List field. 
+
+
+
+Correct Answers: 
+1. Enter the scene name by providing the file path as a relative path from the Assets folder. 
+3. Check the Development Builds checkbox. 
+
+
+
+Explanation: 
+Explanation The Programmer should check the Development Builds checkbox to make this build target a development build and then enter the scene name by providing the file path as a relative path from the Assets folder. This will allow this single build target to be a development build and include the additional scene. The programmer should not type development in the Scripting define symbols field. To make a build target a development build, the Programmer should check the box marked Development Builds. This will enable development builds. The Programmer should not add the scene name to the Post-Export Method field. This field is for a method the Cloud Build system should call after the project has been exported by the Unity editor and requires you have a static method available. The Programmer should not just enter the name of the scene to add. The scene must be added by providing the full relative path as the relative path from the Assets folder. References Cloud Build Including specific Scenes Pre- and post-export methods
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q11.txt
+
+A Programmer has been using Unity Cloud build for a 3D Pirate Adventure game that was targeted at a single platform. The requirements have now changed, and this game needs to be built for a second platform. The two platforms have different file requirements.
+
+Which method can the Programmer use to ensure that each build has the correct files with minimal duplication and redundancy?
+
+
+Answers: 
+1. Create unique project branches in Unity Cloud Build. 
+2. Create unique projects in Unity Cloud Build per platform. 
+3. Assign various builds to cloned repositories containing unique files. 
+4. Assign various builds to unique branches of the code repository. 
+
+
+
+Correct Answers: 
+4. Assign various builds to unique branches of the code repository. 
+
+
+
+Explanation: 
+Explanation The Programmer should assign various builds to unique branches of the code repository. Assigning various builds to unique branches of the code repository would allow for the project to share the same code base and still keep the unique files separate. That makes this is the ideal solution. The Programmer should not create unique projects in Unity Cloud Build per platform. Creating unique projects in Unity Cloud Build per platform would be duplicating effort since a single Unity Cloud Build can manage multiple build targets. The Programmer should not create unique project branches in Unity Cloud Build. Project branches are not created in Unity Cloud Build. They are created in your code repository. The Programmer should not assign various builds to cloned repositories containing unique files. Unity Cloud Build builds do not allow special configurations of the cloned repositories on Unity Cloud Build. Unity Cloud Build needs to have the unique files already in the repository prior to cloning or building. References Unity Cloud Build Cloud Build
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q12.txt
+
+A Programmer is developing a 2D mobile game and using Unity Cloud Build. On the last commit, the Unity Cloud Build reports a failed build.
+
+Where should the Programmer look first to try and get a quick idea of why the build failed? (Choose two.)
+
+
+Answers: 
+1. In the Compact Log on Unity Cloud Build 
+2. In the Builds folder 
+3. In the Full Log on Unity Cloud Build 
+4. In the Log on the device the build was installed to 
+5. On their local development machine 
+
+
+
+Correct Answers: 
+1. In the Compact Log on Unity Cloud Build 
+5. On their local development machine 
+
+
+
+Explanation: 
+Explanation One of the first places to check to get a quick idea of why a build might have failed is the in the Compact Log in Unity Cloud Build. The Programmer can also get a quick idea of why a build might have failed on their local development machine. Simply doing a build locally can save a lot of time. Looking through the full Log on Unity Cloud Build may reveal the reason for the failed build, but this is not as quick as checking the Compact Log or doing a quick local build. Checking the Builds folder will not help the Programmer determine what went wrong. There is a good chance that the Builds folder is empty because the build failed. The build failed, so it was not installed on a device. This is also a manual process that is performed and not part of Unity Cloud Build. References Unity Cloud Build
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q13.txt
+
+A Programmer implements Unity Cloud Build for a 2D Puzzle game with a single build target. The Programmer wants to execute some code that generates a custom build number right before the Unity Cloud Build runs on the project.
+
+The code to generate the build number has already been written and resides in a singleton within the project named BuildNumGen. There is an Instance property available. The method they want to execute is named GetBuildNumber().
+
+What should the Programmer do to accomplish this? (Choose two.)
+
+
+Answers: 
+1. Add the call to generate the Build Number to one of the project's Start methods so that it is always executed. 
+2. Add the following code to a script named PreBuild.cs in the Assets folder of the project: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } 
+3. Add BuildNumGen.Instance.GetBuildNumber to the Pre-Export Method Name field on the build target's Advanced Options. 
+4. Add the following code to a script named PreBuild.cs in the Editor folder: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } 
+5. Add PreExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+
+
+
+Correct Answers: 
+4. Add the following code to a script named PreBuild.cs in the Editor folder: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } 
+5. Add PreExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+
+
+
+Explanation: 
+Explanation The Programmer should add the following code to a script named PreBuild.cs in the Editor folder: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } This will be accessible for the Unity Cloud Build system to call. The Programmer should also add PreExport to the Pre-Export Method Name field on the build target's Advanced Options. The Programmer should not add BuildNumGen.Instance.GetBuildNumber to the Pre-Export Method Name field on the build target's Advanced Options. The method names for pre and post export of builds need to be accessible from a script in the project's Editor folder, and they need to be public static methods. The Programmer should not add the following code to a script named PreBuild.cs in the Assets folder of the project: public class PreBuild : MonoBehaviour { public static void PreExport() { BuildNumGen.Instance.GetBuildNumber(); } } Unity Cloud Build can only execute code that is located in the project's Editor folder for pre and post build operations. The Programmer should not add the call to generate the Build Number to one of the project's Start methods so that it is always executed. A build number should represent a build of the product, not a run of the product. References Unity Cloud Build Cloud Build Pre- and post-export methods Advanced options
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q14.txt
+
+A Programmer is implementing Unity Cloud Build for a 2D Puzzle game with a single build target. The Programmer wants to execute some code that generates some custom data that will be used for an installer script right after the Unity Cloud Build runs on the project.
+
+The code to generate the custom data resides in a singleton within the project named InstallerCustomDataGen. There is an Instance property available. The method they want to execute is named GenerateCustomInstallerData().
+
+What should the Programmer do to accomplish this? (Choose two.)
+
+
+Answers: 
+1. Add InstallerCustomDataGen.Instance.GenerateCustomInstallerData to the Pre-Export Method Name field on the build target's Advanced Options. 
+2. Add the following code to a script named PostBuild.cs in the Editor folder: public class PostBuild : MonoBehaviour { public static void PostExport() { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } 
+3. Add PostExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+4. Add the following code to a script named PostBuild.cs in the Editor folder of the project: public class PreBuild : MonoBehaviour { private static void PostExport () { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } 
+
+
+
+Correct Answers: 
+2. Add the following code to a script named PostBuild.cs in the Editor folder: public class PostBuild : MonoBehaviour { public static void PostExport() { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } 
+3. Add PostExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+
+
+
+Explanation: 
+Explanation The Programmer should add the following code to a script named PostBuild.cs in the Editor folder: public class PostBuild : MonoBehaviour { public static void PostExport() { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } This will be accessible for the Unity Cloud Build system to call. The Programmer should also add PostExport to the Pre-Export Method Name field on the build target's Advanced Options. The Programmer should not add InstallerCustomDataGen.Instance.GenerateCustomInstallerData to the Pre-Export Method Name field on the build target's Advanced Options. The method names for pre and post export of builds need to be accessible from a script in the project's Editor folder and be public static methods. The Programmer should not add the following code to a script named PreBuild.cs in the Assets folder of the project: public class PreBuild : MonoBehaviour { private static void PostExport () { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } Unity Cloud Build can only execute code that is located in the project's Editor folder for pre and post build operations, and the methods need to public static methods. References Cloud Build Pre- and post-export methods Advanced options
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q2.txt
+
+A Programmer needs to add some simple Unity Ads to an existing mobile game. The Designer specified that under no circumstances should the ads have a negative impact on the players, but ads can reward the player with extra ammunition for watching the ads to the end.
+
+What two things should the Programmer ensure? (Choose two.)
+
+
+Answers: 
+1. Ads are offered all the time. 
+2. Ads are skippable. 
+3. Ads provide a reward for watching the entire ad only. 
+4. Ads are opt-out only. 
+
+
+
+Correct Answers: 
+2. Ads are skippable. 
+3. Ads provide a reward for watching the entire ad only. 
+
+
+
+Explanation: 
+Explanation The Programmer should ensure that simple Unity Ads are always skippable. Forcing a player to watch ads with no way to skip them creates a negative impact on the gameplay experience and the players. The Programmer should ensure that a reward is only provided if the ad is watched in its entirety. Allowing a reward for not watching the whole ad diminishes the credibility of the game. The Programmer should not make ads opt-out. Forcing players to watch ads or opt out will have a negative impact on players. The Programmer should ensure that simple Unity Ads are opt-in only. The Programmer should not offer ads that reward the player all the time. Offering ads that provide a reward all of the time can create an imbalance or advantage in the gameplay. References Best practices guide Video advertisement best practices
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q3.txt
+
+A Programmer implements a feature in a mobile game that offers a reward-based ad every time the player is low on ammunition. This creates an imbalance in the gameplay, and players are complaining that the game is now too easy.
+
+What should the Programmer do to correct the imbalance?
+
+
+Answers: 
+1. Remove the reward offer when the player is specifically low on ammunition and randomize how frequently the offer is made. 
+2. Remove the ads completely from the game. 
+3. Wait until the player as died a set number of times before making the offer when the player is low on ammunition. 
+4. Limit the reward ad to a once per level or set number of times in a single game session. 
+
+
+
+Correct Answers: 
+4. Limit the reward ad to a once per level or set number of times in a single game session. 
+
+
+
+Explanation: 
+Explanation The Programmer should limit the reward ad frequency to a consistent number of times that the players can depend on, such as once per level or a set number of times in a single game session. This will balance the game back out. The Programmer should then closely watch for feedback and the analytics to ensure that the changes are positive and are being accepted by the player base. The Programmer should not randomize how frequently the offer is made. This will be perceived as an inconsistency or anomaly in the game. Players engage best with patterns they can see. X times per session or level will make more sense to the players and balance the game back out. The Programmer should not remove the reward ads completely from the game. Having this type of reward available as a "should you need it" offer that is available once per level or a set number of times per game session is a positive reinforcement and reason to play the game. The Programmer should not wait until a set number of deaths have occurred before offering a life line in the form of a reward-based ad. Players may see this as an insult to their ability to clear a level or the Programmer making fun of them. References Best practices guide
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q4.txt
+
+A Programmer implements the below code to implement Unity In-App Purchases: 
+
+using UnityEngine;
+using UnityEngine.Purchasing;
+
+public class IAPurchaser : MonoBehaviour, IStoreListener {
+        private static IStoreController storeController;
+        private static IExtensionProvider extensionProvider;
+
+        public const string productHundredGems = "consumable";
+        public const string productExtraHeartBox = "nonconsumable";
+        public const string productKindOrcs = "subscription";
+
+        private static string googlePlaySubscription = "com.unity3d.subscription.original";
+
+         void Start() {
+                if (storeController == null) {
+                         InitializePurchasing();
+                }
+         }
+
+         public void InitializePurchasing() {
+                 if (!IsInitialized()) { }
+         } 
+
+         private void BuildStore() {
+                   var builder = 
+ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+                 builder.AddProduct(productHundredGems, ProductType.Consumable);
+                 builder.AddProduct(productExtraHeartBox, ProductType.NonConsumable);
+                 builder.AddProduct(productKindOrcs, ProductType.Subscription, new 
+IDs() { { googlePlaySubscription, GooglePlay.Name } });
+                  UnityPurchasing.Initialize(this, builder);
+         }
+
+          private bool IsInitialized() {
+                    return storeController != null && extensionProvider != null;
+          }
+
+          public void BuyAHundredGems() {
+                  BuyProductID(productHundredGems);
+          }
+
+           public void BuyExtraHeartBox(){
+                   BuyProductID(productExtraHeartBox);
+           }
+
+           public void BuyKindOrcs(){
+                     BuyProductID(productKindOrcs);
+           }
+
+            void BuyProductID(string productId) {
+                     if (IsInitialized()) {
+                             Product product = storeController.products.WithID(productId);
+
+                             if (product != null && product.availableToPurchase) {
+                                      storeController.InitiatePurchase(product);
+                             } else {
+                                       Debug.LogWarning("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+                        }
+                } else {
+                          Debug.LogWarning("BuyProductID FAIL. Not initialized.");
+                }
+         }
+
+         public void RestorePurchases() {
+                 if (!IsInitialized()) {
+                         Debug.LogWarning("RestorePurchases FAIL. Not initialized.");
+                          return;
+                  }
+
+                  if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) {
+ 
+                          var apple = extensionProvider.GetExtension<IAppleExtensions>();
+ 
+                           apple.RestoreTransactions((result) => {
+                                    Debug.Log("RestorePurchases continuing: " + result + ". 
+If no further messages, no purchases available to restore.");
+                          });
+                }
+       }      
+
+       public void OnInitialized(IStoreController controller, IExtensionProvider extensions) {
+                  storeController = controller;
+                  extensionProvider = extensions;
+         }
+
+
+          public void OnInitializeFailed(InitializationFailureReason error) {
+                  Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+          }
+
+
+          public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) 
+{
+                   switch (args.purchasedProduct.definition.id) {
+                            case productHundredGems:
+                                   PlayerCash cash = FindObjectOfType<PlayerCash>();
+                                   break;
+                            case productExtraHeartBox:
+                                      PlayerHearts hearts = FindObjectOfType<PlayerHearts>();
+                                   break;
+                            case productKindOrcs:
+                                      OrcController oc = FindObjectOfType<OrcController>();
+                                   break;
+                          default:
+                                   Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
+                                   break;
+                  }
+                  return PurchaseProcessingResult.Complete;
+      }
+
+
+      public void OnPurchaseFailed(Product product, PurchaseFailureReason 
+failureReason) {
+                    Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
+         }
+}
+
+The purchases are not working.
+
+What does the Programmer need to change to ensure that Unity In-App Purchasing works? (Choose two.)
+
+
+Answers: 
+1. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } 
+2. Update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: PlayerCash cash = FindObjectOfType(); cash.AdjustNumberofGems(100); break; case productExtraHeartBox: PlayerHearts hearts = FindObjectOfType(); hearts.AddHeartBoxes(1); break; case productKindOgres: OrcController oc = FindObjectOfType(); oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } 
+3. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { InitializePurchasing(); } } 
+4. Update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: cash.AdjustNumberofGems(100); break; case productExtraHeartBox: hearts.AddHeartBoxes(1); break; case productKindOrcs: oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } 
+5. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (IsInitialized()) { BuildStore(); } } 
+
+
+
+Correct Answers: 
+1. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } 
+2. Update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: PlayerCash cash = FindObjectOfType(); cash.AdjustNumberofGems(100); break; case productExtraHeartBox: PlayerHearts hearts = FindObjectOfType(); hearts.AddHeartBoxes(1); break; case productKindOgres: OrcController oc = FindObjectOfType(); oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } 
+
+
+
+Explanation: 
+Explanation The Programmer should update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: PlayerCash cash = FindObjectOfType<PlayerCash>(); cash.AdjustNumberofGems(100); break; case productExtraHeartBox: PlayerHearts hearts = FindObjectOfType<PlayerHearts>(); hearts.AddHeartBoxes(1); break; case productKindOrcs: OrcController oc = FindObjectOfType<OrcController>(); oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } This will ensure that the methods that do the work of applying the purchases are actually being called. The Programmer should also update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } This will initialize the Unity Purchasing store. The programmer should not update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: cash.AdjustNumberofGems(100); break; case productExtraHeartBox: hearts.AddHeartBoxes(1); break; case productKindOrcs: oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } This does not create the references needed to call the methods that do the work of applying the purchases. The Programmer should not update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { InitializePurchasing(); } } This will create an infinite loop in the code and crash the game and environment. The Programmer should not update Initialize Purchasing to the following: public void InitializePurchasing() { if (IsInitialized()) { BuildStore(); } } This will not Initialize or build the store because there is a missing not operator (!) in the conditional check. The BuildStore code will never run. References Setting up Unity IAP Implementing a Store UnityPurchasing.Initialize
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q5.txt
+
+A Programmer is implementing In-App Purchasing for a 3D Mobile Adventure game that is only targeted at the Apple App store. The Programmer wants to offer a consumable item named 100 gems to be used as an in-game currency.
+
+The Programmer creates and initializes the store for a single consumable item, 100 gems, but the Programmer notices that players are losing their purchases between gameplay sessions.
+
+The Programmer now needs to add a RestorePurchases() method.
+
+Which of the following is the correct implementation?
+
+
+Answers: 
+1. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " +result + ". If no further messages, no purchases available to restore."); }); } } 
+2. public void RestorePurchases() { // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } } 
+3. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); } } 
+4. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } 
+
+
+
+Correct Answers: 
+1. public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " +result + ". If no further messages, no purchases available to restore."); }); } } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the following: public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension<IAppleExtensions>(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } } This will restore the purchases for this player. The Programmer should not implement the following: public void RestorePurchases() { // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension<IAppleExtensions>(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ".If no further messages, no purchases available to restore."); }); } } This fails to check whether the Unity Purchasing system has been initialized first. The Programmer should not implement the following: public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } var apple = extensionProvider.GetExtension<IAppleExtensions>(); apple.RestoreTransactions((result) => { Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore."); }); } This fails to check to see whether the player is operating from an Apple device. The Programmer should not implement the following: public void RestorePurchases() { if (!IsInitialized()) { Debug.LogWarning("RestorePurchases FAIL. Not initialized."); return; } // If on an Apple device if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) { var apple = extensionProvider.GetExtension<IAppleExtensions>(); } } This fails to actually restore the purchases. References Setting up Unity IAP Restoring Transactions
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q6.txt
+
+A Programmer is implementing In-App Purchasing for a 3D Mobile Adventure game that is only targeted at the Google Play store. The Programmer wants to offer a consumable item named 100 gems to be used as an in-game currency. 
+
+The Programmer creates a private const string for this item named productHundredGems and assigned it to consumable. 
+
+How should the Programmer implement the initialization of the store?
+
+
+Answers: 
+1. private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; private static string googlePlaySubscription = "com.unity3d.subscription.original"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Subscription, new IDs() { { googlePlaySubscription, GooglePlay.Name } }); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } 
+2. private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Consumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } 
+3. private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.NonConsumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } 
+4. private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; private static string googlePlaySubscription = "com.unity3d.subscription.original"; public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Consumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { } 
+
+
+
+Correct Answers: 
+2. private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Consumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the initialization of the store with the following: private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Consumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } This will properly configure and initialize Unity Purchasing so that the consumable item can be purchased. The Programmer should not implement the initialization of the store with the following: private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.NonConsumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } This will incorrectly configure the purchase of the gems as a NonConsumable. The Programmer should not implement the initialization of the store with the following: private static IStoreController storeController; private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; private static string googlePlaySubscription = "com.unity3d.subscription.original"; void Start() { if (storeController == null) { InitializePurchasing(); } } public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Subscription, new IDs() { { googlePlaySubscription, GooglePlay.Name } }); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { return storeController != null && extensionProvider != null; } This will incorrectly configure the purchase of the gems as a Subscription. The Programmer should not implement the initialization of the store with the following: private static IExtensionProvider extensionProvider; public const string productHundredGems = "consumable"; public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } private void BuildStore() { var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance()); builder.AddProduct(productHundredGems, ProductType.Consumable); UnityPurchasing.Initialize(this, builder); } private bool IsInitialized() { } This fails to initialize the interface to the Unity Purchasing system. References Implementing a Store Setting up Unity IAP UnityPurchasing.Initialize
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q7.txt
+
+
+A Programmer is asked about adding Unity Analytics into an existing game for Android and iOS to gain information about the game's players.
+ 
+ Which two core usage data statistics can be discovered about the game's player base with the basic Unity Analytics enabled? (Choose two.)
+
+
+
+Answers: 
+1. In App Purchase (IAP) Data 
+2. Ad revenue 
+3. Details of purchases by children under the age of 13 
+4. New installs of the game 
+5. Daily Active Users 
+
+
+
+Correct Answers: 
+4. New installs of the game 
+5. Daily Active Users 
+
+
+
+Explanation: 
+Explanation The core usage data includes the number of new installs of a game and the number of daily active users. The core usage data does not include the IAP Data unless the Unity IAP Service has been installed. The core usage data does not include the Ad revenue of a game unless Unity Ads has been enabled and installed. It is against Unity's usage policy to allow minors under the age of 13 to make in-app-purchases. References Unity Analytics Overview Integrating Unity IAP In Your Game Unity Ads COPPA - Children's Online Privacy Protection Act
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q8.txt
+
+
+A Programmer is tasked with finding bottlenecks and monitoring player progress through the linear sequences in a mobile game.
+ 
+ Which Analytics component would be most useful for the Programmer?
+
+
+
+Answers: 
+1. The Segment Builder of Unity Analytics 
+2. The Funnel Analyzer of Unity Analytics 
+3. The Event Manager of Unity Analytics 
+4. The Livestream page of the Unity Analytics Dashboard 
+
+
+
+Correct Answers: 
+2. The Funnel Analyzer of Unity Analytics 
+
+
+
+Explanation: 
+Explanation The Funnel Analyzer in Unity Analytics would be the most useful for the Programmer. Funnels track player progress through linear sequences of events, tasks, or actions in your game. You can use funnels to better understand how players move through important sequences and to detect possible bottlenecks where players run into problems. The Segment Builder in Unity Analytics is more about the different demographics such as country, platform, or spending patterns. It will not help identify bottlenecks in a game or user progression. The Event Manager contains a list of all the standard and custom events and parameters you have dispatched from your project. It is not designed to help find bottlenecks or monitor player progress. The Livestream page of Unity Analytics lets you see player demographics in real time. It is not It is not designed to help find bottlenecks or monitor player progress. That is what the Funnel Analyzer and Funnels are for. References Funnel Analyzer page Segment Builder Event Manager Livestream page
+
+
+c:\users\korisnik\desktop\gpp\06 - Unity Services Implementation - Q9.txt
+
+A Programmer is building a 3D dungeon adventure game in which each level has multiple paths the player can take. The Programmer analyzes data using a Heatmapper for the game and notices far fewer player deaths along one specific path of a level. This path is optional and one of many that the player may take to reach the end of the level. The difficulty of a path is a function of the number and type of enemy NPCs along the path.
+
+What should the Programmer do next to improve the game?
+
+
+Answers: 
+1. Use a Funnel to observe the level completion rates. 
+2. Increase the difficulty of that path in the level, and leave the other paths at the same level of difficulty. 
+3. Map the NPC deaths along the paths in that level using a Heatmap and compare NPC death rates along this path to other paths in the same level. 
+4. Decrease the difficulty of the other paths in the level, increase the difficulty of that path in the level, and map the NPC deaths along the paths in that level using a Heatmap. 
+5. Decrease the difficulty of the other paths in the level, and leave the difficulty of this easy path the same. 
+
+
+
+Correct Answers: 
+3. Map the NPC deaths along the paths in that level using a Heatmap and compare NPC death rates along this path to other paths in the same level. 
+
+
+
+Explanation: 
+Explanation The Programmer should map the NPC deaths along the paths in that level using a Heatmap and compare the death rates along this path to other paths in the same level. A lack of NPC deaths relative to the other paths may indicate that the path is too easy to be challenging to the player, but it may also indicate that the other paths are too difficult and are being avoided. The number of NPC deaths along the various paths will help inform the Programmer's decision. The Programmer should not increase or decrease the level of difficulty of that path without first understanding why there are far fewer player deaths along it. Mapping the paths in the level with a Heatmap of enemy deaths may reveal what is rally going on and inform the Programmer's decisions. The Programmer should not use a Funnel to observe the level completion rates. This would not contain the information the Programmer needs to make an informed decision. References Analytics Dashboard Stoking the fire: Heatmaps Rekindled heatmaps / v2
+

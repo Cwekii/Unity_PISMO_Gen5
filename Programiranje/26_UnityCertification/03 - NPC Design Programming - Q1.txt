@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a 3rd-person action adventure for PC and needs to implement the logic for the non-player characters (NPCs) to switch from patrolling to chasing the player.
+ 
+ There will be additional functionality required later in development, so it is critical that the Programmer start off with a system that is easy to change and expand upon.
+ 
+ What should the Programmer consider?
+
+
+
+Answers: 
+1. Code several simple wander and patrol and attack scripts that work together to provide the desired functionality. 
+2. Plan and design a Finite State Machine (FSM) that can easily be applied to all enemies and expanded in the future. 
+3. Use flocking behaviors and have the NPCs work off of emergent behavior. 
+4. Use two scripts, one to patrol on a NavMesh and one to chase the player. 
+
+
+
+Correct Answers: 
+2. Plan and design a Finite State Machine (FSM) that can easily be applied to all enemies and expanded in the future. 
+
+
+
+Explanation: 
+Explanation The Programmer should design an FSM that properly manages the state transitions and conditions of those transitions in one centralized set of scripts that can be scaled to all enemies. The Programmer should not manually code simple wander and patrol scripts. Wandering is not required. Also, this type of logic is usually difficult to scale or maintain. The Programmer should not use NavMeshes for building NPC logic. NavMeshes are a quick way to set areas in which an NPC can move freely but are difficult to get right in pursuit logic. The Programmer should not use emergent behaviors and flocking patterns for planned states. Emergent behavior is difficult to control and can result in undesired NPC behavior. References Finite State Machines [Part 1] Wander Navigation and Pathfinding

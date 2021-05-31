@@ -1,0 +1,27 @@
+
+
+A Programmer is working on a 3rd person action/adventure game for PC and must implement health and ammo pickups that are dropped into the game from above.
+ 
+ Both the health and ammo pickups will be dropped as simple crates that will fall from the sky. A parachute will deploy when the crate is within a variable distance from the ground that the designers can tune through a deploymentHeight variable. The DeplyParachute() method will set the Boolean "deployed" to true when it fires and trigger an animation to open a parachute. The environment colliders have been tagged as "environment". 
+ 
+ The Programmer is tasked with using a downward recast to determine the distance the crate is from the ground and trigger the DeployParachute() method by checking for the "environment" collider by tag.
+ 
+ Which code should the programmer use to properly detect the distance the crate is from the ground and call the DeployParachute() method?
+
+
+
+Answers: 
+1. public float deploymentHeight; private bool deployed; void FixedUpdate() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+2. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } 
+3. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+4. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.up); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+
+
+
+Correct Answers: 
+3. public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } By first checking that the parachute has not been deployed, you can save unneeded processing on the downward pointing Ray. By placing the Physics.Raycast() call into a conditional statement, you can determine whether the variable distance for deployment has been met before checking if the collider tag is the one you are looking for. The Programmer should not use the following code: public float deploymentHeight; private bool deployed; void FixedUpdate() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } Although the Raycast() method resides within the Physics namespace, this code should be contained within the Update() loop and not the FixedUpdate() loop to ensure that this code is called exactly once per frame. The Programmer should not use the following code: public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.up); if(!deployed) { if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } } The issue here is that the deploymentRay was created pointing up, not towards the ground. If the deploymentRay is created pointing in the wrong direction, the conditional statements will never be true and the DeployParachute() method will never be called. The Programmer should not use the following code: public float deploymentHeight; private bool deployed; void Update() { RaycastHit hit; Ray deploymentRay = new Ray(transform.position, Vector3.down); if(Physics.Raycast(deploymentRay, out hit, deploymentHeight)) { if(hit.collider.tag == "environment") { DeployParachute(); } } } The issue here is that there is no check to see whether the parachute has already been deployed. This will cause the DeployParachute() method to be called multiple times. References Physics.Raycast Object.bool RaycastHit Ray

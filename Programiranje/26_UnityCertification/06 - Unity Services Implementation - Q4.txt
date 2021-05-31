@@ -1,0 +1,142 @@
+
+A Programmer implements the below code to implement Unity In-App Purchases: 
+
+using UnityEngine;
+using UnityEngine.Purchasing;
+
+public class IAPurchaser : MonoBehaviour, IStoreListener {
+        private static IStoreController storeController;
+        private static IExtensionProvider extensionProvider;
+
+        public const string productHundredGems = "consumable";
+        public const string productExtraHeartBox = "nonconsumable";
+        public const string productKindOrcs = "subscription";
+
+        private static string googlePlaySubscription = "com.unity3d.subscription.original";
+
+         void Start() {
+                if (storeController == null) {
+                         InitializePurchasing();
+                }
+         }
+
+         public void InitializePurchasing() {
+                 if (!IsInitialized()) { }
+         } 
+
+         private void BuildStore() {
+                   var builder = 
+ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+                 builder.AddProduct(productHundredGems, ProductType.Consumable);
+                 builder.AddProduct(productExtraHeartBox, ProductType.NonConsumable);
+                 builder.AddProduct(productKindOrcs, ProductType.Subscription, new 
+IDs() { { googlePlaySubscription, GooglePlay.Name } });
+                  UnityPurchasing.Initialize(this, builder);
+         }
+
+          private bool IsInitialized() {
+                    return storeController != null && extensionProvider != null;
+          }
+
+          public void BuyAHundredGems() {
+                  BuyProductID(productHundredGems);
+          }
+
+           public void BuyExtraHeartBox(){
+                   BuyProductID(productExtraHeartBox);
+           }
+
+           public void BuyKindOrcs(){
+                     BuyProductID(productKindOrcs);
+           }
+
+            void BuyProductID(string productId) {
+                     if (IsInitialized()) {
+                             Product product = storeController.products.WithID(productId);
+
+                             if (product != null && product.availableToPurchase) {
+                                      storeController.InitiatePurchase(product);
+                             } else {
+                                       Debug.LogWarning("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+                        }
+                } else {
+                          Debug.LogWarning("BuyProductID FAIL. Not initialized.");
+                }
+         }
+
+         public void RestorePurchases() {
+                 if (!IsInitialized()) {
+                         Debug.LogWarning("RestorePurchases FAIL. Not initialized.");
+                          return;
+                  }
+
+                  if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.OSXPlayer) {
+ 
+                          var apple = extensionProvider.GetExtension<IAppleExtensions>();
+ 
+                           apple.RestoreTransactions((result) => {
+                                    Debug.Log("RestorePurchases continuing: " + result + ". 
+If no further messages, no purchases available to restore.");
+                          });
+                }
+       }      
+
+       public void OnInitialized(IStoreController controller, IExtensionProvider extensions) {
+                  storeController = controller;
+                  extensionProvider = extensions;
+         }
+
+
+          public void OnInitializeFailed(InitializationFailureReason error) {
+                  Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+          }
+
+
+          public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) 
+{
+                   switch (args.purchasedProduct.definition.id) {
+                            case productHundredGems:
+                                   PlayerCash cash = FindObjectOfType<PlayerCash>();
+                                   break;
+                            case productExtraHeartBox:
+                                      PlayerHearts hearts = FindObjectOfType<PlayerHearts>();
+                                   break;
+                            case productKindOrcs:
+                                      OrcController oc = FindObjectOfType<OrcController>();
+                                   break;
+                          default:
+                                   Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id));
+                                   break;
+                  }
+                  return PurchaseProcessingResult.Complete;
+      }
+
+
+      public void OnPurchaseFailed(Product product, PurchaseFailureReason 
+failureReason) {
+                    Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
+         }
+}
+
+The purchases are not working.
+
+What does the Programmer need to change to ensure that Unity In-App Purchasing works? (Choose two.)
+
+
+Answers: 
+1. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } 
+2. Update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: PlayerCash cash = FindObjectOfType(); cash.AdjustNumberofGems(100); break; case productExtraHeartBox: PlayerHearts hearts = FindObjectOfType(); hearts.AddHeartBoxes(1); break; case productKindOgres: OrcController oc = FindObjectOfType(); oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } 
+3. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { InitializePurchasing(); } } 
+4. Update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: cash.AdjustNumberofGems(100); break; case productExtraHeartBox: hearts.AddHeartBoxes(1); break; case productKindOrcs: oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } 
+5. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (IsInitialized()) { BuildStore(); } } 
+
+
+
+Correct Answers: 
+1. Update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } 
+2. Update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: PlayerCash cash = FindObjectOfType(); cash.AdjustNumberofGems(100); break; case productExtraHeartBox: PlayerHearts hearts = FindObjectOfType(); hearts.AddHeartBoxes(1); break; case productKindOgres: OrcController oc = FindObjectOfType(); oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } 
+
+
+
+Explanation: 
+Explanation The Programmer should update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: PlayerCash cash = FindObjectOfType<PlayerCash>(); cash.AdjustNumberofGems(100); break; case productExtraHeartBox: PlayerHearts hearts = FindObjectOfType<PlayerHearts>(); hearts.AddHeartBoxes(1); break; case productKindOrcs: OrcController oc = FindObjectOfType<OrcController>(); oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } This will ensure that the methods that do the work of applying the purchases are actually being called. The Programmer should also update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { BuildStore(); } } This will initialize the Unity Purchasing store. The programmer should not update the switch in the ProcessPurchase method to the following: switch (args.purchasedProduct.definition.id) { case productHundredGems: cash.AdjustNumberofGems(100); break; case productExtraHeartBox: hearts.AddHeartBoxes(1); break; case productKindOrcs: oc.Temperment("kind"); break; default: Debug.Log(string.Format("ProcessPurchase: FAIL. Unrecognized product: '{0}'", args.purchasedProduct.definition.id)); break; } This does not create the references needed to call the methods that do the work of applying the purchases. The Programmer should not update Initialize Purchasing to the following: public void InitializePurchasing() { if (!IsInitialized()) { InitializePurchasing(); } } This will create an infinite loop in the code and crash the game and environment. The Programmer should not update Initialize Purchasing to the following: public void InitializePurchasing() { if (IsInitialized()) { BuildStore(); } } This will not Initialize or build the store because there is a missing not operator (!) in the conditional check. The BuildStore code will never run. References Setting up Unity IAP Implementing a Store UnityPurchasing.Initialize

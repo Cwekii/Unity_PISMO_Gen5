@@ -1,0 +1,20 @@
+
+A Programmer is building a 3D, third person, open-world adventure game. The Programmer is asked to ensure that the player never has to wait for a scene to load.
+
+The Programmer decides that the best approach for this will be to load and unload environment scenes when the player walks around and divides the environment up into a grid. All environment scenes adjacent (diagonally and orthogonally) to the player need to be loaded or loading in a way that produces a nine-square grid of loaded scenes at all times. (See the exhibit.)
+
+The memory budget for all of these scenes is 855 MB.
+
+What is the maximum size each environment scene can be, rounded up to the nearest MB?
+
+
+Answers: 
+
+
+
+Correct Answers: 
+
+
+
+Explanation: 
+Explanation If the memory budget for all nine of the scenes is 855 MB, each scene needs to be no larger than 95 MB (95 * 9 = 855). References LoadSceneMode.Additive SceneManager.LoadScene

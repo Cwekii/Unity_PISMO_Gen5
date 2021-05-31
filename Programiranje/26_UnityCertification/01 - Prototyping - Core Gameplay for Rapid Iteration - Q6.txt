@@ -1,0 +1,25 @@
+
+A Programmer is developing a prototype for a 3D adventure game, 
+
+When the player collides with the pickups, the pickups are moving just before they are destroyed and collected.
+
+What should the Programmer check and correct first? (Choose two.)
+
+
+Answers: 
+1. The Programmer should check that the pickup item has its RigidBody position frozen on the x, y, and z axis. 
+2. The Programmer should check that the RigidBody is set to kinematic. 
+3. The Programmer should check that the pickup item has its RigidBody rotation frozen on the x, y, and z axis. 
+4. The Programmer should check that the pickup item has a RigidBody attached to it. 
+5. The Programmer should check that the Collider on the Pickup is set to be a trigger and the method OnTriggerEnter(Collider) is being used and not OnCollisionEnter(Collision). 
+
+
+
+Correct Answers: 
+2. The Programmer should check that the RigidBody is set to kinematic. 
+5. The Programmer should check that the Collider on the Pickup is set to be a trigger and the method OnTriggerEnter(Collider) is being used and not OnCollisionEnter(Collision). 
+
+
+
+Explanation: 
+Explanation The Programmer should check that the Collider on the Pickup is set to be a trigger and the method OnTriggerEnter(Collider) is being used and not OnCollisionEnter(Collision). When working with game objects that you want to collide with but not have them react to physics, you need to use the OnTrigger methods and have the collider set to is Trigger. The Programmer should also check that That the RigidBody is set to kinematic. Kinematic RigidBodies do not react to collisions or suffer gravity effects, but enable the trigger to detect any collider. The position freeze of the RigidBody in not the issue. The physics system for the pickup object itself should be disabled so that a trigger fires but the collision is still registered. The rotation freeze of the RigidBody in not the issue. The physics system for the pickup object itself should be disabled so that a trigger fires but the collision is still registered. The Pickup item already has a RigidBody attached to it or it would not be moving on collisions. It would not detect or respond to other game objects. References Collider.OnTriggerEnter(Collider) Collider.OnCollisionEnter(Collision) Ridigbody.isKinematic Rigidbody.freezeRotation Position Constraints

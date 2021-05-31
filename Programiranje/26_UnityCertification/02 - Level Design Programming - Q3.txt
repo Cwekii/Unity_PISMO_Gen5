@@ -1,0 +1,25 @@
+
+A Programmer has a script on a player character that has a LayerMask variable named m_shootMask that currently allows it to raycast against Layer 12 (Enemies) and Layer 13 (Destructible).
+
+The Programmer needs to create a method to add Layer 14 (Vehicles) during runtime.
+
+Which two lines of code can the Programmer use to accomplish this? (Choose two.)
+
+
+Answers: 
+1. m_shootMask = m_shootMask + “Vehicles”; 
+2. m_shootMask = LayerMask.GetMask("Vehicles"); 
+3. m_shootMask &= LayerMask.GetMask("Vehicles"); 
+4. m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); 
+5. m_shootMask |= (1 << 14); 
+
+
+
+Correct Answers: 
+4. m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); 
+5. m_shootMask |= (1 << 14); 
+
+
+
+Explanation: 
+Explanation The programmer can use either of these lines of code: m_shootMask |= (1 << 14); m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); m_shootMask |= (1 << 14); uses the OR bitwise assignment operator and shifts by the layer number. The LayerMask has the Vehicles layer added to it. Using the layer number is also more efficient than looking up the Layer's name. m_shootMask = LayerMask.GetMask("Enemies", " Destructible", "Vehicles"); will also accomplish what was asked. Although it is less efficient than adding just the Vehicles layer to the existing LayerMask, a complete reassignment of the LayerMask's intended layers will work. m_shootMask = LayerMask.GetMask("Vehicles"); would replace the current value of m_shootMask with only the Vehicles layer. This would not work. m_shootMask &= LayerMask.GetMask("Vehicles"); would clear the Vehicles layer from the m_shootMask, not add to it. Using the layer name and GetMask to look up the layer is also less efficient than using the layer number. m_shootMask = m_shootMask + “Vehicles”; is not the correct syntax for bitwise operations or a LayerMask and would not work. References Physics LayerMask Bitwise and shift operators (C# reference) LayerMask.GetMask

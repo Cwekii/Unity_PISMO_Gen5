@@ -1,0 +1,21 @@
+
+
+What has the highest impact on performance and should be eliminated wherever possible to improve performance?
+
+
+
+Answers: 
+1. Baking in static lighting 
+2. Texture compression 
+3. Realtime shadows 
+4. Draw call batching 
+
+
+
+Correct Answers: 
+3. Realtime shadows 
+
+
+
+Explanation: 
+Explanation Realtime shadows are nice, but they can have a high impact on performance, both in terms of extra draw calls for the CPU and extra processing on the GPU. These should be eliminated whenever possible. Using compressed textures decreases the size of your textures. This is a performance improvement and should be done whenever possible. Baked in static lighting not only looks better, but it can perform two to three times better. This is a performance improvement and should be done whenever possible. Draw call batching is a great way to improve performance. This should be done whenever possible. References Optimizing graphics performance Light troubleshooting and performance Draw call batching

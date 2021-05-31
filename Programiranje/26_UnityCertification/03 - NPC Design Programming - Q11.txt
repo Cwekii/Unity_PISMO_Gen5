@@ -1,0 +1,25 @@
+
+
+A Programmer needs to efficiently be able to spawn in enemy non-player characters (NPCs), let them run around the level, and then collect them again.
+ 
+ What should the Programmer use to spawn and collect the enemies? (Choose two.)
+
+
+
+Answers: 
+1. A collector that returns the NPCs to the object pool 
+2. A spawner that runs off the Instantiate method 
+3. A series of NPC prefabs that are timed to self-destruct 
+4. A spawner that runs off an object pool 
+5. A collector that destroys the NPCs 
+
+
+
+Correct Answers: 
+1. A collector that returns the NPCs to the object pool 
+4. A spawner that runs off an object pool 
+
+
+
+Explanation: 
+Explanation The Programmer should use an object pool where the number of required NPCs can be warmed and available to spawn into the level as needed. When they are no longer needed, they can be collected and placed back into the object pool. The Programmer should not use the Instantiate method for such a cyclical spawn and collect pattern. The Programmer should not destroy the NPCs with their collection. An Object pool is much more efficient for this type of cyclical spawn and collect pattern. The Programmer should not use self-destructing prefabs. The Instantiate and Destroy methods are processor-intensive, and object pooling would be a better pattern to implement. References Object Pooling

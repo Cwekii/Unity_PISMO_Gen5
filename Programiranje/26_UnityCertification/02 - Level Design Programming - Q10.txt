@@ -1,0 +1,31 @@
+
+
+A Programmer needs to clean up the runtime spawning of fireball prefabs into a 3rd-person action/adventure game. The fireballs are currently being instanced by a line of code that reads as follows:
+ 
+ GameObject fireball = Instantiate(m_fireballPrefab, m_spawnLocation, Quaternion.identity); 
+ 
+ The m_fireballPrefab variable has been configured in the inspector to point to the Fireball prefab. The m_spawnLocation variable has been configured in the inspector to the correct position.
+ 
+ The m_fireballContainer variable is set in the inspector to the "Fireballs" Game Object in the hierarchy.
+ 
+ Now the Programmer needs to ensure that the newly spawned prefab is attached to a parent "Fireballs" Game Object in the project hierarchy to help keep the hierarchy neat and orderly.
+ 
+ Which code should the Programmer use?
+
+
+
+Answers: 
+1. fireball.transform.parent = m_fireballContainer.transform; 
+2. fireball = m_fireballContainer; 
+3. fireball.transform.parent = m_fireballContainer; 
+4. fireball.parent = m_fireballContainer; 
+
+
+
+Correct Answers: 
+1. fireball.transform.parent = m_fireballContainer.transform; 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: fireball.transform.parent = m_fireballContainer.transform; This correctly sets the transform of the m_fireballContainer in the hierarchy to be the parent transform of the newly spawned fireball Game Object. The Programmer should not use the following code: fireball = m_fireballContainer; fireball is a Game Object and not a transform, and m_fireballContainer is a Game Object and not the transform of the Game Object. The Programmer should not use the following code: fireball.parent = m_fireballContainer; fireball.parent is unknown to Unity, and this will throw an exception. The Programmer should not use the following code: fireball.transform.parent = m_fireballContainer; The m_fireballContainer is a Game Object and not the transform of the Game Object. References Transform.parent

@@ -1,0 +1,21 @@
+
+A Programmer is working on adding a cinematic to a 3D adventure game and needs to know if the timeline has ended. 
+
+What is the best way to accomplish this?
+
+
+Answers: 
+1. Use a timer and synchronize it with the time of the cut scene because there is no valid way to accurately detect the end of a PlayableDirector. 
+2. Implement a co-routine to check for the end of the timeline: public IEnumerator CheckEnd() { while (Math.Abs(_director.duration - _director.time) > 0.2) { yield return new WaitForEndOfFrame(); } } 
+3. Watch for the Playing state to change in the Update loop on a script attached to the game object the PlayableDirector is on: void Update() { if (GetComponent().state != PlayState.Playing) { Debug.Log("PlayableDirector stopped!"); } 
+4. Subscribe to the PlayableDirector.stopped event handler to receive a notification when the cinematic finishes as well as which PlayableDirector it was: using UnityEngine; using UnityEngine.Playables; public class PlayableDirectorWatcher : MonoBehaviour { public PlayableDirector director; void OnEnable(){ director.stopped += OnPlayableDirectorStopped; } void OnPlayableDirectorStopped(PlayableDirector aDirector) { if (director == aDirector) Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped."); } void OnDisable(){ director.stopped -= OnPlayableDirectorStopped; } } 
+
+
+
+Correct Answers: 
+4. Subscribe to the PlayableDirector.stopped event handler to receive a notification when the cinematic finishes as well as which PlayableDirector it was: using UnityEngine; using UnityEngine.Playables; public class PlayableDirectorWatcher : MonoBehaviour { public PlayableDirector director; void OnEnable(){ director.stopped += OnPlayableDirectorStopped; } void OnPlayableDirectorStopped(PlayableDirector aDirector) { if (director == aDirector) Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped."); } void OnDisable(){ director.stopped -= OnPlayableDirectorStopped; } } 
+
+
+
+Explanation: 
+Explanation The Programmer should subscribe to the PlayableDirector.stopped event handler to receive a notification when the cinematic finishes as well as which PlayableDirector it was. This is the most accurate way to know for sure when the end of a RealTime cinematic has finished playing. The Programmer needs to take care and ensure to unsubscribe from the delegate, but this is the correct way. The Programmer should not implement a co-routine to watch for the end of the PlayableDirector. This is messy code with magic numbers and additional processing, for something that has an event handler that can be subscribed to. The Programmer should not watch for the playing state to change in the Update loop on a script attached to the game object that the PlayableDirctor is on. Checking this state every frame would be a performance hit. The Programmer should subscribe to the PlayableDirctor.stopped event handler instead. The Programmer should not use a timer synchronized to the duration of the cutscene. This would be very error prone and hard to debug, as well as a processing hit. The Programmer should subscribe to the PlayableDirector stopped event handler. References PlayableDirector.stopped Delegates Coroutines C# countdown timer

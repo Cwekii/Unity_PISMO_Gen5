@@ -1,0 +1,26 @@
+
+A Programmer is using Unity Cloud Build for a 2D shooter game that is being targeted for multiple platforms. The project code is in a GitHub repository and Cloudbuild is working.
+
+The Programmer needs to add a scene for one of the build targets as a development build and one of the build targets only to the Unity Cloud Build System.
+
+How should the Programmer complete the advanced options form shown in the exhibit for the build target to get this additional scene to build for only the one build target? (Choose two.)
+
+
+Answers: 
+1. Enter the scene name by providing the file path as a relative path from the Assets folder. 
+2. Add the scene name to the Post-Export Method name field. 
+3. Check the Development Builds checkbox. 
+4. Type development in the Scripting define symbols field. 
+5. Uncheck the Development builds checkbox. 
+6. Add the scene name to the Scene List field. 
+
+
+
+Correct Answers: 
+1. Enter the scene name by providing the file path as a relative path from the Assets folder. 
+3. Check the Development Builds checkbox. 
+
+
+
+Explanation: 
+Explanation The Programmer should check the Development Builds checkbox to make this build target a development build and then enter the scene name by providing the file path as a relative path from the Assets folder. This will allow this single build target to be a development build and include the additional scene. The programmer should not type development in the Scripting define symbols field. To make a build target a development build, the Programmer should check the box marked Development Builds. This will enable development builds. The Programmer should not add the scene name to the Post-Export Method field. This field is for a method the Cloud Build system should call after the project has been exported by the Unity editor and requires you have a static method available. The Programmer should not just enter the name of the scene to add. The scene must be added by providing the full relative path as the relative path from the Assets folder. References Cloud Build Including specific Scenes Pre- and post-export methods

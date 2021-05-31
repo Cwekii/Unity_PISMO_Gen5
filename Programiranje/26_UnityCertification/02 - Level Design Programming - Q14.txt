@@ -1,0 +1,23 @@
+
+A Programmer is building a 3D FPS game that heavily uses delegates in most of the code base. There are memory leaks caused by improperly removing game objects from the levels at runtime, and systems are running out of memory.
+
+The Programmer knows that the memory issues are caused because of all the delegates and needs to ensure that they are cleaned up properly before the objects are removed.
+
+What should the Programmer do before removing the objects from the levels so that the memory leaks are fixed?
+
+
+Answers: 
+1. Unsubscribe from any UnityEvent that an object may be listening to before removing it from the level. 
+2. Unsubscribe from any UnityAction that an object may be listening to before removing it from the level. 
+3. Set any UnityAction that an object may be listening to as null before removing it from the level. 
+4. Set any UnityEvent that an object may be listening to as null before removing it from the level. 
+
+
+
+Correct Answers: 
+1. Unsubscribe from any UnityEvent that an object may be listening to before removing it from the level. 
+
+
+
+Explanation: 
+Explanation The Programmer should unsubscribe from any UnityEvent that an object may be listening to before removing it from the level. Unsubscribing from any UnityEvents an object is listening to is required before removing a game object from a scene. Failing to do so will cause memory leaks. The Programmer should not set any UnityEvents to null or any other value. You do not Set UnityEvents, you Subscribe or Unsubscribe from them. The Programmer should not set any UnityActions to null before removing the object from the level. UnityActions are used to dynamically call multiple functions within a class. You do not need to set these to null before removing an object from the scene. The Programmer should not unsubscribe from any UnityActions. UnityActions are used to dynamically call multiple functions within a class. You do not need to unsubscribe from them before removing an object from a scene. References UnityEvent UnityAction

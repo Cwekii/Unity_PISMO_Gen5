@@ -1,0 +1,24 @@
+
+A Programmer is building a 2D puzzle game for PC and wants to implement the best solution for developing across multiple platforms.
+
+The requirements state that the game needs to offer players the best possible experience and performance on all platforms.
+
+What does the Programmer need to do to meet these requirements?
+
+
+Answers: 
+1. Build separate projects for each platform the game will run on. 
+2. Use AssetBundle variants for low and high-end content that will work on all platforms. 
+3. Use platform dependence compilation in the game to have specific chunks of the code written specifically for each platform. 
+4. Target performance for the platform capabilities on the high-end hardware. 
+5. Target performance for the platform capabilities on the low-end hardware. 
+
+
+
+Correct Answers: 
+2. Use AssetBundle variants for low and high-end content that will work on all platforms. 
+
+
+
+Explanation: 
+Explanation The Programmer should use AssetBundle variants for low and high-end content that works on all platforms. By offering the same asset with different size and complexity of files, they could offer a game that performs consistently well across a variety of hardware and platforms. The Programmer should not target the game's performance for the platform capabilities on the high-end hardware. This will cause platforms and hardware on the low-end to suffer and possibly make the game un-playable. The Programmer should not use platform dependence compilation in the game to have specific chunks of the code written specifically for each platform. This will very quickly make the code base un-maintainable and un-manageable. The Programmer should not build separate projects for each platform the game will run on. This would create added overhead to keep the game updated on all platforms and would cause inconsistencies between ports. The Programmer should not target the game's performance for the platform capabilities on the low-end hardware. This will cause a severe limitation in how beautiful the game could look, feel, or play on hardware platforms with a greater processing potential. References Cross-Platform Considerations

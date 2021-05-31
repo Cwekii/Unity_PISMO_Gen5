@@ -1,0 +1,23 @@
+
+
+A Programmer is building a simple 3rd-person racing game and needs to add in non-player characters (NPCs) and their logic for the player to race against. 
+ 
+ What is best suited for this type of Game AI?
+
+
+
+Answers: 
+1. A flocking pattern with obstacle avoidance as the primary system 
+2. A waypoint system that can be expanded for difficulty 
+3. An A* Pathfinding system that can plot its way around the map 
+4. A NavMesh and NavAgent system that will let the NPCs move freely on the track 
+
+
+
+Correct Answers: 
+2. A waypoint system that can be expanded for difficulty 
+
+
+
+Explanation: 
+Explanation The Programmer should implement a waypoint system that can be expanded for difficulty as the starting point for this type of NPC logic. It is simple, quick, and can be tweaked and tuned by designers during play-testing. The programmer should not use a NavMesh and NavAgent system that lets the NPCs move freely. There will be no way to ensure that they travel in the right direction. The Programmer should not use an A* pathfinding solution unless the simpler waypoint system is determined through play-testing to be inadequate. This type of system is difficult to tune or control without a lot of additional heuristic planning. The Programmer should not use a flocking pattern with obstacle avoidance unless the simpler waypoint system is determined through play-testing to be inadequate. This type of system is difficult to tune or control and is better suited for emergent behaviors. References How to make waypoints Building a NavMesh Flocking

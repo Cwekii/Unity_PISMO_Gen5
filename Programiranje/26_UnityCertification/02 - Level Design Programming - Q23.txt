@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a First-Person Shooter (FPS) and needs to load in a new scene for a big boss fight. The new scene needs to be loaded additively and the Programmer does not want any lag, loading hiccups, or performance issues during load.
+ 
+ What two methods should the Programmer use? (Choose two.)
+
+
+
+Answers: 
+1. LoadSceneMode 
+2. LoadSceneAsync 
+3. CreateScene 
+4. LoadScene 
+5. MergeScenes 
+
+
+
+Correct Answers: 
+1. LoadSceneMode 
+2. LoadSceneAsync 
+
+
+
+Explanation: 
+Explanation The Programmer should use LoadSceneAsync and LoadSceneMode. LoadSceneAsync with LoadSceneMode set to additive will allow the Programmer to load the additional scene into the hierarchy at runtime without pauses or performance hiccups and keep both scenes available for the player. The Programmer should not use MergeScenes. MergeScenes will load the new scene, but it will destroy the original scene after moving all root nodes into the new scene loaded. The Programmer should not use LoadScene. When using SceneManager.LoadScene, the scene is not loaded immediately. It completes in the next frame. This semi-asynchronous behavior can cause frame stuttering and can be confusing because the load does not complete immediately. The Programmer should not use CreateScene. CreateScene will create a new scene and will not load an existing scene. References SceneManager.MergeScenes LoadSceneMode SceneManager.LoadSceneAsync SceneManager.LoadScene SceneManager.CreateScene

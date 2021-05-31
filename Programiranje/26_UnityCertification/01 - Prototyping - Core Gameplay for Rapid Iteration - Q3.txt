@@ -1,0 +1,48 @@
+
+A Programmer is building a prototype for a 3D adventure game and needs to implement pickups for the player. The player game object has a RigidBody and a Capsule Collider attached to it, as well as a PlayerController script that contains the code below:
+
+“PlayerController.cs”
+
+void OnCollisionEnter(Collision collision) {
+   if(collision.gamebject.tag == “pickup”) {
+      collision.gameObject.GetComponent<pickup>().PlayerPickedUp();
+   }
+}
+
+“Pickup.cs”
+
+public enum PickUpType { AMMO, HEALTH, WEAPON }; 
+… 
+
+[SerializeField]
+private PickupType m_pickupType;
+
+… 
+
+public void PlayerPickedUp() {
+  Destroy(this.gameObject, 1); 
+}
+
+The Pickup game object is tagged pickup and has a collider and a pickup script attached to it with a public method named PlayerPickedUp() in it as well as a public Enumeration named PickUpType declared just outside the Pickup Class. A private variable marked as set is set in the inspector for the pickup. It can be used to tell the player what type of pickup was obtained. Currently there are only three pickup types (ammunition, health packs, and a generic weapon). 
+
+When the player collides with the pickup, it is successfully destroyed. 
+
+What does the Programmer need to do to ensure that the player can successfully pick up a pickup in the game and know which of the pickup types was collected?
+
+
+Answers: 
+1. Change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object and also update the OnCollisionEnter method in the PlayerController to catch and then do something with the returned result. 
+2. Implement another method to return the type of pickup before calling the PlayerPickedUp() method on collision. 
+3. Change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object. 
+4. Query the Pickup class for the m_pickupType directly before calling the PlayerPickedUp method in the Pickup class and having the game object destroy itself. 
+5. Change the PlayerPickedUp method to the following: public PickUpType PlayerPickedUp() { return this; Destroy(this.gameObject); } 
+
+
+
+Correct Answers: 
+1. Change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object and also update the OnCollisionEnter method in the PlayerController to catch and then do something with the returned result. 
+
+
+
+Explanation: 
+Explanation The Programmer should change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object and also update the OnCollisionEnter method in the PlayerController to catch and then do something with the returned result. By changing the PlayerPickedUp method to return a PickUpType and having that method return the m_pickupType variable, as well as having the call to PlayerPickedUp catch the return, the Programmer will be able to determine the type for pickup that was set in the inspector for each specific pickup. The Programmer cannot query the m_pickupType variable directly because it is set to private. The Programmer should not change the PlayerPickedUp() method to return the type before Destroy is called. This will cause the pickups to no longer disappear or be destroyed. The Programmer should not query the Pickup class for the m_pickupType directly before calling the PlayerPickedUp method in the Pickup class. Adding an additional method to query the type of pickup is not efficient and adds unnecessary complexity to the coupling of these two objects. The Programmer should not change the PlayerPickedUp method in the Pickup script to return the type of the pickup before destroying the game object. If the Programmer only changes the PlayerPickedUp method in the Pickup class, they will still not know what type of pickup was returned. The Programmer needs to catch the returned object to see what m_pickupType was set to. References Object.Destroy MonoBehaviour.OnCollisionEnter(Collision) SerialzeField

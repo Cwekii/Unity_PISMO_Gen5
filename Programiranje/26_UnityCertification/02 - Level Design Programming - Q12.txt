@@ -1,0 +1,23 @@
+
+
+A Programmer is working on a prototype for a mobile platformer game and needs to build a script that will generate all of the platforms in the game.
+ 
+ How should the Programmer implement the logic for this script?
+
+
+
+Answers: 
+1. The Programmer should create a single level generator script and attach it to an empty Game Object in the hierarchy of the scene. 
+2. The Programmer should attach a script to a prefab that is loaded in the game from the game manager. 
+3. The Programmer should build base classes that do not use MonoBehaviour. 
+4. The Programmer should separate all of the logic for creating the platforms into small discrete pieces that are connected through a controlling script that is not attached to anything. 
+
+
+
+Correct Answers: 
+1. The Programmer should create a single level generator script and attach it to an empty Game Object in the hierarchy of the scene. 
+
+
+
+Explanation: 
+Explanation The Programmer should create a single level generator script and attach it to an empty Game Object in the hierarchy of the scene to keep all of the level generation logic in a single place that is easy to access. The Programmer should not embed generators or managers in prefabs unless there is a strong case to do this. Embedding scripts in prefabs will require additional processing by Unity, so the performance will suffer. The Programmer should not separate all of the logic for creating the platforms into small discrete pieces that are connected through a controlling script that is not attached to anything. The logic for platform generation is best suited in a single location. The Programmer should not build base classes that do not use MonoBehaviour if they are attached directly to Game Objects in the hierarchy. MonoBehaviour allows the Programmer to leverage the built-in functions that Unity provides such as Start, and Update. Generator and Manager scripts benefit from the use of the MonoBehaviour base class and should be used. References Game Managers

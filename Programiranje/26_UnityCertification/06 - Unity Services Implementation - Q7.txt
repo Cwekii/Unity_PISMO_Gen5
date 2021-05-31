@@ -1,0 +1,25 @@
+
+
+A Programmer is asked about adding Unity Analytics into an existing game for Android and iOS to gain information about the game's players.
+ 
+ Which two core usage data statistics can be discovered about the game's player base with the basic Unity Analytics enabled? (Choose two.)
+
+
+
+Answers: 
+1. In App Purchase (IAP) Data 
+2. Ad revenue 
+3. Details of purchases by children under the age of 13 
+4. New installs of the game 
+5. Daily Active Users 
+
+
+
+Correct Answers: 
+4. New installs of the game 
+5. Daily Active Users 
+
+
+
+Explanation: 
+Explanation The core usage data includes the number of new installs of a game and the number of daily active users. The core usage data does not include the IAP Data unless the Unity IAP Service has been installed. The core usage data does not include the Ad revenue of a game unless Unity Ads has been enabled and installed. It is against Unity's usage policy to allow minors under the age of 13 to make in-app-purchases. References Unity Analytics Overview Integrating Unity IAP In Your Game Unity Ads COPPA - Children's Online Privacy Protection Act

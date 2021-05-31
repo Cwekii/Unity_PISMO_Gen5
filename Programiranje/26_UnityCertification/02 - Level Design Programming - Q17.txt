@@ -1,0 +1,25 @@
+
+
+A Programmer is tasked with improving the clouds in a 3rd-person action/adventure game for PC. The play testers commented that the current particle system for the clouds looks weak and lacks volume.
+ 
+ The current Particle System is using a simple texture for the cloud Particle System.
+ 
+ What should the Programmer do to improve this Particle System?
+
+
+
+Answers: 
+1. Change the Pivot point for rotating the texture to make the clouds appear more random from one another in final shape. 
+2. Using the Render module, switch the system from billboards to Mesh and use an actual Mesh object for the clouds. 
+3. Use the Flip property of the Render module to eliminate some of the repetitive patterns from the Particle System. 
+4. Increase the Max-Particle size number of the Render module until the cloud looks like it takes up more volume. 
+
+
+
+Correct Answers: 
+2. Using the Render module, switch the system from billboards to Mesh and use an actual Mesh object for the clouds. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Render module to switch the particles from billboard textures to Mesh objects. This is the best way to improve the sense of volume for the clouds. The Programmer should not increase the Max-Particle size of the Render module. This will result in bigger clouds that still lack volume. The Programmer should not flip some of the particles to remove some of the repetitive patterns from the Particle System. This will not make the clouds appear to take up more volume, but it will help to reduce any repetitive patterns. The Programmer should not change the Pivot point for rotating the texture. This will not make the clouds appear to take up more volume, but it will help to reduce any repetitive patterns. References Renderer module

@@ -1,0 +1,23 @@
+
+
+A Programmer is building a Raycast for a player controller and needs the Raycast to ignore colliders that are set to triggers.
+ 
+ Which property should the Programmer use?
+
+
+
+Answers: 
+1. QueryTriggerInteraction.UseGlobal 
+2. QueryTriggerInteraction.Ignore 
+3. QueryTriggerInteraction.Collide 
+4. Physics.queriesHitTriggers 
+
+
+
+Correct Answers: 
+2. QueryTriggerInteraction.Ignore 
+
+
+
+Explanation: 
+Explanation The Programmer should use the QueryTriggerInteraction.Ignore property. This will explicitly tell the Raycast to ignore all triggers and only report on colliders that are not set to be triggers. The Programmer should not use the QueryTriggerInteraction.UseGlobal property. The default behavior is to have the Raycast report both colliders and triggers. The Programmer should not use the QueryTriggerInteraction.Collide property. This will cause the Raycast to report on all collisions including intersections with triggers. The Programmer should not use Physics.queriesHitTriggers property. This will only return true or false if the Raycast is hitting triggers and is a global setting. References QueryTriggerInteraction Physics.queriesHitTriggers QueryTriggerInteraction.Ignore

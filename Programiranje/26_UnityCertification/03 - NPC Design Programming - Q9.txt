@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a 3rd-person action/adventure game for PC and must implement enemy spawning.
+ 
+ The enemies will spawn from spawners in each level. When they spawn, they should be facing the player. The variable "enemyPrefab" will be set in the inspector and the prefab has been built so that the enemy model properly faces forward on the local Z axis. The playerTransform variable is the Transform of the player.
+ 
+ Which code should the Programmer use to ensure that the enemy is facing the player when it spawns?
+
+
+
+Answers: 
+1. SpawnEnemy(Transform spawner) { Instantiate(enemyPrefab, spawner.position, Quaternion.identity); } 
+2. SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner, Quaternion.LookRotation(relativePos, Vector3.up); } 
+3. SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner.position, Quaternion.LookRotation(relativePos, Vector3.up); } 
+4. SpawnEnemy(Transform spawner) { Vector3 relativePos = spawner.position - playerTransform.position; Instantiate(enemyPrefab, spawner, relativePosition); } 
+
+
+
+Correct Answers: 
+3. SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner.position, Quaternion.LookRotation(relativePos, Vector3.up); } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner.position, Quaternion.LookRotation(relativePos, Vector3.up); } By properly calculating the player's position relative to the spawner and using the Quaternion.LookRotation method, the NPC will always spawn facing the player. The Programmer should not use the following code: SpawnEnemy(Transform spawner) { Instantiate(enemyPrefab, spawner.position, Quaternion.identity); } The issue here is that Quaternion.identity is the world's rotation (X, Y, Z), and the enemy would always spawn facing forward on the world Z axis. The Programmer should not use the following code: SpawnEnemy(Transform spawner) { Vector3 relativePos = spawner.position - playerTransform.position; Instantiate(enemyPrefab, spawner, relativePosition); } The issue here is that relative position was calculated incorrectly and is a Vector3, not a Quaternion. The Programmer should not use the following code: SpawnEnemy(Transform.spawner) { Vector3 relativePos = playerTransform.position - spawner.position; Instantiate(enemyPrefab, spawner, Quaternion.LookRotation(relativePos, Vector3.up); } The issue here is that spawner is a Transform and not a Vector3. spawner.position would return the Vector3 that the Instantiate method expects. References Object.Instantiate Quaternion.LookRotation

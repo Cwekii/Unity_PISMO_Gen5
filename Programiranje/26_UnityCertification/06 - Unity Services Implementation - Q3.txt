@@ -1,0 +1,21 @@
+
+A Programmer implements a feature in a mobile game that offers a reward-based ad every time the player is low on ammunition. This creates an imbalance in the gameplay, and players are complaining that the game is now too easy.
+
+What should the Programmer do to correct the imbalance?
+
+
+Answers: 
+1. Remove the reward offer when the player is specifically low on ammunition and randomize how frequently the offer is made. 
+2. Remove the ads completely from the game. 
+3. Wait until the player as died a set number of times before making the offer when the player is low on ammunition. 
+4. Limit the reward ad to a once per level or set number of times in a single game session. 
+
+
+
+Correct Answers: 
+4. Limit the reward ad to a once per level or set number of times in a single game session. 
+
+
+
+Explanation: 
+Explanation The Programmer should limit the reward ad frequency to a consistent number of times that the players can depend on, such as once per level or a set number of times in a single game session. This will balance the game back out. The Programmer should then closely watch for feedback and the analytics to ensure that the changes are positive and are being accepted by the player base. The Programmer should not randomize how frequently the offer is made. This will be perceived as an inconsistency or anomaly in the game. Players engage best with patterns they can see. X times per session or level will make more sense to the players and balance the game back out. The Programmer should not remove the reward ads completely from the game. Having this type of reward available as a "should you need it" offer that is available once per level or a set number of times per game session is a positive reinforcement and reason to play the game. The Programmer should not wait until a set number of deaths have occurred before offering a life line in the form of a reward-based ad. Players may see this as an insult to their ability to clear a level or the Programmer making fun of them. References Best practices guide

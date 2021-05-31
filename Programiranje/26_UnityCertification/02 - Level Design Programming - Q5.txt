@@ -1,0 +1,29 @@
+
+
+A Programmer is working on a 1st-person shooter game for PC and needs to add a Raycast for the player's shooting mechanic into existing code.
+ 
+ The origin and the direction of the Raycast have already been calculated and stored in the m_origin and m_direction Vector3 variables.
+ 
+ It has been decided that the RaycastHit information will be stored in a variable named m_hitInfo.
+ 
+ What code can the Programmer use to implement the Raycast to meet these specifications? (Choose two.)
+
+
+
+Answers: 
+1. Physics.Raycast(m_origin, m_direction, m_hitInfo); 
+2. Ray theRay = new Ray(m_direction, m_origin); Physics.Raycast(theRay, m_hitInfo); 
+3. Ray theRay = new Ray(m_origin, m_direction); Physics.Raycast(theRay, m_hitInfo); 
+4. Ray theRay = new Ray(origin, direction); Physics.Raycast(theRay, m_hitInfo); 
+5. Physics.Raycast(origin, m_direction, hitInfo); 
+
+
+
+Correct Answers: 
+1. Physics.Raycast(m_origin, m_direction, m_hitInfo); 
+3. Ray theRay = new Ray(m_origin, m_direction); Physics.Raycast(theRay, m_hitInfo); 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: Ray theRay = new Ray(m_origin, m_direction); Physics.Raycast(theRay, m_hitInfo); This will store the origin and direction variables in a Ray struct that can be passed into the Raycast method call. The Programmer should also use the following code: Physics.Raycast(m_origin, m_direction, m_hitInfo); With this code, all of the correct data is being used for the Raycast, and the m_hitInfo variable will contain the details of any colliders that the ray intersects with. The Programmer should not use the following code: Ray theRay = new Ray(m_direction, m_origin); Physics.Raycast(theRay, m_hitInfo); The Ray struct takes two Vector3 variables (origin and direction). This code will not have the Ray being used in the Raycast pointing the right direction or positioned correctly in world space. The Programmer should not use the following code: Ray theRay = new Ray(origin, direction); Physics.Raycast(theRay, m_hitInfo); The variables origin and direction do not exist, and this will cause an error. The Programmer should not use the following code: Physics.Raycast(m_origin, m_direction, hitInfo); The variable hitInfo does not exist, and this will cause an error. References Physics.Raycast Ray RaycastHit

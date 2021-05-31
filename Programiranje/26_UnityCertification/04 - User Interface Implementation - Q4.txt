@@ -1,0 +1,21 @@
+
+A Programmer is building a 2D puzzle game for mobile platforms. The requirements state that the game needs to target multiple aspect ratios. The Programmer will need to be sure to adapt the UI to fit these aspect ratios, maintaining the distance of GUI elements from the edge of the screen.
+
+What will the programmer need to set per element to achieve this?
+
+
+Answers: 
+1. Scale of each element in the GUI 
+2. Anchor Points per element in the GUI 
+3. Screen.Main for each element in the GUI 
+4. Blocking Objects per element in the GUI 
+
+
+
+Correct Answers: 
+2. Anchor Points per element in the GUI 
+
+
+
+Explanation: 
+Explanation The Programmer should set Anchor Points per element in the GUI. By anchoring the elements to the screen edges or corners, the game UI will adapt to a number of devices and screens. The Programmer should not set Blocking Objects per element in the GUI. This will cause shifting of elements on different resolutions and cost additional processing. The Programmer should not set Screen.Main per element in the GUI. This would only server to re-attach all of the elements to the main camera on the mobile screen. The Programmer should not set the Scale of each element in the GUI. This will cause uncontrolled distortion in the aspect ratio of the elements on various screen resolutions. References Basic Layout Designing UI for Multiple Resolutions

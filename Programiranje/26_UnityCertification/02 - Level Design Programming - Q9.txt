@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a 3rd-person space shooter game for PC and must implement shooting missiles from the ship (player).
+ 
+ The variable "missilePrefab" will be set in the inspector, and the prefab has been built so that the missile model properly faces forward on the local Z axis. The code will be in a script that is attached to the ship game object.
+ 
+ Which code should the Programmer use to ensure that the missile fires forward from the player's ship?
+
+
+
+Answers: 
+1. FireMissile() { Instantiate(rocket, transform.position, rotation); } 
+2. FireMissile() { Instantiate(missilePrefab, rotation.position, transform.rotation); } 
+3. FireMissile() { Instantiate(missilePrefab, transform.position, Quaternion.identity); } 
+4. FireMissile() { Instantiate(missilePrefab, transform.position, transform.rotation); } 
+
+
+
+Correct Answers: 
+4. FireMissile() { Instantiate(missilePrefab, transform.position, transform.rotation); } 
+
+
+
+Explanation: 
+Explanation The Programmer should use the following code: FireMissile() { Instantiate(missilePrefab, transform.position, transform.rotation); } Because the code is in a script attached to the player game object, the transform.position and transform.rotation are the ship's position and rotation. The Programmer should not use the following code: FireMissile() { Instantiate(rocket, transform.position, rotation); } The issue here is that rotation is unknown. You should use transform.rotation to pass the right data to the Instantiate method. The Programmer should not use the following code: FireMissile() { Instantiate(missilePrefab, rotation.position, transform.rotation); } The issue here is that rotation.position is unknown. You should use transform.rotation to pass the right data to the Instantiate method. The Programmer should not use the following code: FireMissile() { Instantiate(missilePrefab, transform.position, Quaternion.identity); } The issue here is that Quaternion.identity is the world's rotation, not the player's ship. References Instantiating Prefabs at runtime Object.Instantiate

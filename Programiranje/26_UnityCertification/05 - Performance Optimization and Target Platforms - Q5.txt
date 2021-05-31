@@ -1,0 +1,31 @@
+
+A Programmer is implementing Asset Bundles in a 2D Space shooter as a way of providing seasonally themed DLC for the players and reducing the install footprint of the game.
+
+The Programmer has the following function for downloading the material Asset Bundle:
+
+private Material LoadMaterialBundle(string materialName) {
+
+WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0);AssetBundle bundle = www.assetBundle;AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material));Material newMat = bundleRequest.asset as Materialbundle.Unload(false);www.Dispose();return newMat;}
+
+However, the Asset Bundle is only being returned sometimes with very small test materials.
+
+What should the Programmer do to resolve this issue and allow for larger materials to be pulled from an AssetBundle all of the time? (Choose two.)
+
+
+
+Answers: 
+1. Update the LoadMaterialBundle function to the following : private void LoadMaterialBundle(string materialName) { WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0); AssetBundle bundle = www.assetBundle; AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material)); Material newMat = bundleRequest.asset as Material bundle.Unload(false); www.Dispose(); return m_returnedMat; } 
+2. Implement a module level variable named m_bundleMat of Material type. 
+3. Implement the following co-routine: IEnumerator LoadMaterialBundle(string materialName) { while (!Caching.ready){ yield return null; } WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0); yield return www; AssetBundle bundle = www.assetBundle; AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material)); yield return bundleRequest; m_bundleMat = bundleRequest.asset as Material; bundle.Unload(false); www.Dispose(); } 
+4. Implement a module level Material variable named m_returnedMat. 
+
+
+
+Correct Answers: 
+2. Implement a module level variable named m_bundleMat of Material type. 
+3. Implement the following co-routine: IEnumerator LoadMaterialBundle(string materialName) { while (!Caching.ready){ yield return null; } WWW www = WWW.LoadFromCacheOrDownload (materialsURL, 0); yield return www; AssetBundle bundle = www.assetBundle; AssetBundleRequest bundleRequest = bundle.LoadAssetAsync (materialName, typeof(Material)); yield return bundleRequest; m_bundleMat = bundleRequest.asset as Material; bundle.Unload(false); www.Dispose(); } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the AssetBundle retrieval using a co-routine and implement the module level variable m_bundleMat. A co-routine prevents the processor from blocking on longer processes and asynchronous web calls like the www class provides. The programmer should not use a function for AssetBundle retrieval or implement the module level variable m_returnedMat that the updated function references. The Programmer should instead use a co-routine in place of the function to not block the processing and support the asynchronous nature of the www class. References AssetBundle Building AssetBundles AssetBundles FAQ

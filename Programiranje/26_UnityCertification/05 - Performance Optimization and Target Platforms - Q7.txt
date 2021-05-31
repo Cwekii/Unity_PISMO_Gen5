@@ -1,0 +1,25 @@
+
+
+A Programmer is trying to get a character to release a fireball at a specific point in their animation cycle with an Animation Event.
+ 
+ The code to release the fireball is correct, and the fireball is releasing, but it is not at the right spot in the animation.
+ 
+ What is the best way for the Programmer to debug this issue?
+
+
+
+Answers: 
+1. Use a rigidbody and colliders to have the character actually throw the fireball. 
+2. There is no good way to debug this issue during gameplay. 
+3. Build a timer and watch it for the correct time stop in the animation to move the Animation event to. 
+4. Use the Pause and Frame stepping controls built into the Unity Editor to step through the animation to find the ideal place for the fireball release, and then move the Animation event. 
+
+
+
+Correct Answers: 
+4. Use the Pause and Frame stepping controls built into the Unity Editor to step through the animation to find the ideal place for the fireball release, and then move the Animation event. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the Pause and Frame Stepping controls built into the Unity Editor to step through the animation to find the ideal place for the fireball release. This is exactly the type of issue these controls were built to help debug. The Programmer should not build a timer and watch it for the correct time stop in the animation. This is extra throw-away code that will not be accurate if the animation's speed is ever changed. There is a good way for the Programmer to debug this issue during gameplay. The Programmer should use the Pause and Frame stepping controls built into the Unity Editor. The Programmer should not use rigid bodies and colliders to have the character actually throw the fireball. This will cause un-reproducible bugs in the sequence any time the physics system is taxed even a little, causing the animation and release of the fireball to de-synchronize. References Interface Overview

@@ -1,0 +1,21 @@
+
+A Programmer has been using Unity Cloud build for a 3D Pirate Adventure game that was targeted at a single platform. The requirements have now changed, and this game needs to be built for a second platform. The two platforms have different file requirements.
+
+Which method can the Programmer use to ensure that each build has the correct files with minimal duplication and redundancy?
+
+
+Answers: 
+1. Create unique project branches in Unity Cloud Build. 
+2. Create unique projects in Unity Cloud Build per platform. 
+3. Assign various builds to cloned repositories containing unique files. 
+4. Assign various builds to unique branches of the code repository. 
+
+
+
+Correct Answers: 
+4. Assign various builds to unique branches of the code repository. 
+
+
+
+Explanation: 
+Explanation The Programmer should assign various builds to unique branches of the code repository. Assigning various builds to unique branches of the code repository would allow for the project to share the same code base and still keep the unique files separate. That makes this is the ideal solution. The Programmer should not create unique projects in Unity Cloud Build per platform. Creating unique projects in Unity Cloud Build per platform would be duplicating effort since a single Unity Cloud Build can manage multiple build targets. The Programmer should not create unique project branches in Unity Cloud Build. Project branches are not created in Unity Cloud Build. They are created in your code repository. The Programmer should not assign various builds to cloned repositories containing unique files. Unity Cloud Build builds do not allow special configurations of the cloned repositories on Unity Cloud Build. Unity Cloud Build needs to have the unique files already in the repository prior to cloning or building. References Unity Cloud Build Cloud Build

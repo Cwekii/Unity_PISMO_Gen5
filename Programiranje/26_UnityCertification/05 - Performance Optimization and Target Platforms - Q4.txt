@@ -1,0 +1,21 @@
+
+A Programmer is implementing Asset Bundles in a CPU-intensive, 3D Pirate game. The Programmer will need to load assets from the Asset Bundles with as little work from the CPU as possible.
+
+Which compression method should the Programmer use for the Asset Bundles?
+
+
+Answers: 
+1. custom compression 
+2. chunk based compression (LZ4) 
+3. no compression 
+4. standard compression (LZMA) 
+
+
+
+Correct Answers: 
+3. no compression 
+
+
+
+Explanation: 
+Explanation The Programmer should use no compression. This way there is very little work for the CPU to access assets from an Asset Bundle. The developer should use this method when CPU resources are low. The Programmer should not use standard compression (LZMA), which requires some additional CPU processing to decompress and manage the memory footprint. LZMA compression uses the most memory to access its contents. This is not the recommended compression method. The Programmer should not use custom compression, which requires that the Programmer create their own compression and decompression algorithms. These would be additional work for the CPU. This is not the recommended compression method. The Programmer should not use chunk based compression (LZ4). There is nothing in the requirements that suggests the Programmer needs to load only part of an asset bundle (individual assets). The primary use of LZ4 is to reduce size and allow for retrieval of individual assets without the need for decompressing the whole Asset Bundle. This is not the recommended method. References AssetBundle Asset Bundle Compression

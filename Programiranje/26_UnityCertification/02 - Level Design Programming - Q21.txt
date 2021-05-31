@@ -1,0 +1,24 @@
+
+A Programmer is building a game that will be available for multiple platforms, including mobile platforms.
+
+The Programmer needs to be able to provide assets that provide the same gameplay for all variants of the game regardless of the platform.
+
+What should the Programmer implement to accomplish this?
+
+
+Answers: 
+1. Take the high-end hardware into account and target for performance on that platform. 
+2. Use AssetBundle variants to allow for models, graphics, and scripts that are better suited for both low-end and high-end platforms. 
+3. The Programmer should do a SOAK test to determine which specs to target and eliminate the systems that run out of resources early from the list of supported platforms. 
+4. Use platform dependent compilation in the game. 
+5. Take the low-end hardware into account and target for performance for those platforms. 
+
+
+
+Correct Answers: 
+2. Use AssetBundle variants to allow for models, graphics, and scripts that are better suited for both low-end and high-end platforms. 
+
+
+
+Explanation: 
+Explanation The Programmer should implement AssetBundles for variants. This is the best way to target a wide range of hardware with varying degrees of performance in a single game. By offering the same assets with different size and complexity of files, the Programmer can offer a game that performs consistently across a variety of hardware. The Programmer should not take the low-end hardware into account and reduce the performance of the game to match the lowest specs. This will have an adverse effect on players using newer hardware. The Programmer should not take only the high-end of performance into account. That will make the game unplayable on low-end systems and ruin the player experience. The Programmer should not use platform dependent compilation. This is only useful to execute different code for different platforms and would not help at all with graphic resolutions or poly count in mesh files. This would be hard to maintain. The Programmer should not use A SOAK test to identify the platforms that run out of memory for the purpose of eliminating them from the list of platforms the game is to run on. A SOAK test is designed to run your game for a long time to determine the patterns of performance. It will not help you to make decisions for platforms. A Game Designer will make the decisions which platforms the game should run on. References Assets, Resources and AssetBundles Platform-specific Best practice guides Platform dependent compilation

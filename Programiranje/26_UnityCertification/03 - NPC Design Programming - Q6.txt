@@ -1,0 +1,27 @@
+
+
+A Programmer is working on a mobile escape game in which the player needs to evade the patrolling non-player characters (NPCs).
+ 
+ The game uses a NavMesh system. NPC navigation incorrectly sees a set of stairs as a slope, which makes the NPCs appear to slide up and down the stairs.
+ 
+ The Programmer needs to ensure accurate placement of the NPCs on the steps of the level.
+ 
+ What should the Programmer do?
+
+
+
+Answers: 
+1. Add a Height Mesh to the walkable surfaces. 
+2. Remove the stairs from the gameplay. 
+3. Add a Height Map to the walkable surfaces. 
+4. Tweak the animations of the NPCs so that they look better. 
+
+
+
+Correct Answers: 
+1. Add a Height Mesh to the walkable surfaces. 
+
+
+
+Explanation: 
+Explanation The Programmer should add a Height Mesh to the walkable surfaces. You can do this by enabling the Height Mesh option on the NavMesh under the advanced settings before building the NavMesh. This will cause the NavMesh to not smooth itself over the walkable area and will more closely match the walkable path. The Programmer should not add a Height Map to the walkable surfaces. Height Maps are for the Terrain system and rendering details, not the NavMesh system. The Programmer should not tweak the animations of the NPCs so they look better. The issues lie with the NavMesh smoothing the walkable surface. Enabling the Height Mesh option under the advanced settings will allow for a more accurate placement of the models. The Programmer should not remove the stairs from the gameplay. The issue lies with the NavMesh smoothing the walkable surface. Enabling the Height Mesh option under the advanced settings will allow for a more accurate placement of the models. References Building Height Mesh for Accurate Character Placement Heightmap

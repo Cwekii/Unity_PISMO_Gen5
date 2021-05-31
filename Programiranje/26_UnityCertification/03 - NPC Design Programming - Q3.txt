@@ -1,0 +1,27 @@
+
+
+A Programmer needs to expand the current logic for the non-player characters (NPCs) in an action/adventure game prototype. The senses of the NPCs need to be built out and tested.
+ 
+ Currently the NPCs just wander around the map and have no senses. A finite state machine (FSM) has been built, but the only state that currently exists is wander.
+ 
+ Which two senses should the Programmer implement first? (Choose two.)
+
+
+
+Answers: 
+1. The Programmer should implement the hearing behavior. If an NPC hears a loud noise (caused by the player or an explosion), the NPC can switch from the wander state to an inspect state. 
+2. The Programmer should implement the sight behavior. If an NPC has a clear line of sight to the player, it can switch from a wander state to a pursuit state. 
+3. The programmer should implement a patrol behavior. As soon as the NPC spawns in, it will begin a patrol path by following waypoints. 
+4. The programmer should implement a psychic behavior. As soon as the NPC spawns in, it can head directly for the player. 
+5. The Programmer should implement the smell behavior. If an NPC is downwind from the player, it will switch to a pursuit state and go after the player. 
+
+
+
+Correct Answers: 
+1. The Programmer should implement the hearing behavior. If an NPC hears a loud noise (caused by the player or an explosion), the NPC can switch from the wander state to an inspect state. 
+2. The Programmer should implement the sight behavior. If an NPC has a clear line of sight to the player, it can switch from a wander state to a pursuit state. 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the sight behavior. This is the most common sense for an NPC and makes a good starting point. If the NPC has a clear line of sight to the player, it can switch to a pursuit state and go after the player. The Programmer should also implement the hearing behavior. This is the second most common sense that NPCs get in video games. If the player triggers a sound, the NPC can switch to an inspect state and go to the source of the sound. This may or may not be where the player actually is. The Programmer should not start with the psychic behavior. While this can be a fun behavior to play with for difficulty, the Programmer should start with pursuit and inspect based on sight and sound. Once these behaviors are already added to the NPC, adding a psychic behavior is trivial. The Programmer should not start with a patrolling behavior. Following a series of waypoints is the evolution of the inspect behavior, where the NPC is already moving to a specific point. Once the inspect state has been added through a sense of sound, having the NPC follow a series of inspect states is trivial. The Programmer should not start with the sense of smell. That would first require a wind mechanism and then a way for the player to see the direction the wind is blowing. When prototyping games, you should start with the simple steps that can be built upon and play-test often. Starting with a sense of sight or sound makes the most sense as a starting point. References State Machine Basics Finite State Machines [Part 1]

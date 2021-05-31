@@ -1,0 +1,25 @@
+
+
+Which three rendering optimizations will make your game faster? (Choose three.)
+
+
+
+Answers: 
+1. Use pow, sin and cos in pixel shaders whenever possible. 
+2. Do not use skyboxes to fake geometry. 
+3. Keep the number of different materials per Scene low, and share as many materials between different objects as possible. 
+4. Use more textures per fragment. 
+5. Avoid using fog where possible. 
+6. Bake Lighting rather than use dynamic lighting. 
+
+
+
+Correct Answers: 
+3. Keep the number of different materials per Scene low, and share as many materials between different objects as possible. 
+5. Avoid using fog where possible. 
+6. Bake Lighting rather than use dynamic lighting. 
+
+
+
+Explanation: 
+Explanation To make your game faster, you should avoid using fog where possible. You should also bake your lighting rather than use dynamic lighting. You should also keep the number of materials per Scene low, and share as many materials between different objects as possible. You should not use pow, sin and cos in pixel shaders when possible. They are all process-intensive and will slow down your rendering. You should use skyboxes for fake distant geometry when possible. Not using them when possible is a performance hit that you could avoid. You should use fewer textures per fragment whenever possible. References Optimizing graphics performance

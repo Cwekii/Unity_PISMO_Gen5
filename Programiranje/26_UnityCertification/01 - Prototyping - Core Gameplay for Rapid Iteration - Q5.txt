@@ -1,0 +1,22 @@
+
+A Game Programmer is prototyping a patrolling NPC enemy that is supposed to walk around on a platform. The NPC keeps falling off the platform. Currently the NPC uses raycasts to detect the ground ahead of it.
+
+Which method is best to help debug the NPCs behavior and see why it keeps falling off the platform?
+
+
+Answers: 
+1. Gizmos.DrawRay to visually inspect the raycasts 
+2. Debug.Log to write out the raycast position and direction 
+3. Debug.Log to write out the raycast start and end points 
+4. Debug.LogWarning to write out the results of the raycast when the edge of a platform is found 
+5. Gizmos.DrawWireSphere to visually inspect the raycast range 
+
+
+
+Correct Answers: 
+1. Gizmos.DrawRay to visually inspect the raycasts 
+
+
+
+Explanation: 
+Explanation Gizmos.DrawRay should be used to visualize how the ray is behaving in the scene. It will help to determine if the raycasts are positioned and pointing in the right direction. Gizmos.DrawWireSphere only draws a wireframe sphere given a position and a radius. It would not help to determine the direction a raycast is pointing. Debug.Log would print out vector3 values in plain text. These would be very difficult to interpret in plain text and would not help debugging this type of issue. Debug.LogWarning is designed to log warnings about your code to the console or a log file. It is not intended to debug this type of issue. References Gizmos.DrawRay Gizmos.DrawWireSphere Debug.Log Debug.LogWarning

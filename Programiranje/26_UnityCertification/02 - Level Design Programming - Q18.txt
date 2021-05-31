@@ -1,0 +1,23 @@
+
+A Programmer wants to simulate a soft shadow under his characters in a 3D adventure game.
+
+The Programmer needs these shadows to look good but also be as efficient as possible.
+
+Which method is the most efficient for the Programmer to generate a soft shadow under a character?
+
+
+Answers: 
+1. Use a spotlight with Soft Shadows enabled. 
+2. Use a light that does not affect geometry, but uses the Glow effect. 
+3. Use a light that does not affect geometry, but uses the Halo effect. 
+4. Use a Projector to project a shadow texture. 
+
+
+
+Correct Answers: 
+4. Use a Projector to project a shadow texture. 
+
+
+
+Explanation: 
+Explanation The Programmer should use a Projector to project a shadow texture. A Projector can paint a texture on the ground and is more efficient at suggesting a soft shadow than using a light. Shadows are the number one use of Projectors in Unity. The Programmer should not use the Glow effect. The Glow effect uses Bloom, which creates fringes of light extending from the borders of light areas. This is not suitable for shadows. The Programmer should not use the Halo effect. Halos are light areas around light sources. This is not suitable for shadows. The Programmer should not use a spotlight with Soft Shadows enabled. A spotlight has high rendering overhead and should be used sparingly. This is not an efficient way to cast shadows for characters. References Projector Image Effect reference Bloom Halo Spotlight

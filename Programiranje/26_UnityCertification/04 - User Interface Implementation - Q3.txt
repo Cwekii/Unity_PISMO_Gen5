@@ -1,0 +1,35 @@
+
+
+A Programmer is working on building a main menu with the Unity GUI system. The Programmer has the following code:
+ 
+ void OnGUI()
+ {
+     // Constrain all drawing to be within a 800x600 pixel area centered on the screen.
+     GUI.BeginGroup(new Rect(Screen.width / 2 - 400, Screen.height / 2 - 300, 800, 600));
+ 
+     // Draw a box in the new coordinate space defined by the BeginGroup.
+     // Notice how (0,0) has now been moved on-screen
+     GUI.Box(new Rect(0, 0, 800, 600), "This box is now centered! - put main menu here");
+ }
+ 
+ The GUI Box and Rectangle are not displayed.
+ 
+ What did the Programmer do wrong?
+
+
+
+Answers: 
+1. The Programmer needs to end the Group before the GUI Box will render. 
+2. The Programmer should use a Rect outside of the GUI Box. 
+3. OnGui() is no longer used. The Programmer is using an outdated system. 
+4. The Programmer is rendering the GUI Box and Rect outside of the screen's viewable area. 
+
+
+
+Correct Answers: 
+1. The Programmer needs to end the Group before the GUI Box will render. 
+
+
+
+Explanation: 
+Explanation The Programmer needs to end the Group before the GUI Box will render. All BeginGroup calls need to be matched with an EndGroup call. The Programmer is not using an outdated system. OnGui() is the correct method for scripting UI components. The Programmer should not use a Rect outside of the GUI Box. That part of the code is correct. The Programmer did, however, forget to call EndGroup(), which is required for each call to BeginGroup(). The Programmer is not rendering the GUI Box and Rect outside of the screen's viewable area. The Programmer forgot to call EndGroup(), which is required for each call to BeginGroup(). References GUI.EndGroup MonoBehaviour.OnGUI() Immediate Mode GUI (IMGUI)

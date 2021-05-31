@@ -1,0 +1,25 @@
+
+
+A Programmer is working on a prototype for a physics game that adds thrust to a game object's Rigidbody component. The variable rb is a reference to the Game Object's Rigidbody. The thrust variable has been set in the inspector and is of float type.
+ 
+ In which method should the Programmer place the following code to ensure that it works correctly?
+ 
+ rb.AddForce(transform.forward * thrust);
+
+
+
+Answers: 
+1. Update() 
+2. LateUpdate() 
+3. EarlyUpdate() 
+4. FixedUpdate() 
+
+
+
+Correct Answers: 
+4. FixedUpdate() 
+
+
+
+Explanation: 
+Explanation The Programmer should place the code in the FixedUpdate method. The FixedUpdate method is Unity's frame-rate independent method for physics calculations. The Programmer should not use the Update method. It is called every frame and should not be used for physics calculations like applying force to Rigidbodies. The Programmer should not use the LateUpdate method. It fires after all Update methods have fired and is best suited for things like follow cameras. The Programmer should not use the EarlyUpdate method. It fires before all Update methods are called and is currently classed as experimental. References MonoBehaviour.FixedUpdate() MonoBehaviour.Update() MonoBehaviour.LateUpdate() EarlyUpdate

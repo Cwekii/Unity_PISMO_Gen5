@@ -1,0 +1,23 @@
+
+
+A Programmer needs to improve load times, reduce the memory footprint, and increase rendering performance.
+ 
+ What is the first thing that the Programmer should do?
+
+
+
+Answers: 
+1. Add fog if possible. 
+2. Use multiple pixel lights in place of vertex lights. 
+3. Tweak the Level Of Detail (LOD) system. 
+4. Use compressed textures. 
+
+
+
+Correct Answers: 
+4. Use compressed textures. 
+
+
+
+Explanation: 
+Explanation The Programmer should use compressed textures. Compressed textures use a lot less memory bandwidth than uncompressed 32-bit RGBA textures. The Programmer should not tweak the LOD system first. While this is a way to reduce CPU and GPU loads, it can make the game look bad. The place to start is with compressed textures. The Programmer should not use multiple pixel lights in place of vertex lighting. In fact, multiple pixel lights (directional lights) will lower the performance of the game. The Programmer should not add fog. Fog will hide issues with the LOD system and a far clip plane that's too close to keep the number of active objects in the Scene culled. It will not improve load times or reduce the memory footprint of the game. References Optimizing graphics performance

@@ -1,0 +1,24 @@
+
+A Programmer is building a 3D Action/Adventure game and working on a boss fight that takes place in an area that features platforms the player and NPC enemies can jump on to cross over gaps.
+
+The platforms will suddenly rise up from toxic water, stay up for a few seconds, and then drop back down. The player and the NPCs need to avoid the toxic water.
+
+How should the Programmer set up the NavMesh to allow the NPCs to use these platforms?
+
+
+Answers: 
+1. - Create a clone of the platforms and set them where they will be when the water has lifted them. - Leave the collider and remove the renderer. - Set up off-mesh links between the ground and these clones. - Programmatically activate and deactivate these links to control when the NPCs can and cannot use them. 
+2. - Uncheck the static option for the platforms. - Assign a custom NavMesh Area to the platforms. - Programmatically alter the cost of the NavMesh Area to control when NPCs will use it. 
+3. - Set up off-mesh links between the ground and the platforms. - Enable the auto update positions options on the links to account for changes in the vertical positions of the platforms. - Programmatically alter the cost of the NavMesh Area to control when the NPCs should use it. 
+4. - Set up off-mesh links between the ground and the platforms. - Enable the auto update positions options on the links to account for changes in the platform's vertical position. 
+5. - Create a clone of the platforms and set them where they will be when the water has lifted them. - Assign a custom NavMesh Area to these clones. - Programmatically alter the cost of the NavMesh Area to control when the NPCs use it. 
+
+
+
+Correct Answers: 
+1. - Create a clone of the platforms and set them where they will be when the water has lifted them. - Leave the collider and remove the renderer. - Set up off-mesh links between the ground and these clones. - Programmatically activate and deactivate these links to control when the NPCs can and cannot use them. 
+
+
+
+Explanation: 
+Explanation The Programmer should clone the platforms and set them where they will be when the water has lifted them, leave the collider and remove the renderer, and set up off-mesh links between the ground and these clones, allowing them to programmatically activate and deactivate these links to control when the NPCs can and cannot use them. This ensures that the NPCs will behave as expected and not cost additional CPU processing. The Programmer should not set up off-mesh links between the ground and the platforms and enable the auto update positions options on the links to account for changes in the platform's vertical position. This would cause the NPCs to believe they could use the off-mesh links regardless of the toxic water and ruin the gameplay. The Programmer should not uncheck the static option for the platforms, assign a custom NavMesh Area to the platforms, and programmatically alter the cost of the NavMesh Area to control when NPCs will use it. The NPCs would have no off-mesh links to get them from the ground to the platforms. The Programmer should not create a clone of the platforms and set them where they will be when the water has lifted them, assign a custom NavMesh Area to these clones, and programmatically alter the cost of the NavMesh Area to control when the NPCs use it. The NPCs would have no off-mesh links to get them from the ground to the platforms. The Programmer should not set up off-mesh links between the ground and the platforms, enable the auto update positions options on the links to account for changes in their vertical positions, and programmatically alter the cost of the NavMesh Area to control when the NPCs should use it. Doing so would cost additional CPU processing to recalculate the change in costs, and there is no guarantee that the NPCs would not take the higher cost path while the costs were changing. It would be better for the Programmer to programmatically enable and disable the off-mesh links to control the NPCs. References Navigation and Pathfinding OffMeshLink Navigation Areas and Costs

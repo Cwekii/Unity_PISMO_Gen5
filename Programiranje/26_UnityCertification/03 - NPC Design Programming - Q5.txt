@@ -1,0 +1,23 @@
+
+
+A Programmer is working on an action adventure game for PC and needs to implement non-player character (NPC) behaviors for wild horses.
+ 
+ Which approach will should the Programmer use to get the most natural effect in the shortest amount of time?
+
+
+
+Answers: 
+1. NavMesh and NavAgents 
+2. Behavior Tree 
+3. Finite state machines 
+4. Flocking behaviors 
+
+
+
+Correct Answers: 
+4. Flocking behaviors 
+
+
+
+Explanation: 
+Explanation The Programmer should implement flocking behaviors like Align, Cohesion, Separation, and Evade. This will create emergent behaviors in the NPCs that will look the most natural. The Programmer should not implement Behavior Trees for this type of NPC behavior. Behavior Trees take a considerable amount of planning and coding. The Programmer should not use finite state machines (FSMs) for this type of NPC behaviors. FSMs can look mechanical and take a considerable amount of time to plan and code. The Programmer should not use NavMesh and NavAgents. This alone will not provide a natural effect, and the horses will end up looking like they do not belong together. References 3 Simple Rules of Flocking Behaviors: Alignment, Cohesion, and Separation Flocking Navigation and Pathfinding Finite State Machines [Part 1]

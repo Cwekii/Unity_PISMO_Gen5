@@ -1,0 +1,23 @@
+
+
+A Programmer is tasked with continuously spawning enemies into a level.
+ 
+ What is the most efficient way to accomplish this?
+
+
+
+Answers: 
+1. Use the Update() method and a timer to call a private Spawn() method at a set interval. 
+2. Use the FixedUpdate() method to call a private Spawn() method. 
+3. Use the InvokeRepeating() method in the Start() method to call a private Spawn() method at a set interval. 
+4. Create a public Spawn() method and have the level manger call it every frame. 
+
+
+
+Correct Answers: 
+3. Use the InvokeRepeating() method in the Start() method to call a private Spawn() method at a set interval. 
+
+
+
+Explanation: 
+Explanation The Programmer should use the InvokeRepeating() method in the Start() method to call a private Spawn() method at a set interval. Unity has designed this method to do the heavy lifting for you. The Programmer should not use the Update() method and a timer for this type of repetitive work. The InvokeRepeating() method is more efficient. The Programmer should not use the FixedUpdate() method for spawning. FixedUpdate() is for the physics system. The Programmer should not have an external script call a public method each frame because it is inefficient. The InvokeRepeating() method was created for this type of situation. References MonoBehaviour.InvokeRepeating MonoBehaviour.Update() MonoBehaviour.FixedUpdate()

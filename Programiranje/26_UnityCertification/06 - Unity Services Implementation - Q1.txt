@@ -1,0 +1,23 @@
+
+
+A Programmer needs to add Unity Ads to an existing game.
+ 
+ Which using declaration is required to use Unity Ads?
+
+
+
+Answers: 
+1. using UnityEngine.Advertisements; 
+2. using System.Collections; 
+3. using UnityEngine.UI; 
+4. using UnityEditor; 
+
+
+
+Correct Answers: 
+1. using UnityEngine.Advertisements; 
+
+
+
+Explanation: 
+Explanation The Programmer needs to use UnityEngine.Advertisements. This is the only way to gain access to Advertisment.Show(). The Programmer does not need System.Collections to enable Unity Ads. System.Collections contains some basic collections that are sometimes used by Unity. The Programmer does not need UnityEngine.UI to enable Unity Ads. UnityEngine.UI contains the API for the user interface. The Programmer does not need UnityEditor to enable Unity Ads. UnityEditor is required for building Editor related scripts and extending the Unity interface. References System.Collections Namespace Advertisement Graphic Editor

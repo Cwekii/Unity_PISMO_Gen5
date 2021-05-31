@@ -1,0 +1,22 @@
+
+A Programmer is building a 3D dungeon adventure game in which each level has multiple paths the player can take. The Programmer analyzes data using a Heatmapper for the game and notices far fewer player deaths along one specific path of a level. This path is optional and one of many that the player may take to reach the end of the level. The difficulty of a path is a function of the number and type of enemy NPCs along the path.
+
+What should the Programmer do next to improve the game?
+
+
+Answers: 
+1. Use a Funnel to observe the level completion rates. 
+2. Increase the difficulty of that path in the level, and leave the other paths at the same level of difficulty. 
+3. Map the NPC deaths along the paths in that level using a Heatmap and compare NPC death rates along this path to other paths in the same level. 
+4. Decrease the difficulty of the other paths in the level, increase the difficulty of that path in the level, and map the NPC deaths along the paths in that level using a Heatmap. 
+5. Decrease the difficulty of the other paths in the level, and leave the difficulty of this easy path the same. 
+
+
+
+Correct Answers: 
+3. Map the NPC deaths along the paths in that level using a Heatmap and compare NPC death rates along this path to other paths in the same level. 
+
+
+
+Explanation: 
+Explanation The Programmer should map the NPC deaths along the paths in that level using a Heatmap and compare the death rates along this path to other paths in the same level. A lack of NPC deaths relative to the other paths may indicate that the path is too easy to be challenging to the player, but it may also indicate that the other paths are too difficult and are being avoided. The number of NPC deaths along the various paths will help inform the Programmer's decision. The Programmer should not increase or decrease the level of difficulty of that path without first understanding why there are far fewer player deaths along it. Mapping the paths in the level with a Heatmap of enemy deaths may reveal what is rally going on and inform the Programmer's decisions. The Programmer should not use a Funnel to observe the level completion rates. This would not contain the information the Programmer needs to make an informed decision. References Analytics Dashboard Stoking the fire: Heatmaps Rekindled heatmaps / v2

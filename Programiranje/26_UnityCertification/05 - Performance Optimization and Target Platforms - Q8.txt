@@ -1,0 +1,29 @@
+
+A Programmer is working on a 3D maze game for the PC and has added a layer named Unwalkable to the game. 
+
+The maze is procedurally generated in a rectangular grid represented by a two-dimensional array of Nodes named m_grid. The node class has a member variable named m_walkable that is checked and set at the time a wall is instantiated during level generation and a Vector3 named m_worldPos, which contains the world position of the wall in the game.
+
+While testing out the game, the Programmer notices that a section of the maze allows the player to walk through the wall.
+
+The Programmer adds a class level float variable named m_nodeDiameter and sets it to a value of 1 with the class declarations.
+
+The Programmer is next going to implement an OnDrawGizmos() method to draw the walkable and unwalkable nodes in white and red cubes just a tiny bit smaller than the grid to visually see the unwalkable areas of the maze as a way to debug this issue.
+
+Which of the following should the Programmer implement?
+
+
+Answers: 
+1. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } } 
+2. void OnDrawGizmos() { for each(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } 
+3. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawSphere(n.m_worldPos, m_nodeDiameter)); } } 
+4. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter - .1f)); } } 
+
+
+
+Correct Answers: 
+4. void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter - .1f)); } } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the following method: void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter - .1f)); } } This displays a white cube just smaller than the grid over all walkable areas and a red cube just smaller than the grid over all non-walkable areas. The Programmer should not implement the following method: void OnDrawGizmos() { for each(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } } This method will draw the cubes at the size of the grid and not a tiny bit smaller than the grid. The Programmer should not implement the following method: void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.DrawCube(n.m_worldPos, Vector3.one * (m_nodeDiameter)); } } This method will not draw the cube in color or a tiny bit smaller than the nodes in the grid. The Programmer should not implement the following method: void OnDrawGizmos() { foreach(Node n in m_grid) { Gizmos.color = (n.m_walkable) ? Color.white : Color.red; Gizmos.DrawSphere(n.m_worldPos, m_nodeDiameter)); } } This method will draw red and white spheres and not cubes. References MonoBehaviour.OnDrawGizmos() Debugging C# code in Unity

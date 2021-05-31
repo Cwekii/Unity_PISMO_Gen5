@@ -1,0 +1,60 @@
+
+A Programmer is building a 3D action game that requires a lot of explosions in quick repetition during some points of game play. It has been decided that the Programmer should implement a thread safe object pool to instantiate the exploding prefabs at runtime.
+
+The Programmer creates the generic object pool class shown below so they can re-use it for other objects if needed. They know that this way, all they need to do is create an empty class that inherits from ObjectPool, attach that class to a game object in the inspector, and set the prefab and number of objects to pool. 
+
+using UnityEngine;
+using System.Collections.Generic;
+
+public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour {
+   public T m_prefab;
+
+   public int m_size;
+
+   private List<T> m_freeList;
+   private List<T> m_usedList;
+ 
+   public T Get() {
+      var numFree = m_freeList.Count;
+      if (numFree == 0)
+         return null;
+
+      var pooledObject = m_freeList[numFree - 1];
+      m_freeList.RemoveAt(numFree - 1);
+      m_usedList.Add(pooledObject);
+      return pooledObject;
+   }
+
+   public void ReturnObject(T pooledObject) {
+      Debug.Assert(m_usedList.Contains(pooledObject));
+ 
+      m_usedList.Remove(pooledObject);
+      m_freeList.Add(pooledObject);
+
+      var pooledObjectTransform = pooledObject.transform;
+      pooledObjectTransform.parent = transform;
+      pooledObjectTransform.localPosition = Vector3.zero;
+      pooledObject.gameObject.SetActive(false);
+   }
+}
+
+The Programmer has a prefab of the explosion and is trying to get the pool to work but it throws errors. The Programmer realizes that they need to warm the pool with an Awake() method.
+
+Which Awake() method should the Programmer implement?
+
+
+Answers: 
+1. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); } 
+2. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } 
+3. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); m_freeList.Add(pooledObject); } } 
+4. public void Awake() { for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } 
+
+
+
+Correct Answers: 
+2. public void Awake() { m_freeList = new List(m_size); m_usedList = new List(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } 
+
+
+
+Explanation: 
+Explanation The Programmer should implement the following Awake() method: public void Awake() { m_freeList = new List<T>(m_size); m_usedList = new List<T>(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } This will initialize the free and used lists properly and instantiate the correct number of prefabs into the pool for use. The Programmer should not implement the following Awake() method: public void Awake() { for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); pooledObject.gameObject.SetActive(false); m_freeList.Add(pooledObject); } } This does not properly initialize the free and used lists before populating the pool. The Programmer should initialize the lists before populating them. The Programmer should not implement the following Awake() method: public void Awake() { m_freeList = new List<T>(m_size); m_usedList = new List<T>(m_size); for (var i = 0; i < m_size; i++) { var pooledObject = Instantiate(m_prefab, transform); m_freeList.Add(pooledObject); } } This does not disable the prefabs in the free list. In the case of explosions, that would cause the explosions to explode in the pool, which is not the desired outcome. The Programmer should not implement the following Awake() method: public void Awake() { m_freeList = new List<T>(m_size); m_usedList = new List<T>(m_size); } This initializes the lists for the object pool but does not populate them with the prefab. References Type-safe object pool for Unity TypeSafeObjectPool

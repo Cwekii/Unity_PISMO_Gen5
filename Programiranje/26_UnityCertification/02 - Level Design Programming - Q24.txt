@@ -1,0 +1,23 @@
+
+
+A Programmer needs to load a new Scene but ensure that all other Scenes are unloaded first.
+ 
+ What is best way to accomplish this?
+
+
+
+Answers: 
+1. Call SceneManager.UnloadSceneAsync() on all currently loaded Scenes and then call SceneManager.LoadSceneAsync() on the new Scene. 
+2. Call Resources.UnloadUnusedAssets() and then call SceneManager.LoadSceneAsync() to load in the new Scene. 
+3. Call SceneManager.LoadSceneAsync() with the new Scene and ensure that the LoadSceneMode is set to Single. 
+4. Call SceneManager.UnloadScene() on all currently loaded Scenes and then call SceneManager.LoadSceneAsync() with the new Scene and ensure that the LoadSceneMode is set to Single. 
+
+
+
+Correct Answers: 
+3. Call SceneManager.LoadSceneAsync() with the new Scene and ensure that the LoadSceneMode is set to Single. 
+
+
+
+Explanation: 
+Explanation The Programmer should call SceneManager.LoadSceneAsync() with the LoadSceneMode set to Single. This will ensure that all existing Scenes are unloaded before loading in the new Scene. The Programmer does not need to call SceneManager.UnloadSceneAsync() first. SceneManager.LoadSceneAsync() with the LoadSceneMode set to Single will ensure that all existing Scenes are unloaded before the new Scene is loaded. The Programmer should not use SceneManager.UnloadScene(). This method has been marked as obsolete and will be removed from the Unity API. The Programmer should not call Resources.UnloadUnusedAssets() because the assets in the Scene are currently used. This call can be used after unloading a Scene to free up asset memory. References SceneManager.LoadSceneAsync SceneManager.UnloadSceneAsync SceneManager.UnloadScene

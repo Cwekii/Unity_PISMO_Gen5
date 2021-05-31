@@ -1,0 +1,23 @@
+
+
+A Programmer is working on porting a simple low-res RPG game from PC to mobile platforms. What two considerations should the Programmer be aware of that will affect the gameplay on a mobile device? (Choose two.)
+
+
+
+Answers: 
+1. How to re-write all of the existing code so that it works on mobile 
+2. How Unity handles input 
+3. How Unity renders graphics 
+4. The storage requirements of the game 
+5. How the interactive elements of the HUD will need to be changed 
+
+
+
+Correct Answers: 
+2. How Unity handles input 
+4. The storage requirements of the game 
+
+
+
+Explanation: 
+Explanation The Programmer needs to consider how the input will change from keyboard and mouse to touch based input and how that might impact gameplay. The Programmer also needs to be aware of the storage requirements, which would need to be significantly reduced on mobile platforms. How Unity renders graphics is of little concern between desktop and mobile platforms. The Engine handles the low level rendering subsystem and this is a low-res game. The Programmer should not be concerned with re-writing all the existing code. In many cases the same code can be used for both PC and mobile games. The programmer should not be concerned with the interactive elements of the HUD. Most mouse clicks convert naturally to screen taps. References Cross-Platform Considerations

@@ -1,0 +1,24 @@
+
+A Programmer is implementing Unity Cloud Build for a 2D Puzzle game with a single build target. The Programmer wants to execute some code that generates some custom data that will be used for an installer script right after the Unity Cloud Build runs on the project.
+
+The code to generate the custom data resides in a singleton within the project named InstallerCustomDataGen. There is an Instance property available. The method they want to execute is named GenerateCustomInstallerData().
+
+What should the Programmer do to accomplish this? (Choose two.)
+
+
+Answers: 
+1. Add InstallerCustomDataGen.Instance.GenerateCustomInstallerData to the Pre-Export Method Name field on the build target's Advanced Options. 
+2. Add the following code to a script named PostBuild.cs in the Editor folder: public class PostBuild : MonoBehaviour { public static void PostExport() { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } 
+3. Add PostExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+4. Add the following code to a script named PostBuild.cs in the Editor folder of the project: public class PreBuild : MonoBehaviour { private static void PostExport () { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } 
+
+
+
+Correct Answers: 
+2. Add the following code to a script named PostBuild.cs in the Editor folder: public class PostBuild : MonoBehaviour { public static void PostExport() { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } 
+3. Add PostExport to the Pre-Export Method Name field on the build target's Advanced Options. 
+
+
+
+Explanation: 
+Explanation The Programmer should add the following code to a script named PostBuild.cs in the Editor folder: public class PostBuild : MonoBehaviour { public static void PostExport() { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } This will be accessible for the Unity Cloud Build system to call. The Programmer should also add PostExport to the Pre-Export Method Name field on the build target's Advanced Options. The Programmer should not add InstallerCustomDataGen.Instance.GenerateCustomInstallerData to the Pre-Export Method Name field on the build target's Advanced Options. The method names for pre and post export of builds need to be accessible from a script in the project's Editor folder and be public static methods. The Programmer should not add the following code to a script named PreBuild.cs in the Assets folder of the project: public class PreBuild : MonoBehaviour { private static void PostExport () { InstallerCustomDataGen.Instance.GenerateCustomInstallerData(); } } Unity Cloud Build can only execute code that is located in the project's Editor folder for pre and post build operations, and the methods need to public static methods. References Cloud Build Pre- and post-export methods Advanced options

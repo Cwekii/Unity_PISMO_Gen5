@@ -1,0 +1,23 @@
+
+
+A Programmer wants to convert the position of viewport space into screen space.
+ 
+ Which method should the Programmer use?
+
+
+
+Answers: 
+1. RectTransform 
+2. RectMask2D 
+3. ScreenToViewportPoint() 
+4. ViewportToScreenPoint() 
+
+
+
+Correct Answers: 
+4. ViewportToScreenPoint() 
+
+
+
+Explanation: 
+Explanation The Programmer should use ViewportToScreenPoint(), which correctly transforms a Vector3 from ViewportSpace into ScreenSpace. The Programmer should not use ScreenToViewportPoint(). It does the opposite of what the Programmer is after. It transforms a Vector3 from ScreenSpace into ViewportSpace. The Programmer should not use the RectTransform. It is a component attached to a Game Object and not a method. The Programmer should not use a RectMask2D. It is a masking control, not a method. References Camera.ScreenToViewportPoint Camera.ViewportToScreenPoint Rect Transform RectMask2D

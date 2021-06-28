@@ -1,0 +1,21 @@
+1.) Složite si opremu za rad i testiranje za:
+- Izradu AR aplikacija u Unityu (800€ ili 6000kn)
+- Izradu iOS i Android igara / aplikacija (825€ ili 6200 kn)
+- Izradu VR igara u Unityu (1050€ - 7875 kn)
+- Izradu desktop i web gl igara (Modeliranje + Unity) (900€ - 6750kn)
+- Konfiguracija koja podržava sve navedeno (1400€ - 10500 kn)
+
+2.) Pronađite oglase za posao za: 
+(* tko traži posao naci ukupno 8x oglasa)
+(** tko otvara firmu naci ukupno 8x oglasa za projekte)
+- 5x* Junior Unity developer - Remote
+- 3x izrada AR igre/aplikacije u Unityu
+- 4x izrada VR igre/aplikacije u Unityu
+- 1x Game designer - Remote
+- 2x C# (.net) junior developer - Remote
+- 5x** oglas nekog drugog tipa gdje vi možete kao freelancer odraditi projekt
+	npr.:
+	- vizualizacija
+	- prototip igre
+	- izradu apliakcije u Unityu
+	itd.
